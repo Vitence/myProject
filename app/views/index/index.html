@@ -1,0 +1,143 @@
+<link rel="stylesheet" type="text/css" href="/css/pages/index.css">
+<script type="text/javascript" src="/js/pages/index.js"></script>
+<!-- banner -->
+<div class="bannerBlock">
+    <div class="centerBlock">
+        <img src="/img/06banner1.png">
+        <?php if(empty($userInfo)): ?>
+            <input type="button" onclick="window.location.href='/user/login'" value="立即登录">
+        <?php endif; ?>
+    </div>
+</div>
+<!-- charts -->
+<div class="chartsBlock">
+    <div class="centerBlock">
+        <div class="navBlock">
+            <table>
+                <tr>
+                    <td class="checked" onclick="index_changeCharts(0,cbfcharts)">CBF</td>
+                    <td onclick="index_changeCharts(1,twdhqcharts)">陶文兑换券</td>
+                    <td onclick="index_changeCharts(2,myjfcharts)">米亚积分</td>
+                    <td onclick="index_changeCharts(3,qrtbcharts)">乾瑞通宝</td>
+                </tr>
+            </table>
+        </div>
+        <div class="chartInfo">
+            <span class="title">今日最高：</span>
+            <span class="number">0.2</span>
+            <span class="title">今日最低：</span>
+            <span class="number">0.2</span>
+            <span class="title">涨跌幅：</span>
+            <span class="number">0%</span>
+            <span class="title">今日成交量：</span>
+            <span class="number">0</span>
+        </div>
+        <div class="chartInfo" hidden="hidden">
+            <span class="title">今日最高：</span>
+            <span class="number">79.34</span>
+            <span class="title">今日最低：</span>
+            <span class="number">60.34</span>
+            <span class="title">涨跌幅：</span>
+            <span class="number">+23.22%</span>
+            <span class="title">今日成交量：</span>
+            <span class="number">1890435</span>
+        </div>
+        <div class="chartInfo" hidden="hidden">
+            <span class="title">今日最高：</span>
+            <span class="number">99.25</span>
+            <span class="title">今日最低：</span>
+            <span class="number">53.88</span>
+            <span class="title">涨跌幅：</span>
+            <span class="number">+97.43%</span>
+            <span class="title">今日成交量：</span>
+            <span class="number">2547988</span>
+        </div>
+        <div class="chartInfo" hidden="hidden">
+            <span class="title">今日最高：</span>
+            <span class="number">100.43</span>
+            <span class="title">今日最低：</span>
+            <span class="number">100.43</span>
+            <span class="title">涨跌幅：</span>
+            <span class="number">0</span>
+            <span class="title">今日成交量：</span>
+            <span class="number">0</span>
+        </div>
+        <div class="chartsBlock" id="indexEcharts">
+
+        </div>
+    </div>
+</div>
+<!-- coin Info -->
+<div class="coinInfoBlock">
+    <div class="centerBlock">
+        <table>
+            <tr>
+                <td>产品名称</td>
+                <td>最新价格</td>
+                <td>24h成交量</td>
+                <td>24h成交额</td>
+                <td>总市值</td>
+                <td>24h涨跌</td>
+                <td>7D涨跌</td>
+                <td>操作</td>
+            </tr>
+            <tr>
+                <td>CBF</td>
+                <td>0.2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>160000000</td>
+                <td>0%</td>
+                <td>0%</td>
+                <td>
+                    <input type="button" value="去交易" onclick="location.href='tradingCenter.html'" >
+                </td>
+            </tr>
+            <tr>
+                <td>陶文兑换券</td>
+                <td>16.42</td>
+                <td>123</td>
+                <td>1435.25</td>
+                <td>32420000.00</td>
+                <td>+3.4%</td>
+                <td>+7.9%</td>
+                <td>
+                    <input type="button" value="去交易" onclick="location.href='tradingCenter.html'" >
+                </td>
+            </tr>
+            <tr>
+                <td>米亚积分</td>
+                <td>96.00</td>
+                <td>343</td>
+                <td>31562.92</td>
+                <td>96000000.00</td>
+                <td>+10%</td>
+                <td>+92%</td>
+                <td>
+                    <input type="button" value="去交易" onclick="location.href='tradingCenter.html'" >
+                </td>
+            </tr>
+            <tr>
+                <td>乾瑞通宝</td>
+                <td>42.00</td>
+                <td>0</td>
+                <td>0</td>
+                <td>63000000.00</td>
+                <td>0%</td>
+                <td>0%</td>
+                <td>
+                    <input type="button" value="去交易" onclick="location.href='tradingCenter.html'" >
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('indexEcharts'));
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(cbfcharts);
+    })
+</script>

@@ -1,0 +1,574 @@
+@import "../lib/styleLib";
+
+.centerBlock{
+	width: 1200px;
+	margin: auto;
+	height: 100%;
+}
+.headBlock{
+	height: 60px;
+	background-color: @main_black;
+	width: 100%;
+	line-height: 60px;
+	font-size: @word_16n;
+	img{
+		vertical-align: middle;
+	}
+	ul{
+		display: inline-block;
+		list-style: none;
+		margin-left: 156px;
+		li{
+			display: inline-block;
+			color: @word_gray;
+			margin-right: 66px;
+			&.checked{
+				color: @word_white;
+			}
+			span:hover{
+				cursor: pointer;
+			}
+		}
+	}
+	.accountBlock{
+		height: 100%;
+		span{
+			&:hover{
+				cursor: pointer;
+				opacity: 0.8;
+			}
+		}
+		.login{
+			color: @word_blue;
+			padding-right: 5px;
+		}
+		.userName{
+			font: @word_14n;
+			color: @word_gray;
+			position: relative;
+			background-image: url('../../img/04headEmailIcon.png') ;
+			background-repeat: no-repeat;
+			background-position: right;
+			padding-right: 15px;
+			display: inline-block;
+			height: 60px;
+			line-height: 60px;
+			margin-right: 35px;
+			.accountInfoSimple{
+				display: none;
+				position: absolute;
+				background-color: #373b4d;
+				width: 140px;
+				padding: 0 20px;
+				font: @word_14n;
+				color: @word_white;
+				top: 59px;
+				left: -20px;
+				p{
+					line-height: 35px;
+				}
+			}
+			&:hover{
+				background-image: url('../../img/05headEmailIconHover.png') ;
+				color: @word_white;
+				opacity: 1;
+				.accountInfoSimple{
+					display: block;
+				}
+			}
+		}
+		.regist{
+			color: @word_white;
+			padding-left: 10px;
+		}
+		.logout{
+			color: @word_gray;
+			padding-left: 10px;
+		}
+		.changeLanguageBlock{
+			margin-left: 15px;
+			font: @word_14n;
+			color: @word_gray;
+			position: relative;
+			background-image: url('../../img/04headEmailIcon.png') ;
+			background-repeat: no-repeat;
+			background-position: right;
+			padding-right: 15px;
+			display: inline-block;
+			height: 60px;
+			line-height: 60px;
+			.languageList{
+				display: none;
+				position: absolute;
+				background-color: #373b4d;
+				width: 60px;
+				padding: 0 20px;
+				font: @word_14n;
+				color: @word_white;
+				top: 59px;
+				left: -12px;
+				z-index: 1;
+				p{
+					line-height: 35px;
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+			}
+			&:hover{
+				background-image: url('../../img/05headEmailIconHover.png') ;
+				color: @word_white;
+				opacity: 1;
+				.languageList{
+					display: block;
+				}
+			}
+		}
+	}
+}
+.mainBlock{
+	width: 100%;
+	padding:30px 0;
+	background-color: @assist_white;
+	padding-bottom: 40px;
+	.mb_layout_floatleft{
+		width: 190px;
+		.navTitle{
+			font: @word_22n;
+			color: @word_white;
+			text-align: center;
+			line-height: 130px;
+			height: 130px;
+			&.financeBack{
+				background-image: url('../../img/12financeCenterNavTitle.png');
+			}
+			&.securityBack{
+				background-image: url('../../img/16securityCenterNavTitle.png');
+			}
+		}
+		ul{
+			li{
+				height: 61px;
+				background-color: #ffffff;
+				font: @word_16n;
+				color: @word_black;
+				padding-left: 26px;
+				line-height: 61px;
+				background-image: url('../../img/13centerNavIcon.png');
+				background-repeat: no-repeat;
+				background-position: 154px 50%;
+				border-bottom: 1px solid @assist_lightgray;
+				&:nth-child(4){
+					border: 0;
+				}
+				&.checked{
+					color: @word_white;
+					background-image: url('../../img/14centerNavIcon_checked.png');
+					background-position: 149px 50%;
+					background-color: @main_blue;
+					&:hover{
+						color: @word_white;
+						cursor: default;
+					}
+				}
+				&:hover{
+					color: @word_blue;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+	.mb_layout_floatRight{
+		width: 982px;
+		.centerContentBlock{
+			padding: 0 20px;
+			background-color: #ffffff;
+			padding-bottom: 50px;
+			min-height: 500px;
+			position: relative;
+			.contentTitle{
+				font: @word_20b;
+				color: @word_black;
+				border-bottom: 1px solid @assist_lightgray;
+				padding-top: 14px;
+				height: 50px;
+				line-height: 50px;
+				margin-bottom: 34px;
+			}
+			.queryBlock{
+				margin-bottom: 40px;
+				font: @word_14n;
+				.queryCondition{
+					display: inline-block;
+					position: relative;
+					margin-right: 30px;
+					.queryWords{
+						color: @word_darkblack;
+					}
+					.selectForm{
+						width: 118px;
+						height: 28px;
+						padding: 0 10px;
+						border: 1px solid @assist_lightgray;
+						background-image: url('../../img/15selectIcon.png');
+						background-repeat: no-repeat;
+						background-position: 118px 50%;
+						&:hover{
+							cursor: pointer;
+						}
+					}
+					.optionBlock{
+						display: none;
+						position: absolute;
+						z-index: 10;
+						border: 1px solid @assist_lightgray;
+						right: 0;
+						top: 36px;
+						li{
+							background-color: #ffffff;
+							height: 30px;
+							width: 118px;
+							padding: 0 10px;
+							font: @word_14n;
+							line-height: 30px;
+							span{
+								line-height: inherit;
+								vertical-align: middle;
+							}
+							&:hover{
+								cursor: pointer;
+								background-color: @main_blue;
+								color: @word_white;
+							}
+						}
+					}
+					.dateForm{
+						width: 118px;
+						height: 28px;
+						border: 1px solid @assist_lightgray;
+						padding: 0 10px;
+					}
+					.queryBtn{
+						width: 90px;
+						height: 30px;
+						background-color: @main_blue;
+						color: @word_white;
+						border-radius: @radiusVal;
+						border: 0;
+						&:hover{
+							cursor: pointer;
+							opacity: 0.8;
+						}
+					}
+					&:nth-child(4){
+						margin: 0;
+					}
+				}
+			}
+			.financeContentTable{
+				width: 100%;
+				tr{
+					td{
+						height: 60px;
+						line-height: 60px;
+						border-bottom: 1px solid @assist_lightgray;
+						font: @word_14n;
+						text-align: center;
+						color: @word_black;
+						&:nth-child(1){
+							text-align: left;
+						}
+						&:nth-child(6){
+							width: 88px;
+						}
+						input{
+							width: 86px;
+							height: 30px;
+							border: 0;
+							color: @word_white;
+							border-radius: @radiusVal;
+							background-color: @main_blue;
+							&:hover{
+								cursor: pointer;
+								opacity: 0.8;
+							}
+						}
+					}
+					&:nth-child(1){
+						td{
+							height: 39px;
+							vertical-align: top;
+							font: @word_14b;
+							color:@word_black;
+							border-bottom: 1px solid @assist_gray;
+						}
+					}
+				}
+				&.recordTable{
+					td{
+						&:nth-child(1){
+							text-align: center;
+							width: 115px;
+						}
+						&:nth-child(7){
+							width: 30px;
+						}
+						&.greenWord{
+							color: @word_green;
+						}
+						&.redWord{
+							color: @word_red;
+						}
+					}
+				}
+			}
+			&.recordBlock{
+				.pagingBlock{
+					width: 100%;
+					position: absolute;
+					bottom: 50px;
+					text-align: center;
+					span{
+						display: inline-block;
+						height: 32px;
+						min-width: 32px;
+						border: 1px solid @assist_lightgray;
+						font: @word_14n;
+						color: @word_black;
+						line-height: 32px;
+						border-radius: @radiusVal;
+						&.checked{
+							border-color: @main_blue;
+							color: @main_blue;
+							&:hover{
+								cursor: default;
+							}
+						}
+						&.wordSpan{
+							padding: 0 10px;
+						}
+						&.ellipsis{
+							border: 0;
+							&:hover{
+								cursor: default;
+								color: @word_black;
+							}
+						}
+						&:hover{
+							cursor: pointer;
+							color: @main_blue;
+						}
+					}
+					input{
+						width: 27px;
+						padding: 0 10px;
+						height: 32px;
+						border: 1px solid @assist_lightgray;
+						border-radius: @radiusVal;
+						margin-left: 31px;
+					}
+				}
+			}
+			.securityContentTable{
+				width: 100%;
+				tr{
+					td{
+						padding-bottom: 30px;
+						font: @word_16n;
+						&:nth-child(1){
+							width: 22px;
+							padding-right: 10px;
+							img{
+								vertical-align: top;
+								margin-top: 2px;
+							}
+						}
+						&:nth-child(2){
+							color: @word_black;
+							width: 70px;
+							padding-right: 130px;
+						}
+						&:nth-child(3){
+							color: @word_gray;
+						}
+						&:nth-child(4){
+							width: 100px;
+							color: @word_blue;
+							span{
+								&:hover{
+									text-decoration: underline;
+									cursor: pointer;
+								}
+							}
+						}
+					}
+				}
+			}
+			.accountInfoBlock{
+				font: @word_16n;
+				color: @word_black;
+				border-bottom: 1px solid @assist_lightgray;
+				margin-bottom: 35px;
+				p{
+					span{
+						&:nth-child(2){
+							color: @main_blue;
+						}
+					}
+					&:nth-child(1){
+						margin-bottom: 22px;
+					}
+					&:nth-child(2){
+						margin-bottom: 35px;
+					}
+				}
+			}
+			.changePassTable{
+				margin: auto;
+				margin-top: 90px;
+				tr{
+					td{
+						position: relative;
+						font: @word_14n;
+						color: @word_black;
+						line-height: 44px;
+						padding-bottom:38px;
+						&.wordTd{
+							text-align: right;
+						}
+						&.formTd{
+							text-align: left;
+							input[type=text]{
+								width: 408px;
+								padding: 0 10px;
+								border:1px solid @assist_lightgray;
+								height: 42px;
+								border-radius: @radiusVal;
+							}
+							input[type=button]{
+								width: 430px;
+								border:0;
+								height: 44px;
+								font: @word_14n;
+								background-color: @main_blue;
+								color: @word_white;
+								border-radius: @radiusVal;
+								&:hover{
+									cursor: pointer;
+									opacity: 0.8;
+								}
+							}
+							.wrongMsg{
+								position: absolute;
+								height: 38px;
+								font: @word_12n;
+								line-height: 38px;
+								color: @word_red;
+								padding-left: 10px;
+								bottom: 0;
+							}
+						}
+					}
+				}
+			}
+			.changePassSuccessBlock{
+				text-align: center;
+				padding-top: 70px;
+				font: @word_22n;
+				color: @word_black;
+				img{
+					margin-bottom: 14px;
+				}
+				p{
+					margin-top: 18px;
+				}
+				input{
+					margin-top: 59px;
+					width: 430px;
+					height: 45px;
+					border: 0;
+					background-color: @main_blue;
+					color: @word_white;
+					font: @word_14n;
+					border-radius: @radiusVal;
+					&:hover{
+						cursor: pointer;
+						opacity: 0.8;
+					}
+				}
+			}
+		}
+	}
+}
+.centerContentBlock{
+	
+}
+.footBlock{
+	width: 100%;
+	background-color: @main_black;
+	.mainPart{
+		height: 117px;
+		line-height: 117px;
+		border-bottom: 1px solid #50525d;
+		img{
+			vertical-align: middle;
+		}
+		div{
+			display: inline-block;
+			position: relative;
+			height: 60px;
+			&.publicInfoBlock{
+				margin-left: 21px;
+				p{
+					position: relative;
+					font: @word_14n;
+					color: @word_gray;
+					line-height: 20px;
+					&.otherServe{
+						top: 20px;
+						span{
+							&:nth-child(2){
+								margin-left: 28px;
+							}
+							&:hover{
+								color: @word_white;
+								cursor: pointer;
+							}
+						}
+					}
+					&.recordInfo{
+						top: 25px;
+					}
+				}
+			}
+			&.publicEmailBlock{
+				float: right;
+				margin-top: 40px;
+				p{
+					font: @word_14n;
+					color: @word_gray;
+					line-height: 20px;
+					&:nth-child(2){
+						margin-top: 11px;
+					}
+				}
+			}
+		}
+	}
+	.outLinkPart{
+		height: 62px;
+		line-height: 62px;
+		span{
+			font: @word_14n;
+			color: @word_gray;
+			margin-right: 18px;
+			&.linkSpan{
+				margin-right: 30px;
+				&:hover{
+					color: @word_white;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}

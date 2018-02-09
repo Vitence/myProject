@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="/css/pages/financeCenter.css">
+<!-- main -->
+<div class="mainBlock">
+    <div class="centerBlock">
+        <?php $this->partial('layout/securityleft') ?>
+        <div class="mb_layout_floatRight">
+            <div class="centerContentBlock">
+                <p class="contentTitle">安全概览</p>
+                <div class="accountInfoBlock">
+                    <p>
+                        <span>ID:</span>
+                        <span><?php echo @$userInfo['id'] ?></span>
+                    </p>
+                    <p>
+                        <span>账号:</span>
+                        <span><?php echo @$userInfo['email'] ?></span>
+                    </p>
+                </div>
+                <table class="securityContentTable">
+                    <tr>
+                        <td>
+                            <img src="/img/17securityCenterLoginPassIcon.png">
+                        </td>
+                        <td>登录密码</td>
+                        <td>登录账户时需要的密码</td>
+                        <td><span onclick="location.href='/security/setloginpass'">修改登录密码</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="/img/18securityCenterPassIcon.png">
+                        </td>
+                        <td>交易密码</td>
+                        <td>交易时需要的密码</td>
+                        <td><span onclick="location.href='/security/settradingpass'">修改交易密码</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="mb_layout_clearBoth"></div>
+    </div>
+</div>

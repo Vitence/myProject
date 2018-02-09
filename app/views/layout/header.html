@@ -1,0 +1,52 @@
+<?php $controller = \Phalcon\Di::getDefault()->getDispatcher()->getControllerName(); ?>
+<?php if(strtolower($controller) != 'user'): ?>
+    <div class="headBlock">
+        <div class="centerBlock">
+            <!-- logo -->
+            <img onclick="window.location.href='/'" src="/img/01headLOGO.png"/>
+            <!-- nav -->
+            <ul>
+                <li class="<?php echo strtolower($controller) == 'index' ? 'checked' : '' ?>" onclick="window.location.href='/'"><span>首页</span></li>
+                <li class="<?php echo strtolower($controller) == 'transaction' ? 'transaction' : '' ?>" onclick="window.location.href='/transaction'"><span>交易中心</span></li>
+                <li class="<?php echo strtolower($controller) == 'finance' ? 'checked' : '' ?>" onclick="window.location.href='/finance'"><span>财务中心</span></li>
+                <li class="<?php echo strtolower($controller) == 'security' ? 'checked' : '' ?>" onclick="window.location.href='/security'"><span>安全中心</span></li>
+            </ul>
+            <!-- login&regist -->
+            <?php if (empty($userInfo)): ?>
+                <div class="mb_layout_floatRight accountBlock ">
+                    <span class="login" onclick="window.location.href='/user/login'">登录</span>|
+                    <span class="regist" onclick="window.location.href='/user/register'">注册</span>
+                    <span class="changeLanguageBlock">简体中文
+						<div class="languageList">
+							<p>English</p>
+							<p>简体中文</p>
+							<p>繁体中文</p>
+						</div>
+					</span>
+                </div>
+            <?php else: ?>
+                <div class="mb_layout_floatRight accountBlock ">
+                    <span class="userName"><?php echo @$userInfo['email'] ?>
+                        <div class="accountInfoSimple">
+                            <p>ID:<?php echo @$userInfo['id'] ?></p>
+                            <p>资产：<?php echo @$userInfo['balance'] ?>元</p>
+                        </div>
+					</span>
+                    <span onclick="window.location.href='/user/logout'" class="logout">注销</span>
+                    <span class="changeLanguageBlock">简体中文
+						<div class="languageList">
+							<p>English</p>
+							<p>简体中文</p>
+							<p>繁体中文</p>
+						</div>
+                     </span>
+                </div>
+            <?php endif; ?>
+            <!-- clear float -->
+            <div class="mb_layout_clearBoth"></div>
+        </div>
+    </div>
+<?php endif; ?>
+
+
+

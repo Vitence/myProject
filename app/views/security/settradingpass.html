@@ -1,0 +1,63 @@
+<link rel="stylesheet" type="text/css" href="/css/pages/financeCenter.css">
+<!-- main -->
+<div class="mainBlock">
+    <div class="centerBlock">
+        <?php $this->partial('layout/securityleft') ?>
+        <div class="mb_layout_floatRight edit">
+            <div class="centerContentBlock">
+                <p class="contentTitle">修改交易密码</p>
+                <table class="changePassTable">
+                    <?php if(@$user['trading_password'] != ""): ?>
+                        <tr>
+                            <td class="wordTd">
+                                原交易密码：
+                            </td>
+                            <td class="formTd">
+                                <input type="text" placeholder="请输入原始交易密码" id="oldPassword">
+                                <p class="wrongMsg"></p>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <td class="wordTd">
+                            新交易密码：
+                        </td>
+                        <td class="formTd">
+                            <input type="text" placeholder="请输入新交易密码" id="password">
+                            <p class="wrongMsg"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wordTd">
+                            确认新交易密码：
+                        </td>
+                        <td class="formTd">
+                            <input type="text" placeholder="请重新输入新交易密码" id="passwordAgain">
+                            <p class="wrongMsg"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wordTd"></td>
+                        <td class="formTd">
+                            <input type="button" value="确认修改" id="edit">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <input type="hidden" name="tokenName" value="<?php echo $this->security->getTokenKey() ?>" />
+        <input type="hidden" name="token" value="<?php echo $this->security->getToken() ?>" />
+        <div class="mb_layout_floatRight editSuccess" style="display: none">
+            <div class="centerContentBlock">
+                <p class="contentTitle">修改交易密码</p>
+                <div class="changePassSuccessBlock">
+                    <img src="/img/19changePassIcon.png">
+                    <p>恭喜您修改成功</p>
+                    <p>请保存好您的交易密码</p>
+                </div>
+            </div>
+        </div>
+        <div class="mb_layout_clearBoth"></div>
+    </div>
+</div>
+<script src="/js/pages/security/tradingpass.js"></script>

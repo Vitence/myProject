@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title><?php echo @$title ? $title : 'XinHuo' ?></title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="/css/lib/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/pages/tradingCenter.css">
+    <script type="text/javascript" src="/js/lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/lib/echarts.min.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+</head>
+<body>
+<!-- head -->
+<?php $this->partial("layout/header"); ?>
+<!-- content -->
+<?php echo $this->getContent(); ?>
+<!-- foot -->
+<?php $controller = \Phalcon\Di::getDefault()->getDispatcher()->getControllerName() ?>
+<?php if(strtolower($controller) != 'password'): ?>
+    <?php $this->partial("layout/footer"); ?>
+<?php endif; ?>
+</body>
+</html>

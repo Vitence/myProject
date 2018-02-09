@@ -1,0 +1,9 @@
+<?php $action = \Phalcon\Di::getDefault()->getDispatcher()->getActionName(); ?>
+<div class="mb_layout_floatleft">
+    <p class="navTitle securityBack">安全中心</p>
+    <ul>
+        <li class="<?php echo strtolower($action) == 'index' ? 'checked' : '' ?>" onclick="location.href='/security'">安全概览</li>
+        <li class="<?php echo strtolower($action) == 'setloginpass' ? 'checked' : '' ?>" onclick="location.href='/security/setloginpass'">登录密码修改</li>
+        <li class="<?php echo strtolower($action) == 'settradingpass' ? 'checked' : '' ?>" onclick="location.href='/security/settradingpass'">交易密码修改</li>
+    </ul>
+</div>

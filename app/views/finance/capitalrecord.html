@@ -1,0 +1,95 @@
+<link rel="stylesheet" type="text/css" href="/css/pages/financeCenter.css">
+<!-- main -->
+<div class="mainBlock">
+    <div class="centerBlock">
+        <?php $this->partial('layout/financeleft') ?>
+        <div class="mb_layout_floatRight">
+            <div class="centerContentBlock recordBlock">
+                <p class="contentTitle">资金记录</p>
+                <ul class="queryBlock">
+                    <li class="queryCondition">
+                        <span class="queryWords">产品名称：</span>
+                        <input type="text" class="selectForm" readonly="readonly" value="全部">
+                        <ul class="optionBlock">
+                            <li><span>全部</span></li>
+                            <li><span>陶文兑换券</span></li>
+                            <li><span>米亚积分</span></li>
+                            <li><span>乾瑞通宝</span></li>
+                        </ul>
+                    </li>
+                    <li class="queryCondition">
+                        <span class="queryWords">日期：</span>
+                        <input type="date" class="dateForm" value="">  -  <input type="date" class="dateForm" value="">
+                    </li>
+                    <li class="queryCondition">
+                        <span class="queryWords">操作类型：</span>
+                        <input type="text" class="selectForm" readonly="readonly" value="全部">
+                        <ul class="optionBlock">
+                            <li><span>全部</span></li>
+                            <li><span>买入</span></li>
+                            <li><span>卖出</span></li>
+                        </ul>
+                    </li>
+                    <li class="queryCondition">
+                        <input type="button" class="queryBtn" value="查询">
+                    </li>
+                </ul>
+                <table class="financeContentTable recordTable">
+                    <tr class="titleRow">
+                        <td>成交时间</td>
+                        <td>产品名称</td>
+                        <td>数量</td>
+                        <td>当时价格</td>
+                        <td>成交金额</td>
+                        <td>手续费</td>
+                        <td>操作</td>
+                    </tr>
+<!--                    <tr>-->
+<!--                        <td>2017-12-16 10:00</td>-->
+<!--                        <td>陶文兑换券</td>-->
+<!--                        <td>20</td>-->
+<!--                        <td>15.93</td>-->
+<!--                        <td>318.60</td>-->
+<!--                        <td>31.85</td>-->
+<!--                        <td class="greenWord">卖出</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>2017-12-16 11:00</td>-->
+<!--                        <td>米亚积分</td>-->
+<!--                        <td>50</td>-->
+<!--                        <td>90.41</td>-->
+<!--                        <td>4525</td>-->
+<!--                        <td>--</td>-->
+<!--                        <td class="redWord">买入</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>2017-12-16 16:00</td>-->
+<!--                        <td>陶文兑换券</td>-->
+<!--                        <td>10</td>-->
+<!--                        <td>16.37</td>-->
+<!--                        <td>163.7</td>-->
+<!--                        <td>16.37</td>-->
+<!--                        <td class="greenWord">卖出</td>-->
+<!--                    </tr>-->
+                </table>
+<!--                <div class="pagingBlock">-->
+<!--                    <span class="wordSpan">首页</span>-->
+<!--                    <span class="wordSpan">上一页</span>-->
+<!--                    <span class="">1</span>-->
+<!--                    <span class="">2</span>-->
+<!--                    <span class="checked">3</span>-->
+<!--                    <span class="ellipsis">...</span>-->
+<!--                    <span class="">7</span>-->
+<!--                    <span class="">8</span>-->
+<!--                    <span class="">9</span>-->
+<!--                    <span class="wordSpan">下一页</span>-->
+<!--                    <span class="wordSpan">尾页</span>-->
+<!--                    <input type="text">-->
+<!--                    <span class="">GO</span>-->
+<!--                </div>-->
+            </div>
+        </div>
+        <div class="mb_layout_clearBoth"></div>
+    </div>
+</div>
+<script src="/js/pages/finance/index.js"></script>

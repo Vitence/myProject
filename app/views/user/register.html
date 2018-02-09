@@ -1,0 +1,40 @@
+<!-- head -->
+<link rel="stylesheet" type="text/css" href="/css/pages/accountModel.css">
+<div class="headBlock centerBlock">
+    <img onclick="window.location.href='/'" src="/img/01headLOGO.png"/>|
+    <span class="welcomWord">欢迎注册</span>
+    <span class="mb_layout_floatRight">已有账号？请<span  onclick="window.location.href='/user/login'">登录</span></span>
+</div>
+<!-- content -->
+<div class="contentBlock registBlock">
+    <p class="title">注册账号</p>
+    <ul>
+        <li>
+            <input type="text" placeholder="请输入邮箱" id="email">
+            <p class="wrongMsg"></p>
+        </li>
+        <li>
+            <input type="password" placeholder="请设置登录密码，8-20位字符，支持数字和字母" id="password">
+            <p class="wrongMsg"></p>
+        </li>
+        <li>
+            <input type="password" placeholder="再次输入密码" id="passwordAgain">
+            <p class="wrongMsg"></p>
+        </li>
+        <li>
+            <input type="text" placeholder="请输入验证码" class="checkCode" id="imgCode">
+            <img src="<?php echo @$codeUrl; ?>" class="imgCode">
+            <p class="wrongMsg"></p>
+        </li>
+        <li class="lawRow">
+            <input type="checkbox" id="clause">
+            <span>我已阅读并查看<span class="serviceLawLink">服务条款</span></span>
+        </li>
+        <li>
+            <input type="button" value="注册" id="register">
+        </li>
+    </ul>
+    <input type="hidden" name="tokenName" value="<?php echo $this->security->getTokenKey() ?>" />
+    <input type="hidden" name="token" value="<?php echo $this->security->getToken() ?>" />
+</div>
+<script src="/js/pages/user/register.js"></script>

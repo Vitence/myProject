@@ -1,0 +1,23 @@
+<link rel="stylesheet" type="text/css" href="/css/lib/reset.css">
+<link rel="stylesheet" type="text/css" href="/css/pages/accountModel.css">
+<!-- content -->
+<div class="contentBlock forgetPassBlock">
+    <p class="title">邮箱输入</p>
+    <ul>
+        <li>
+            <input type="text" placeholder="请输入邮箱">
+            <p class="wrongMsg"></p>
+        </li>
+        <li>
+            <input type="text" placeholder="请输入验证码" class="checkCode">
+            <img src="<?php echo @$codeUrl; ?>" class="imgCode">
+            <p class="wrongMsg"></p >
+        </li>
+        <li>
+            <input type="button" value="下一步" id="reset">
+        </li>
+    </ul>
+    <input type="hidden" name="tokenName" value="<?php echo $this->security->getTokenKey() ?>" />
+    <input type="hidden" name="token" value="<?php echo $this->security->getToken() ?>" />
+</div>
+<script src="/js/pages/user/password.js"></script>

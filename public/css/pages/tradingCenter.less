@@ -1,0 +1,469 @@
+@import "../lib/styleLib";
+
+.centerBlock{
+	width: 1200px;
+	margin: auto;
+	height: 100%;
+}
+.headBlock{
+	height: 60px;
+	background-color: @main_black;
+	width: 100%;
+	line-height: 60px;
+	font-size: @word_16n;
+	img{
+		vertical-align: middle;
+	}
+	ul{
+		display: inline-block;
+		list-style: none;
+		margin-left: 156px;
+		li{
+			display: inline-block;
+			color: @word_gray;
+			margin-right: 66px;
+			&.checked{
+				color: @word_white;
+			}
+			span:hover{
+				cursor: pointer;
+			}
+		}
+	}
+	.accountBlock{
+		height: 100%;
+		span{
+			&:hover{
+				cursor: pointer;
+				opacity: 0.8;
+			}
+		}
+		.login{
+			color: @word_blue;
+			padding-right: 5px;
+		}
+		.userName{
+			font: @word_14n;
+			color: @word_gray;
+			position: relative;
+			background-image: url('../../img/04headEmailIcon.png') ;
+			background-repeat: no-repeat;
+			background-position: right;
+			padding-right: 15px;
+			display: inline-block;
+			height: 60px;
+			line-height: 60px;
+			margin-right: 35px;
+			.accountInfoSimple{
+				display: none;
+				position: absolute;
+				background-color: #373b4d;
+				width: 140px;
+				padding: 0 20px;
+				font: @word_14n;
+				color: @word_white;
+				top: 59px;
+				left: -20px;
+				z-index: 10;
+				p{
+					line-height: 35px;
+				}
+			}
+			&:hover{
+				background-image: url('../../img/05headEmailIconHover.png') ;
+				color: @word_white;
+				opacity: 1;
+				.accountInfoSimple{
+					display: block;
+				}
+			}
+		}
+		.regist{
+			color: @word_white;
+			padding-left: 10px;
+		}
+		.logout{
+			color: @word_gray;
+			padding-left: 10px;
+		}
+		.changeLanguageBlock{
+			margin-left: 15px;
+			font: @word_14n;
+			color: @word_gray;
+			position: relative;
+			background-image: url('../../img/04headEmailIcon.png') ;
+			background-repeat: no-repeat;
+			background-position: right;
+			padding-right: 15px;
+			display: inline-block;
+			height: 60px;
+			line-height: 60px;
+			.languageList{
+				display: none;
+				position: absolute;
+				background-color: #373b4d;
+				width: 60px;
+				padding: 0 20px;
+				font: @word_14n;
+				color: @word_white;
+				top: 59px;
+				left: -12px;
+				z-index: 1;
+				p{
+					line-height: 35px;
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+			}
+			&:hover{
+				background-image: url('../../img/05headEmailIconHover.png') ;
+				color: @word_white;
+				opacity: 1;
+				.languageList{
+					display: block;
+				}
+			}
+		}
+	}
+}
+.tradingInfoSimpleBlock{
+	background-color: @assist_white;
+	height: 64px;
+	width: 100%;
+	line-height: 64px;
+	.coinSelectBlock{
+		position: relative;
+		display: inline-block;
+		line-height: 64px;
+		font: @word_14n;
+		color: @word_black;
+		text-align: center;
+		line-height: inherit;
+		width: 140px;
+		background-image: url('../../img/10coinSelectDownIcon.png');
+		background-position: 108px 50%;
+		background-repeat: no-repeat;
+		.coinOptionBlock{
+			display: none;
+			position: absolute;
+			top:55px;
+			padding-top: 7px;
+			background-image: url('../../img/11coinSelectUpIcon.png');
+			background-repeat: no-repeat;
+			background-position: 108px 0;
+			z-index: 10;
+			li{
+				background-color: #ffffff;
+				width: 140px;
+				height: 52px;
+				border: 1px solid @assist_white;
+				border-top: 0;
+				text-align: center;
+				line-height: 52px;
+				&:hover{
+					color: @main_blue;
+				}
+			}
+			li:nth-child(1){
+				border-top:4px solid @main_blue;
+			}
+		}
+		&:hover{
+			cursor: pointer;
+			.coinOptionBlock{
+				display: block;
+			}
+		}
+	}
+	.coinInfoBlock{
+		float: right;
+		height: 100%;
+		line-height: inherit;
+		ul{
+			li{
+				display: inline-block;
+				text-align: center;
+				margin-left: 66px;
+				vertical-align: middle;
+				&:nth-child(1){
+					margin: 0;
+				}
+				.number{
+					font: @word_16n;
+					color: @word_black;
+					&.up{
+						color: @assist_red;
+					}
+					&.down{
+						color: @assist_green;
+					}
+				}
+				.words{
+					font:@word_14n;
+					color: @word_lightblack;
+				}
+			}
+		}
+	}
+}
+.kLineChartBlock{
+	width: 100%;
+	height: 552px;
+	margin-bottom: 60px;
+}
+.tradinInfoBlock{
+	margin-bottom: 60px;
+	.titleBlock{
+		width: 100%;
+		font: @word_18n;
+		border-bottom: 1px solid @assist_lightgray;
+		margin-bottom: 30px;
+		padding-bottom: 10px;
+		color: @word_black;
+	}
+	.mb_layout_floatleft{
+		width: 783px;
+		.operateBlock{
+			position: relative;
+			margin-bottom: 100px;
+			div{
+				width: 366px;
+				font: @word_14n;
+				&.buyBlock{
+					.titleBlock{
+						color: @word_red;
+					}
+					ul{
+						li{
+							.buyButton{
+								background-color: @assist_red;
+							}
+						}
+					}
+				}
+				&.saleBlock{
+					position: absolute;
+					top: 0;
+					right: 0;
+					.titleBlock{
+						color: @word_green;
+					}
+					ul{
+						li{
+							.saleButton{
+								background-color: @assist_green;
+							}
+						}
+					}
+				}
+				input[type=text],input[type=password]{
+					width: 344px;
+					padding: 0 10px;
+					height: 38px;
+					border:1px solid @assist_lightgray;
+					font: @word_14n;
+				}
+				input[type=button]{
+					width: 366px;
+					height: 40px;
+					color: @word_white;
+					font: @word_14n;
+					border:0;
+					&:hover{
+						cursor: pointer;
+						opacity: 0.8;
+					}
+				}
+				.wrongMsg{
+					height: 20px;
+
+				}
+			}
+		}
+		.entrustRecortBlock{
+			table{
+				width: 100%;
+				text-align: center;
+				tr{
+					td{
+						height: 60px;
+						line-height: 60px;
+						border-bottom: 1px solid @assist_lightgray;
+						color: @word_black;
+						&:nth-child(1){
+							width: 135px;
+						}
+						&:nth-child(7){
+							width: 74px;
+						}
+						&.buyType{
+							color: @word_red;
+						}
+						&.saleType{
+							color: @word_green;
+						}
+						input{
+							width: 74px;
+							height: 30px;
+							background-color: @main_blue;
+							color: @word_white;
+							border-radius: @radiusVal;
+							border:0;
+							&:hover{
+								cursor: pointer;
+								opacity: 0.8;
+							}
+						}
+					}
+					&:nth-child(1){
+						td{
+							height: 45px;
+							vertical-align: top;
+							font: @word_14b;
+							border-bottom: 1px solid @assist_gray;
+						}
+					}
+				}
+			}
+		}
+	}
+	.mb_layout_floatRight{
+		width: 369px;
+		.entrustInfoBlock{
+			min-height: 401px;
+			margin-bottom: 25px;
+			table{
+				width: 100%;
+				text-align: center;
+				tr{
+					td{
+						height: 38px;
+						font: @word_14n;
+						&:nth-child(1){
+							width: 40px;
+						}
+						&:nth-child(4){
+							width: 105px;
+						}
+						&.greenWord{
+							color: @word_green;
+						}
+						&.redWord{
+							color: @word_red;
+						}
+					}
+					&:nth-child(1){
+						td{
+							height: 30px;
+							vertical-align: top;
+							font: @word_14b;
+							color: @word_black;
+						}
+					}
+					&:nth-child(5){
+						td{
+							border-bottom: 1px dashed @assist_lightgray;
+						}
+					}
+				}
+			}
+		}
+		.completeRecordBlock{
+			table{
+				width: 100%;
+				text-align: center;
+				tr{
+					td{
+						height: 35px;
+						font: @word_14n;
+						&:nth-child(1){
+							text-align: left;
+							padding-left: 3px;
+						}
+						&:nth-child(4){
+							width: 105px;
+						}
+					}
+					&:nth-child(1){
+						td{
+							height: 30px;
+							vertical-align: top;
+							font: @word_14b;
+							color: @word_black;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.footBlock{
+	width: 100%;
+	background-color: @main_black;
+	.mainPart{
+		height: 117px;
+		line-height: 117px;
+		border-bottom: 1px solid #50525d;
+		img{
+			vertical-align: middle;
+		}
+		div{
+			display: inline-block;
+			position: relative;
+			height: 60px;
+			&.publicInfoBlock{
+				margin-left: 21px;
+				p{
+					position: relative;
+					font: @word_14n;
+					color: @word_gray;
+					line-height: 20px;
+					&.otherServe{
+						top: 20px;
+						span{
+							&:nth-child(2){
+								margin-left: 28px;
+							}
+							&:hover{
+								color: @word_white;
+								cursor: pointer;
+							}
+						}
+					}
+					&.recordInfo{
+						top: 25px;
+					}
+				}
+			}
+			&.publicEmailBlock{
+				float: right;
+				margin-top: 40px;
+				p{
+					font: @word_14n;
+					color: @word_gray;
+					line-height: 20px;
+					&:nth-child(2){
+						margin-top: 11px;
+					}
+				}
+			}
+		}
+	}
+	.outLinkPart{
+		height: 62px;
+		line-height: 62px;
+		span{
+			font: @word_14n;
+			color: @word_gray;
+			margin-right: 18px;
+			&.linkSpan{
+				margin-right: 30px;
+				&:hover{
+					color: @word_white;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}

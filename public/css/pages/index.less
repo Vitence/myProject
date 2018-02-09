@@ -1,0 +1,312 @@
+@import "../lib/styleLib";
+
+.centerBlock{
+	width: 1200px;
+	margin: auto;
+	height: 100%;
+}
+.headBlock{
+	height: 60px;
+	background-color: @main_black;
+	width: 100%;
+	line-height: 60px;
+	font-size: @word_16n;
+	img{
+		vertical-align: middle;
+	}
+	ul{
+		display: inline-block;
+		list-style: none;
+		margin-left: 156px;
+		li{
+			display: inline-block;
+			color: @word_gray;
+			margin-right: 66px;
+			&.checked{
+				color: @word_white;
+			}
+			span:hover{
+				cursor: pointer;
+			}
+		}
+	}
+	.accountBlock{
+		height: 100%;
+		span{
+			&:hover{
+				cursor: pointer;
+				opacity: 0.8;
+			}
+		}
+		.login{
+			color: @word_blue;
+			padding-right: 5px;
+		}
+		.userName{
+			font: @word_14n;
+			color: @word_gray;
+			position: relative;
+			background-image: url('../../img/04headEmailIcon.png') ;
+			background-repeat: no-repeat;
+			background-position: right;
+			padding-right: 15px;
+			display: inline-block;
+			height: 60px;
+			line-height: 60px;
+			margin-right: 35px;
+			.accountInfoSimple{
+				display: none;
+				position: absolute;
+				background-color: #373b4d;
+				width: 140px;
+				padding: 0 20px;
+				font: @word_14n;
+				color: @word_white;
+				top: 59px;
+				left: -20px;
+				p{
+					line-height: 35px;
+				}
+			}
+			&:hover{
+				background-image: url('../../img/05headEmailIconHover.png') ;
+				color: @word_white;
+				opacity: 1;
+				.accountInfoSimple{
+					display: block;
+				}
+			}
+		}
+		.regist{
+			color: @word_white;
+			padding-left: 10px;
+		}
+		.logout{
+			color: @word_gray;
+			padding-left: 10px;
+		}
+		.changeLanguageBlock{
+			margin-left: 15px;
+			font: @word_14n;
+			color: @word_gray;
+			position: relative;
+			background-image: url('../../img/04headEmailIcon.png') ;
+			background-repeat: no-repeat;
+			background-position: right;
+			padding-right: 15px;
+			display: inline-block;
+			height: 60px;
+			line-height: 60px;
+			.languageList{
+				display: none;
+				position: absolute;
+				background-color: #373b4d;
+				width: 60px;
+				padding: 0 20px;
+				font: @word_14n;
+				color: @word_white;
+				top: 59px;
+				left: -12px;
+				z-index: 1;
+				p{
+					line-height: 35px;
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+			}
+			&:hover{
+				background-image: url('../../img/05headEmailIconHover.png') ;
+				color: @word_white;
+				opacity: 1;
+				.languageList{
+					display: block;
+				}
+			}
+		}
+	}
+}
+.bannerBlock{
+	width: 100%;
+	height: 500px;
+	background-color: #1899f0;
+	margin-bottom: 60px;
+	.centerBlock{
+		position: relative;
+		input{
+			width: 242px;
+			height: 50px;
+			border-radius: 25px;
+			background-color: #ffffff;
+			font: @word_18n;
+			color: #348eda;
+			position: absolute;
+			border:0;
+			left: 184px;
+			bottom: 134px;
+			&:hover{
+				cursor: pointer;
+				opacity: 0.9;
+			}
+		}
+	}
+	img{
+		height: 100%;
+	}
+}
+.chartsBlock{
+	width: 100%;
+	.navBlock{
+		table{
+			width: 100%;
+			tr{
+				td{
+					height: 44px;
+					line-height: 44px;
+					background-color: @assist_white;
+					font: @word_16n;
+					color: @word_black;
+					text-align: center;
+					&.checked{
+						background-color: @main_blue;
+						color: @word_white;
+						&:hover{
+							cursor: default;
+							opacity: 1;
+						}
+					}
+					&:hover{
+						cursor: pointer;
+						opacity: 0.5;
+					}
+				}
+			}
+		}
+	}
+	.chartInfo{
+		margin-top: 40px;
+		font: @word_14n;
+		.title{
+			color: @word_lightblack;
+		}
+		.number{
+			color: @word_darkblack;
+			margin-right: 38px;
+		}
+	}
+	.chartsBlock{
+		width: 100%;
+		height: 587px;
+	}
+}
+.coinInfoBlock{
+	width: 100%;
+    background: #f0fbff;
+    margin-bottom: 60px;
+    background: -moz-linear-gradient(top,  #f0fbff 0%, #ffffff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(100%,#ffffff));
+    background: -webkit-linear-gradient(top,  #f0fbff 0%,#ffffff 100%);
+    background: -o-linear-gradient(top,  #f0fbff 0%,#ffffff 100%);
+    background: -ms-linear-gradient(top,  #f0fbff 0%,#ffffff 100%);
+    background: linear-gradient(to bottom,  #f0fbff 0%,#ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0fbff', endColorstr='#ffffff',GradientType=0 );
+    table{
+    	width: 100%;
+    	text-align: center;
+    	tr{
+			td{
+	    		font: @word_14n;
+	    		color: @word_lightblack;
+	    		border-bottom: 1px solid @assist_lightgray;
+	    		height: 62px;
+	    		line-height: 62px;
+	    		input{
+	    			width: 86px;
+	    			height: 30px;
+	    			border: 0;
+	    			background-color: @main_blue;
+	    			color: @word_white;
+	    			border-radius: @radiusVal;
+	    			&:hover{
+	    				cursor: pointer;
+	    				opacity: 0.8;
+	    			}
+	    		}
+	    	}
+	    	&:nth-child(1) td{
+		    	font: @word_16n;
+	    		color: @word_darkblack;
+	    		border-bottom: 1px solid @assist_gray;
+		    }
+    	} 
+    }
+}
+.footBlock{
+	width: 100%;
+	background-color: @main_black;
+	.mainPart{
+		height: 117px;
+		line-height: 117px;
+		border-bottom: 1px solid #50525d;
+		img{
+			vertical-align: middle;
+		}
+		div{
+			display: inline-block;
+			position: relative;
+			height: 60px;
+			&.publicInfoBlock{
+				margin-left: 21px;
+				p{
+					position: relative;
+					font: @word_14n;
+					color: @word_gray;
+					line-height: 20px;
+					&.otherServe{
+						top: 20px;
+						span{
+							&:nth-child(2){
+								margin-left: 28px;
+							}
+							&:hover{
+								color: @word_white;
+								cursor: pointer;
+							}
+						}
+					}
+					&.recordInfo{
+						top: 25px;
+					}
+				}
+			}
+			&.publicEmailBlock{
+				float: right;
+				margin-top: 40px;
+				p{
+					font: @word_14n;
+					color: @word_gray;
+					line-height: 20px;
+					&:nth-child(2){
+						margin-top: 11px;
+					}
+				}
+			}
+		}
+	}
+	.outLinkPart{
+		height: 62px;
+		line-height: 62px;
+		span{
+			font: @word_14n;
+			color: @word_gray;
+			margin-right: 18px;
+			&.linkSpan{
+				margin-right: 30px;
+				&:hover{
+					color: @word_white;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+<link rel="stylesheet" type="text/css" href="/css/pages/financeCenter.css">
+<!-- main -->
+<div class="mainBlock">
+    <div class="centerBlock">
+        <?php $this->partial('layout/financeleft') ?>
+        <div class="mb_layout_floatRight">
+            <div class="centerContentBlock">
+                <p class="contentTitle">账户余额</p>
+                <table class="financeContentTable">
+                    <tr class="titleRow">
+                        <td>产品名称</td>
+                        <td>最新成交价</td>
+                        <td>可用</td>
+                        <td>冻结</td>
+                        <td>合计市值</td>
+                        <td>操作</td>
+                    </tr>
+                    <?php if(!empty($items)): ?>
+                        <?php foreach($items as $item): ?>
+                            <tr>
+                                <td><?php echo $item['name'] ?></td>
+                                <td><?php echo $item['newPrice'] == 0 ? '——' : $item['newPrice']; ?></td>
+                                <td><?php echo $item['number'] ?></td>
+                                <td><?php echo $item['frozen_number'] ?></td>
+                                <td><?php echo $item['newPrice'] == 0 ? '——' : $item['newPrice'] * $item['number']; ?></td>
+                                <td><input type="button" value="去交易" onclick="location.href='/transaction'"></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </table>
+            </div>
+        </div>
+        <div class="mb_layout_clearBoth"></div>
+    </div>
+</div>

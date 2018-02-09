@@ -1,0 +1,43 @@
+/*Reset tag default styel part*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,table,th,td,input {
+    margin:0;padding:0;list-style:none;font-family: PingFang SC,Microsoft YaHei;
+}
+input[type="button"],input[type="submit"],input[type="reset"],input[type="text"],textarea{
+    -webkit-appearance: none;
+}
+input,button,textarea,select{
+    outline: none;
+}
+a,a:link,a:visited,a:hover,a:active{
+    text-decoration: none;
+    color: #4a4a4a;
+}
+table{
+    border-collapse:collapse;
+    border-spacing:0;
+}
+fieldset,img{
+    border:0;
+}
+
+/*My basic layout style*/
+.mb_layout_floatleft{float: left;}
+.mb_layout_floatRight{float: right;}
+.mb_layout_clearBoth{clear: both;}
+.mb_layout_relative{position: relative;}
+.mb_layout_absolute{position: absolute;}
+.mb_layout_fixed{position: fixed;}
+
+/*My experience layout style*/
+.me_layout_fullBackImg{display:block;width: 100%;}
+
+.me_layout_waterFull_float_father{overflow: hidden;}
+.me_layout_waterFull_float_left{float: left;padding-bottom: 10000px;margin-bottom: -10000px;}
+.me_layout_waterFull_float_right{float: right;padding-bottom: 10000px;margin-bottom: -10000px;}
+
+.me_layout_waterFull_display_father{font-size: 0px;}
+.me_layout_waterFull_display_son{display: inline-block;vertical-align: top;font-size: 1rem;}
+
+.me_layout_hoverShow_father{}
+.me_layout_hoverShow_son{display: none}
+.me_layout_hoverShow_father:hover .me_layout_hoverShow_son{display: block;}

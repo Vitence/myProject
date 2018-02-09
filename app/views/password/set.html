@@ -1,0 +1,22 @@
+<link rel="stylesheet" type="text/css" href="/css/pages/accountModel.css">
+<!-- content -->
+<div class="contentBlock resetPassBlock">
+    <p class="title">重置密码</p>
+    <ul>
+        <li>
+            <input type="password" placeholder="请设置登录密码，8-20位字符，支持数字和字母">
+            <p class="wrongMsg"></p>
+        </li>
+        <li>
+            <input type="password" placeholder="再次输入密码">
+            <p class="wrongMsg"></p>
+        </li>
+        <li>
+            <input type="button" value="下一步" id="set">
+        </li>
+    </ul>
+    <input type="hidden" name="tokenName" value="<?php echo $this->security->getTokenKey() ?>" />
+    <input type="hidden" name="token" value="<?php echo $this->security->getToken() ?>" />
+    <input type="hidden" name="data" value="<?php echo $_GET['d'] ?>" />
+</div>
+<script src="/js/pages/user/password.js"></script>

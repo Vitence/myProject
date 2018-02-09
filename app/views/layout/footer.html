@@ -1,0 +1,30 @@
+<?php $controller = \Phalcon\Di::getDefault()->getDispatcher()->getControllerName(); ?>
+<?php if(strtolower($controller) != 'user'): ?>
+    <div class="footBlock">
+        <div class="centerBlock">
+            <div class="mainPart">
+                <img src="./img/02footLOGO.png">
+                <div class="publicInfoBlock">
+                    <p class="otherServe">
+                        <span>价格API</span>
+                        <span>服务协议</span>
+                    </p>
+                    <p class="recordInfo">
+                        Copyright@2017 Bibox.com All rights reserved
+                    </p>
+                </div>
+                <div class="publicEmailBlock">
+                    <p>服务邮箱：<span>xinhuofuwu@163.com</span></p>
+                    <p>商务合作：<span>xinhuohezuo@163.com</span></p>
+                </div>
+            </div>
+            <div class="outLinkPart">
+                <span>友情链接：</span>
+                <span class="linkSpan">Z数据兑换</span>
+                <span class="linkSpan">火币Pro</span>
+                <span class="linkSpan">OKex</span>
+                <span class="linkSpan">BTCcoin</span>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

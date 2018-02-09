@@ -1,0 +1,30 @@
+<!-- head -->
+<link rel="stylesheet" type="text/css" href="/css/pages/accountModel.css">
+<div class="headBlock centerBlock">
+    <img onclick="window.location.href='/'" src="/img/01headLOGO.png"/ >|
+    <span class="welcomWord">欢迎登录</span>
+</div>
+<!-- content -->
+<div class="contentBlock loginBlock">
+    <p class="title">登录账号</p>
+    <ul>
+        <li>
+            <input type="text" placeholder="请输入注册邮箱" id="email">
+            <p class="wrongMsg"></p>
+        </li>
+        <li>
+            <input type="password" placeholder="请输入密码" id="password">
+            <p class="wrongMsg"></p>
+        </li>
+        <li>
+            <input type="button" value="登录" id="login">
+            <p class="forgetRegistRow">
+                <span class="forgetPasswordLink"  onclick="window.location.href='/password/forget'">忘记密码？</span>
+                <span class="registWords mb_layout_floatRight">没有账号？请<span class="registLink " onclick="window.location.href='/user/register'">注册</span></span>
+            </p>
+        </li>
+    </ul>
+    <input type="hidden" name="tokenName" value="<?php echo $this->security->getTokenKey() ?>" />
+    <input type="hidden" name="token" value="<?php echo $this->security->getToken() ?>" />
+</div>
+<script src="/js/pages/user/login.js"></script>
