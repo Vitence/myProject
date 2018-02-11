@@ -184,27 +184,27 @@ function changeKlineData(){
     var kType = $('.showChartName').attr('currency');
     switch(kType){
         case '1':
-            if(Number($('.inof li').eq(0).find('.number').val()) > twdhqInitData[twdhqInitData.length-1][4]){
-                twdhqInitData[twdhqInitData.length-1][4] = Number($('.inof li').eq(0).find('.number').val());
-                twdhqInitData[twdhqInitData.length-1][5] = Number($('.inof li').eq(7).find('.number').val());
-            }else if(Number($('.inof li').eq(0).find('.number').val()) < twdhqInitData[twdhqInitData.length-1][3]){
+            if(Number($('.inof li').eq(0).find('.number').val()) > twdhqInitData[twdhqInitData.length-1][3]){
                 twdhqInitData[twdhqInitData.length-1][3] = Number($('.inof li').eq(0).find('.number').val());
-                twdhqInitData[twdhqInitData.length-1][5] = Number($('.inof li').eq(7).find('.number').val());
+                twdhqInitData[twdhqInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
+            }else if(Number($('.inof li').eq(0).find('.number').val()) < twdhqInitData[twdhqInitData.length-1][2]){
+                twdhqInitData[twdhqInitData.length-1][2] = Number($('.inof li').eq(0).find('.number').val());
+                twdhqInitData[twdhqInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
             }else{
-                twdhqInitData[twdhqInitData.length-1][5] = Number($('.inof li').eq(7).find('.number').val());
+                twdhqInitData[twdhqInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
             }
             twdhqdata = splitData(twdhqInitData);
             myChart.setOption(twdhqcharts);
         break;
         case '2':
-            if(Number($('.inof li').eq(0).find('.number').val()) > myjfInitData[myjfInitData.length-1][4]){
-                myjfInitData[myjfInitData.length-1][4] = Number($('.inof li').eq(0).find('.number').val());
-                myjfInitData[myjfInitData.length-1][5] = Number($('.inof li').eq(7).find('.number').val());
-            }else if(Number($('.inof li').eq(0).find('.number').val()) < myjfInitData[myjfInitData.length-1][3]){
+            if(Number($('.inof li').eq(0).find('.number').val()) > myjfInitData[myjfInitData.length-1][3]){
                 myjfInitData[myjfInitData.length-1][3] = Number($('.inof li').eq(0).find('.number').val());
-                myjfInitData[myjfInitData.length-1][5] = Number($('.inof li').eq(7).find('.number').val());
+                myjfInitData[myjfInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
+            }else if(Number($('.inof li').eq(0).find('.number').val()) < myjfInitData[myjfInitData.length-1][2]){
+                myjfInitData[myjfInitData.length-1][2] = Number($('.inof li').eq(0).find('.number').val());
+                myjfInitData[myjfInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
             }else{
-                myjfInitData[myjfInitData.length-1][5] = Number($('.inof li').eq(7).find('.number').val());
+                myjfInitData[myjfInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
             }
             myjfdata = splitData(myjfInitData);
             myChart.setOption(myjfcharts);
@@ -212,6 +212,8 @@ function changeKlineData(){
         default:
         break;
     }
+    console.log(kType);
+    console.log(tw)
 }
 /**
  * 获取委托数据，切换币种和卖出或者卖出都需要重新执行
