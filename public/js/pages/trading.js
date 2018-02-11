@@ -205,7 +205,7 @@ function getGuadanData(){
                 }
                 $(".guadan").nextAll().remove().end().after(html);
             }
-            setTimeout("getGuadanData()",3000)
+            // setTimeout("getGuadanData()",3000)
         }
     })
 }
