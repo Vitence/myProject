@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47e6c7be-ae20-46e7-98a5-d68325d98077" name="默认的" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/TransactionController.php" afterPath="$PROJECT_DIR$/app/controllers/TransactionController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,17 +26,16 @@
       <file leaf-file-name="TransactionController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/TransactionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="127" column="31" lean-forward="false" selection-start-line="127" selection-start-column="31" selection-end-line="127" selection-end-column="31" />
+            <state relative-caret-position="523">
+              <caret line="158" column="53" lean-forward="false" selection-start-line="158" selection-start-column="53" selection-end-line="158" selection-end-column="53" />
               <folding>
                 <element signature="n#buyAction#0;n#TransactionController#0;n#!!top" expanded="false" />
-                <element signature="n#getGuadanDataAction#0;n#TransactionController#0;n#!!top" expanded="false" />
-                <element signature="e#7876#7897#0#PHP" expanded="false" />
+                <element signature="e#7979#8000#0#PHP" expanded="false" />
                 <element signature="n#cancelOrderAction#0;n#TransactionController#0;n#!!top" expanded="false" />
-                <marker date="1518333287135" expanded="true" signature="6979:7559" ph="SELECT i.clo... " />
-                <marker date="1518333287135" expanded="true" signature="10493:10831" ph="SELECT IFNUL... " />
-                <marker date="1518333287135" expanded="true" signature="10493:10876" ph="SELECT IFNUL... " />
-                <marker date="1518333287135" expanded="true" signature="10493:10910" ph="SELECT IFNUL... " />
+                <marker date="1518334338828" expanded="true" signature="7082:7662" ph="SELECT i.clo... " />
+                <marker date="1518334338828" expanded="true" signature="10596:10934" ph="SELECT IFNUL... " />
+                <marker date="1518334338828" expanded="true" signature="10596:10979" ph="SELECT IFNUL... " />
+                <marker date="1518334338828" expanded="true" signature="10596:11013" ph="SELECT IFNUL... " />
               </folding>
             </state>
           </provider>
@@ -46,8 +44,8 @@
       <file leaf-file-name="trading.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/pages/trading.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="288" column="13" lean-forward="false" selection-start-line="288" selection-start-column="13" selection-end-line="288" selection-end-column="13" />
+            <state relative-caret-position="216">
+              <caret line="258" column="22" lean-forward="true" selection-start-line="258" selection-start-column="22" selection-end-line="258" selection-end-column="22" />
               <folding>
                 <marker date="1518332946566" expanded="true" signature="6416:7061" ph="..." />
                 <marker date="1518332946566" expanded="true" signature="6884:7027" ph="..." />
@@ -240,12 +238,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518316747407</updated>
-      <workItem from="1518316748687" duration="12839000" />
+      <workItem from="1518316748687" duration="13894000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12839000" />
+    <option name="totallyTimeSpent" value="13894000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -378,8 +376,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/pages/trading.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="288" column="13" lean-forward="false" selection-start-line="288" selection-start-column="13" selection-end-line="288" selection-end-column="13" />
+        <state relative-caret-position="216">
+          <caret line="258" column="22" lean-forward="true" selection-start-line="258" selection-start-column="22" selection-end-line="258" selection-end-column="22" />
           <folding>
             <marker date="1518332946566" expanded="true" signature="6416:7061" ph="..." />
             <marker date="1518332946566" expanded="true" signature="6884:7027" ph="..." />
@@ -392,17 +390,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/TransactionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="127" column="31" lean-forward="false" selection-start-line="127" selection-start-column="31" selection-end-line="127" selection-end-column="31" />
+        <state relative-caret-position="523">
+          <caret line="158" column="53" lean-forward="false" selection-start-line="158" selection-start-column="53" selection-end-line="158" selection-end-column="53" />
           <folding>
             <element signature="n#buyAction#0;n#TransactionController#0;n#!!top" expanded="false" />
-            <element signature="n#getGuadanDataAction#0;n#TransactionController#0;n#!!top" expanded="false" />
-            <element signature="e#7876#7897#0#PHP" expanded="false" />
+            <element signature="e#7979#8000#0#PHP" expanded="false" />
             <element signature="n#cancelOrderAction#0;n#TransactionController#0;n#!!top" expanded="false" />
-            <marker date="1518333287135" expanded="true" signature="6979:7559" ph="SELECT i.clo... " />
-            <marker date="1518333287135" expanded="true" signature="10493:10831" ph="SELECT IFNUL... " />
-            <marker date="1518333287135" expanded="true" signature="10493:10876" ph="SELECT IFNUL... " />
-            <marker date="1518333287135" expanded="true" signature="10493:10910" ph="SELECT IFNUL... " />
+            <marker date="1518334338828" expanded="true" signature="7082:7662" ph="SELECT i.clo... " />
+            <marker date="1518334338828" expanded="true" signature="10596:10934" ph="SELECT IFNUL... " />
+            <marker date="1518334338828" expanded="true" signature="10596:10979" ph="SELECT IFNUL... " />
+            <marker date="1518334338828" expanded="true" signature="10596:11013" ph="SELECT IFNUL... " />
           </folding>
         </state>
       </provider>

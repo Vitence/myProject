@@ -147,14 +147,16 @@ class TransactionController extends ControllerBase{
             $where['status'] = 0;
             $where['currency_id'] = $type;
             $where['type'] = 1;
-            $order = 'price desc,create_at desc';
+            $order = 'price asc,create_at desc';
             $itemsBuy = ExGuadan::select($where,null,$order,4);
             
             $where['type'] = 2;
+            $order = 'price desc,create_at desc';
             $itemsSale = ExGuadan::select($where,null,$order,4);
             
             if($itemsBuy){
                 $itemsBuy = $itemsBuy->toArray();
+                $itemsBuy = array_reverse($itemsBuy);
                 foreach ($itemsBuy as &$buy){
                     $buy['time'] = date("y/m/d H:i",strtotime($buy['create_at']));
                 }
