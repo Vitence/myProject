@@ -277,6 +277,79 @@ where i.currency_id = '.$type.';';
         }else{
             $this->jsonReturn('',1030,'交易不存在');
         }
+    }
+    
+    public function getKOrderAction(){
+        //获取最新价格
+        $type = $this->request->getPost('type','int',0);
+        $newPrice = ExOrder::getMaxOrderPrice($type);
+        if($newPrice){
+            $newPrice = $newPrice->toArray();
+        }else{
+            $newPrice = [];
+        }
+        //最高价 最低价 总交易额 总数量
+        $date = date("Y-m-d",time());
+        $obj = new ExOrder();
+        $sql = 'SELECT
+	IFNULL(MAX(o.price),0) as max,
+	IFNULL(MIN(o.price),0) as min,
+	IFNULL(SUM(price),0) as total_price,
+	IFNULL(SUM(number),0) as total_number,
+	i.open_price
+FROM
+	ex_order AS o
+LEFT JOIN ex_initialization AS i ON o.currency_id = i.currency_id AND DATE_FORMAT(o.pay_at, "%Y-%m-%d") = i.date
+WHERE
+	DATE_FORMAT(o.pay_at, "%Y-%m-%d") = '.$date.'
+AND o.type = 1
+AND o.currency_id = '.$type.'
+GROUP BY
+	o.currency_id;';
+        $items = new Resultset(
+            null,
+            $obj,
+            $obj->getReadConnection()->query($sql, null)
+        );
+        if(!empty($items)){
+            $items = $items->toArray();
+            $items = isset($items[0]) ? $items[0] : [];
+        }else{
+            $items = [];
+        }
+        if(empty($items)){
+            $items['max'] = 0;
+            $items['min'] = 0;
+            $items['total_number'] = 0;
+            $items['total_price'] = 0;
+        }
+        //最新价格
+        $items['new_price'] = isset($newPrice['price']) ? $newPrice['price'] : 0;
+        //涨幅度
+        $items['rise'] = $items['new_price'] <= 0 || $items['open_price'] <=  0 ? 0 : ($items['new_price'] - $items['open_price']) / $items['open_price'] * 100;
+        //买一 卖一
         
+        unset($where);
+        $where['status'] = 0;
+        $where['currency_id'] = $type;
+        $where['type'] = 1;
+        $order = 'price desc,create_at desc';
+        $itemsBuy = ExGuadan::findRow($where,null,$order);
+    
+        $where['type'] = 2;
+        $itemsSale = ExGuadan::findRow($where,null,$order);
+    
+        if($itemsBuy){
+            $itemsBuy = $itemsBuy->toArray();
+        }
+    
+        if($itemsSale){
+            $itemsSale = $itemsSale->toArray();
+        }
+        
+        $items['buy_first'] = !empty($itemsBuy) ? $itemsBuy['price']  : 0;
+        $items['sale_first'] = !empty($itemsSale) ? $itemsSale['price']  : 0;
+        
+        $this->jsonReturn($items);
     }
 }
