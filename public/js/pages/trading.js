@@ -1,8 +1,8 @@
 $(function(){
     // 基于准备好的dom，初始化echarts实例
-    // var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
+    var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
     // 使用刚指定的配置项和数据显示图表。
-    // myChart.setOption(cbfcharts);
+    myChart.setOption(cbfcharts);
 
     /**
      * 买入，卖出验证 总价计算
