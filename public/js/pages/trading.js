@@ -212,8 +212,6 @@ function changeKlineData(){
         default:
         break;
     }
-    console.log(kType);
-    console.log(tw)
 }
 /**
  * 获取委托数据，切换币种和卖出或者卖出都需要重新执行
