@@ -251,12 +251,12 @@ function getAllGuadan(){
         if(json.code=='0000'){
             var items;
             var html = '';
-            if(json.data.buy.length > 0){
-                items = json.data.buy;
-                for (var i = 0; i< items.length; i++){
+            if(json.data.sale.length > 0){
+                items = json.data.sale;
+                for(var i = 0;i < items.length; i++){
                     var item = items[i];
                     html += `<tr class="saleRow">
-                        <td class="redWord">买${i+1}</td>
+                        <td class="greenWord">卖${i+1}</td>
                         <td>${item.price}</td>
                         <td>${item.surplus_number}</td>
                         <td>${item.time}</td>
@@ -264,12 +264,12 @@ function getAllGuadan(){
                 }
             }
             setTimeout(function(){
-                if(json.data.sale.length > 0){
-                    items = json.data.sale;
-                    for(var i = 0;i < items.length; i++){
+                if(json.data.buy.length > 0){
+                    items = json.data.buy;
+                    for (var i = 0; i< items.length; i++){
                         var item = items[i];
                         html += `<tr class="saleRow">
-                        <td class="greenWord">卖${i+1}</td>
+                        <td class="redWord">买${i+1}</td>
                         <td>${item.price}</td>
                         <td>${item.surplus_number}</td>
                         <td>${item.time}</td>
