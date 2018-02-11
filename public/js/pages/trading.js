@@ -256,7 +256,7 @@ function getAllGuadan(){
                 for(var i = 0;i < items.length; i++){
                     var item = items[i];
                     html += `<tr class="saleRow">
-                        <td class="greenWord">卖${i+1}</td>
+                        <td class="greenWord">卖${4-i}</td>
                         <td>${item.price}</td>
                         <td>${item.surplus_number}</td>
                         <td>${item.time}</td>
