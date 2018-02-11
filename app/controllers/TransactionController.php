@@ -125,6 +125,7 @@ class TransactionController extends ControllerBase{
         if($this->request->isAjax()){
             $type = $this->request->getQuery('type','int',0);
             $where['currency_id'] = $type;
+            $where['type'] = 1;
             $where['pay_at'] = ['BETWEEN',[date("Y-m-d",time()),date("Y-m-d",time()+24*3600)]];
             $order = 'pay_at desc';
             $items = ExOrder::select($where,null,$order);
