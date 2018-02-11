@@ -284,7 +284,7 @@ where i.currency_id = '.$type.';';
     
     public function getKOrderAction(){
         //获取最新价格
-        $type = $this->request->getPost('type','int',0);
+        $type = $this->request->getQuery('type','int',0);
         $newPrice = ExOrder::getMaxOrderPrice($type);
         if($newPrice){
             $newPrice = $newPrice->toArray();
@@ -304,7 +304,7 @@ FROM
 	ex_order AS o
 LEFT JOIN ex_initialization AS i ON o.currency_id = i.currency_id AND DATE_FORMAT(o.pay_at, "%Y-%m-%d") = i.date
 WHERE
-	DATE_FORMAT(o.pay_at, "%Y-%m-%d") = '.$date.'
+	DATE_FORMAT(o.pay_at, "%Y-%m-%d") = "'.$date.'"
 AND o.type = 1
 AND o.currency_id = '.$type.'
 GROUP BY
@@ -325,13 +325,13 @@ GROUP BY
             $items['min'] = 0;
             $items['total_number'] = 0;
             $items['total_price'] = 0;
+            $items['open_price'] = 0;
         }
         //最新价格
         $items['new_price'] = isset($newPrice['price']) ? $newPrice['price'] : 0;
         //涨幅度
-        $items['rise'] = $items['new_price'] <= 0 || $items['open_price'] <=  0 ? 0 : ($items['new_price'] - $items['open_price']) / $items['open_price'] * 100;
+        $items['rise'] = sprintf("%.2f", $items['new_price'] <= 0 || $items['open_price'] <=  0 ? 0 : ($items['new_price'] - $items['open_price']) / $items['open_price'] * 100);;
         //买一 卖一
-        
         unset($where);
         $where['status'] = 0;
         $where['currency_id'] = $type;
@@ -340,6 +340,7 @@ GROUP BY
         $itemsBuy = ExGuadan::findRow($where,null,$order);
     
         $where['type'] = 2;
+        $order = 'price asc,create_at asc';
         $itemsSale = ExGuadan::findRow($where,null,$order);
     
         if($itemsBuy){

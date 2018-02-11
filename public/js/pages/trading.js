@@ -290,14 +290,26 @@ function getKinfo(){
         type:type
     },function(json){
         if(json.code=='0000'){
-            $("#info li").eq(0).find('p:first').html(json.data.new_price);
-            $("#info li").eq(1).find('p:first').html(json.data.rise+"%");
-            $("#info li").eq(2).find('p:first').html(json.data.max);
-            $("#info li").eq(3).find('p:first').html(json.data.min);
-            $("#info li").eq(4).find('p:first').html(parseInt(json.data.buy_first) <= 0 ? '--' : json.data.buy_first);
-            $("#info li").eq(5).find('p:first').html(parseInt(json.data.sale_first) <= 0 ? '--' : json.data.sale_first);
-            $("#info li").eq(6).find('p:first').html(json.data.total_price);
-            $("#info li").eq(7).find('p:first').html(json.data.total_number);
+            var color = '';
+            var jiajian = '';
+            if(parseFloat(json.data.rise) > 0){
+                color = 'up';
+                jiajian = '+';
+            }else if(parseFloat(json.data.rise) < 0 ){
+                color = 'down';
+                jiajian = '-';
+            }
+            $(".info li").eq(0).find('p:first').html(json.data.new_price);
+            $(".info li").eq(1).find('p:first').html(jiajian + json.data.rise+"%");
+            $(".info li").eq(1).find('p:first').removeClass('up');
+            $(".info li").eq(1).find('p:first').removeClass('down');
+            $(".info li").eq(1).find('p:first').addClass(color);
+            $(".info li").eq(2).find('p:first').html(json.data.max);
+            $(".info li").eq(3).find('p:first').html(json.data.min);
+            $(".info li").eq(4).find('p:first').html(parseInt(json.data.buy_first) <= 0 ? '--' : json.data.buy_first);
+            $(".info li").eq(5).find('p:first').html(parseInt(json.data.sale_first) <= 0 ? '--' : json.data.sale_first);
+            $(".info li").eq(6).find('p:first').html(json.data.total_price);
+            $(".info li").eq(7).find('p:first').html(json.data.total_number);
             setTimeout("getKinfo()",2000)
         }
     })
@@ -307,8 +319,6 @@ getKinfo();
 function changeCharts(chart_i,chartName){
     $('.showChartName').text($('.coinOptionBlock li').eq(chart_i).text());
     $('.showChartName').attr('currency',$('.coinOptionBlock li').eq(chart_i).data('id'));
-    $('.coinInfoBlock').hide();
-    $('.coinInfoBlock').eq(chart_i).show();
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
     // 使用刚指定的配置项和数据显示图表。
