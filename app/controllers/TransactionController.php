@@ -297,7 +297,7 @@ where i.currency_id = '.$type.';';
         $sql = 'SELECT
 	IFNULL(MAX(o.price),0) as max,
 	IFNULL(MIN(o.price),0) as min,
-	IFNULL(SUM(price),0) as total_price,
+	IFNULL(SUM(total_price),0) as total_price,
 	IFNULL(SUM(number),0) as total_number,
 	i.open_price
 FROM
