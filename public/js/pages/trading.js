@@ -5,7 +5,7 @@ $(function(){
     // 使用刚指定的配置项和数据显示图表。
     myChart.hideLoading()
     myChart.setOption(cbfcharts);
-
+    setInterval(changeKlineData,2000);
     /**
      * 买入，卖出验证 总价计算
      * @type {RegExp}
