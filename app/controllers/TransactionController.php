@@ -184,7 +184,8 @@ class TransactionController extends ControllerBase{
 	i.open_price,
 	i.date,
 	IFNULL(oi.max,if(i.close_price > i.open_price,i.close_price,i.open_price)) as max,
-	IFNULL(oi.min,if(i.close_price > i.open_price,i.open_price,i.close_price)) as min
+	IFNULL(oi.min,if(i.close_price > i.open_price,i.open_price,i.close_price)) as min,
+	IFNULL(oi.deal_number,0) as deal_number
 FROM
 	ex_initialization AS i
 LEFT JOIN (
@@ -218,7 +219,64 @@ where i.currency_id = '.$type.';';
      * 撤单
      */
     public function cancelOrderAction(){
-        $type = $this->request->getQuery('type','int',0);
-        $id = $this->request->getQuery('id','int',0);
+        $type = $this->request->getPost('type','int',0);
+        $id = $this->request->getPost('id','int',0);
+        $where['currency_id'] = $type;
+        $where['id'] = $id;
+        $where['status'] = ['!=',2];
+        $item = ExGuadan::findRow($where);
+        $userInfo = $this->userInfo;
+        if(empty($userInfo)){
+            self::redirect('/user/login');
+        }
+        if($item){
+            $item = $item->toArray();
+        }
+        if($item){
+            //我的买入订单
+            //将我的锁定余额返还
+            //取消的我挂单
+            
+            //我的卖出订单
+            //将我的锁定数量返还
+            //取消我的挂单
+            
+            $number = $item['surplus_number'];
+            $price  = $item['price'];
+            unset($where);
+            if($item['status'] == 1){
+                $where['id'] = $userInfo['id'];
+                $user = ExUsers::findRow($where);
+                $user = $user->toArray();
+                $data['trad_balance'] = $user['trad_balance'] - $number * $price;
+                $data['balance'] = $user['balance'] + $number * $price;
+                ExUsers::updataData($where,$data);
+                unset($where);
+                unset($data);
+                $where['id'] = $id;
+                $data['status'] = 2;
+                ExGuadan::updataData($where,$data);
+            }else{
+                $where['user_id'] = $userInfo['id'];
+                $where['currency_id'] = $type;
+                $recore = ExExchangeRecord::findRow($where);
+                $recore = $recore->toArray();
+                unset($where);
+                unset($data);
+                $where['id'] = $recore['id'];
+                $data['frozen_number'] = $recore['frozen_number'] - $number;
+                $data['number'] = $recore['number'] + $number;
+                ExExchangeRecord::updataData($where,$data);
+                unset($where);
+                unset($data);
+                $where['id'] = $id;
+                $data['status'] = 2;
+                ExGuadan::updataData($where,$data);
+            }
+            $this->jsonReturn('');
+        }else{
+            $this->jsonReturn('',1030,'交易不存在');
+        }
+        
     }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="C:\Users\huangshucai\Documents\phalcon-devtools-master\phalcon-devtools-master\ide\stubs\Phalcon" />
+    </include_path>
+  </component>
+  <component name="SmartyConfiguration" left_delimiter="&lt;?php" right_delimiter="?&gt;" />
+</project>

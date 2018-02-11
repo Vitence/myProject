@@ -1,123 +1,3 @@
-
-/**
- * 获取委托数据，切换币种和卖出或者卖出都需要重新执行
- */
-function getGuadanData(){
-    var type = $(".showChartName").attr("currency");
-    $.get('/transaction/getGuadanData',{
-        type:type
-    },function(json){
-        if(json.code=='0000'){
-            if(json.data.length > 0){
-                var items = json.data;
-                var html = '';
-                for (var i = 0; i< items.length; i++){
-                    var item = items[i];
-                    html += `<tr>
-                                <td>${item.time}</td>
-                                <td class="${item.type == 1 ? 'buyType' : 'saleType'}">${item.type == 1 ? '买入' : '卖出'}</td>
-                                <td>${item.price}</td>
-                                <td>${item.number}</td>
-                                <td>${item.number - item.surplus_number}</td>
-                                <td>${item.surplus_number}</td>
-                                <td>
-                                    <input id="${item.id}" type="button" value="撤单">
-                                </td>
-                            </tr>`;
-                }
-                $(".guadan").nextAll().remove().end().after(html);
-            }
-            setTimeout("getGuadanData()",3000)
-        }
-    })
-}
-getGuadanData();
-
-/**
- * 成交记录数据，切换币种和卖出或者卖出都需要重新执行
- */
-function getOrder(){
-    var type = $(".showChartName").attr("currency");
-    $.get('/transaction/getOrder',{
-        type:type
-    },function(json){
-        if(json.code=='0000'){
-            if(json.data.length > 0){
-                var items = json.data;
-                var html = '';
-                for (var i = 0; i< items.length; i++){
-                    var item = items[i];
-                    html += ` <tr>
-                        <td>${item.price}</td>
-                        <td>${item.number}</td>
-                        <td>${item.total_price}</td>
-                        <td>${item.time}</td>
-                    </tr>`;
-                }
-                $(".order").nextAll().remove().end().after(html);
-            }
-            setTimeout("getOrder()",2000)
-        }
-    })
-}
-getOrder();
-
-/**
- * 成交理事委托信息数据，切换币种和卖出或者卖出都需要重新执行
- */
-function getAllGuadan(){
-    var type = $(".showChartName").attr("currency");
-    $.get('/transaction/getAllGuandan',{
-        type:type
-    },function(json){
-        if(json.code=='0000'){
-            var items;
-            var html = '';
-            if(json.data.buy.length > 0){
-                items = json.data.buy;
-                for (var i = 0; i< items.length; i++){
-                    var item = items[i];
-                    html += `<tr class="saleRow">
-                        <td class="redWord">买${i+1}</td>
-                        <td>${item.price}</td>
-                        <td>${item.surplus_number}</td>
-                        <td>${item.time}</td>
-                    </tr>`;
-                }
-            }
-            if(json.data.sale.length > 0){
-                items = json.data.sale;
-                for(var i = 0;i < items.length; i++){
-                    html += `<tr class="saleRow">
-                        <td class="greenWord">卖${i+1}</td>
-                        <td>${item.price}</td>
-                        <td>${item.surplus_number}</td>
-                        <td>${item.time}</td>
-                    </tr>`;
-                }
-            }
-            $(".allguandan").nextAll().remove().end().after(html);
-            setTimeout("getAllGuadan()",2000)
-        }
-    })
-}
-getAllGuadan();
-
-
-function changeCharts(chart_i,chartName){
-    $('.showChartName').text($('.coinOptionBlock li').eq(chart_i).text());
-    $('.showChartName').attr('currency',$('.coinOptionBlock li').eq(chart_i).data('id'));
-    $('.coinInfoBlock').hide();
-    $('.coinInfoBlock').eq(chart_i).show();
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(chartName);
-    getGuadanData();
-    getOrder();
-    getAllGuadan();
-}
-
 $(function(){
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
@@ -225,10 +105,10 @@ $(function(){
                 errMsg('数量不足')
             }else if(json.code == '1020'){
                 window.location.href='/user/login'
-            }else if(json.code=='1030'){
-                errMsg('开盘时间为早上8点到晚上7点')
             }else if(json.code=='1011'){
                 userError(passwordElle,'交易密码错误')
+            }else if(json.code=='1030'){
+                errMsg('开盘时间为早上8点到晚上7点')
             }else{
                 errMsg('卖出失败，请重试')
             }
@@ -293,4 +173,140 @@ $(function(){
             }
         });
     });
+});
+
+/**
+ * 获取委托数据，切换币种和卖出或者卖出都需要重新执行
+ */
+function getGuadanData(){
+    var type = $(".showChartName").attr("currency");
+    $.get('/transaction/getGuadanData',{
+        type:type
+    },function(json){
+        if(json.code=='0000'){
+            if(json.data.length > 0){
+                var items = json.data;
+                var html = '';
+                for (var i = 0; i< items.length; i++){
+                    var item = items[i];
+                    html += `<tr>
+                                <td>${item.time}</td>
+                                <td class="${item.type == 1 ? 'buyType' : 'saleType'}">${item.type == 1 ? '买入' : '卖出'}</td>
+                                <td>${item.price}</td>
+                                <td>${item.number}</td>
+                                <td>${item.number - item.surplus_number}</td>
+                                <td>${item.surplus_number}</td>
+                                <td>
+                                    <input data-id="${item.id}" type="button" class="chedan" value="撤单">
+                                </td>
+                            </tr>`;
+                }
+                $(".guadan").nextAll().remove().end().after(html);
+            }
+            setTimeout("getGuadanData()",3000)
+        }
+    })
+}
+getGuadanData();
+
+/**
+ * 成交记录数据，切换币种和卖出或者卖出都需要重新执行
+ */
+function getOrder(){
+    var type = $(".showChartName").attr("currency");
+    $.get('/transaction/getOrder',{
+        type:type
+    },function(json){
+        if(json.code=='0000'){
+            if(json.data.length > 0){
+                var items = json.data;
+                var html = '';
+                for (var i = 0; i< items.length; i++){
+                    var item = items[i];
+                    html += ` <tr>
+                        <td>${item.price}</td>
+                        <td>${item.number}</td>
+                        <td>${item.total_price}</td>
+                        <td>${item.time}</td>
+                    </tr>`;
+                }
+                $(".order").nextAll().remove().end().after(html);
+            }
+            setTimeout("getOrder()",2000)
+        }
+    })
+}
+getOrder();
+
+/**
+ * 成交理事委托信息数据，切换币种和卖出或者卖出都需要重新执行
+ */
+function getAllGuadan(){
+    var type = $(".showChartName").attr("currency");
+    $.get('/transaction/getAllGuandan',{
+        type:type
+    },function(json){
+        if(json.code=='0000'){
+            var items;
+            var html = '';
+            if(json.data.buy.length > 0){
+                items = json.data.buy;
+                for (var i = 0; i< items.length; i++){
+                    var item = items[i];
+                    html += `<tr class="saleRow">
+                        <td class="redWord">买${i+1}</td>
+                        <td>${item.price}</td>
+                        <td>${item.surplus_number}</td>
+                        <td>${item.time}</td>
+                    </tr>`;
+                }
+            }
+            if(json.data.sale.length > 0){
+                items = json.data.sale;
+                for(var i = 0;i < items.length; i++){
+                    html += `<tr class="saleRow">
+                        <td class="greenWord">卖${i+1}</td>
+                        <td>${item.price}</td>
+                        <td>${item.surplus_number}</td>
+                        <td>${item.time}</td>
+                    </tr>`;
+                }
+            }
+            $(".allguandan").nextAll().remove().end().after(html);
+            setTimeout("getAllGuadan()",2000)
+        }
+    })
+}
+getAllGuadan();
+
+function changeCharts(chart_i,chartName){
+    $('.showChartName').text($('.coinOptionBlock li').eq(chart_i).text());
+    $('.showChartName').attr('currency',$('.coinOptionBlock li').eq(chart_i).data('id'));
+    $('.coinInfoBlock').hide();
+    $('.coinInfoBlock').eq(chart_i).show();
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(chartName);
+    getGuadanData();
+    getOrder();
+    getAllGuadan();
+}
+
+$(document).delegate('.chedan','click',function(){
+    var id = $(this).data('id');
+    var type = $(".showChartName").attr("currency");
+    $.post('/transaction/cancelOrder',{
+        type:type,
+        id:id
+    },function(json){
+        if(json.code == '0000'){
+            getGuadanData();
+            getOrder();
+            getAllGuadan();
+            successMsg('撤单成功');
+        }else{
+            errMsg(json.msg);
+        }
+    })
 });
