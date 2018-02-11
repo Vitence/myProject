@@ -35,10 +35,10 @@ class TransactionController extends ControllerBase{
                 $this->jsonReturn($dataToken,'1000','页面超时，请刷新页面重试');
             }
             
-            //大于1点 小于8点 未未开盘
+            //早8点晚7点
             if(date("H") < 8 || date("H") > 19){
                 $this->jsonReturn($dataToken,'1030','闭盘时间');
-            }       
+            }
             $user = $this->userInfo;
             if(empty($user)){
                 $this->jsonReturn($dataToken,'1020','未登录');
@@ -75,6 +75,7 @@ class TransactionController extends ControllerBase{
             if($number <= 0 || $price <= 0 || $type <= 0 || !in_array($type,[1,2,3,4])){
                 $this->jsonReturn($dataToken,'1000','页面超时，请刷新页面重试');
             }
+            //早8点晚7点
             if(date("H") < 8 || date("H") > 19){
                 $this->jsonReturn($dataToken,'1030','闭盘时间');
             }
