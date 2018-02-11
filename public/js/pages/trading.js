@@ -263,19 +263,22 @@ function getAllGuadan(){
                     </tr>`;
                 }
             }
-            if(json.data.sale.length > 0){
-                items = json.data.sale;
-                for(var i = 0;i < items.length; i++){
-                    html += `<tr class="saleRow">
+            setTimeout(function(){
+                if(json.data.sale.length > 0){
+                    items = json.data.sale;
+                    for(var i = 0;i < items.length; i++){
+                        var item = items[i];
+                        html += `<tr class="saleRow">
                         <td class="greenWord">卖${i+1}</td>
                         <td>${item.price}</td>
                         <td>${item.surplus_number}</td>
                         <td>${item.time}</td>
                     </tr>`;
+                    }
                 }
-            }
-            $(".allguandan").nextAll().remove().end().after(html);
-            setTimeout("getAllGuadan()",2000)
+                $(".allguandan").nextAll().remove().end().after(html);
+                setTimeout("getAllGuadan()",2000)
+            },200);
         }
     })
 }

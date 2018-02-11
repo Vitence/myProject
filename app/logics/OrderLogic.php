@@ -175,12 +175,11 @@ class OrderLogic{
                         unset($whereUser);
                         unset($dataUser);
                         $myType = ExExchangeRecord::itemsByUserIdAndType($userId,$type);
-                        $whereUser['id'] = $userId;
+                        $whereUser['user_id'] = $userId;
                         $whereUser['currency_id'] = $type;
                         $dataUser['frozen_number'] = $myType['frozen_number'] - $myOrderNumber;
                         $dataUser['update_at'] = \Util\common::getDataTime();
                         ExExchangeRecord::updataData($whereUser,$dataUser);
-                
                         //我的订单
                         $myOrderData = $data;
                         $myOrderData['number'] = $myOrderNumber;
@@ -189,7 +188,6 @@ class OrderLogic{
                         $myOrderData['total_price'] = $myOrderNumber * $price - $procedures;
                         $obj = new ExOrder();
                         ExOrder::addData($obj,$myOrderData);
-                
                         //增加我的余额
                         unset($whereUser);
                         unset($dataUser);
@@ -198,8 +196,6 @@ class OrderLogic{
                         $dataUser['balance'] = $user['balance'] + $myOrderData['total_price'];
                         ExUsers::updataData($whereUser,$dataUser);
                         $_SESSION['userInfo']['balance'] = $dataUser['balance'];
-                        
-                        
                         //别人的订单
                         $otherOrderData = $data;
                         $otherOrderData['user_id'] = $items[$i]['user_id'];
@@ -209,18 +205,17 @@ class OrderLogic{
                         unset($obj);
                         $obj = new ExOrder();
                         ExOrder::addData($obj,$otherOrderData);
-                        
                         //减少别人的锁定余额
                         unset($whereUser);
                         unset($dataUser);
                         $whereUser['id'] = $items[$i]['user_id'];
                         $dataUser['trad_balance'] = $user['trad_balance'] - $otherOrderData['total_price'];
                         ExUsers::updataData($whereUser,$dataUser);
-                        
                         //增加别人的币种数量
                         $otherType = ExExchangeRecord::itemsByUserIdAndType($items[$i]['user_id'],$type);
                         unset($dataType);
                         unset($typeWhere);
+                        unset($typeObj);
                         if(empty($otherType)){
                             $dataType['user_id'] = $items[$i]['user_id'];
                             $dataType['currency_id'] = $type;

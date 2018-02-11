@@ -15,6 +15,14 @@
                         <td>合计市值</td>
                         <td>操作</td>
                     </tr>
+                    <tr>
+                        <td>z数据</td>
+                        <td>——</td>
+                        <td><?php echo $user['balance'] ?></td>
+                        <td><?php echo $user['trad_balance'] ?></td>
+                        <td><?php echo $user['balance'] ?></td>
+                        <td><input type="button" value="去交易" onclick="location.href='/transaction'"></td>
+                    </tr>
                     <?php if(!empty($items)): ?>
                         <?php foreach($items as $item): ?>
                             <tr>

@@ -15,7 +15,7 @@ class FinanceController extends ControllerBase{
         $currencyId = array_column($items,'currency_id');
         $types = ExCurrency::itemsByIdArr($currencyId);
         $types = array_column($types,null,'id');
-
+        $user = ExUsers::itemById($user['id']);
         foreach ($items as &$item){
             $item['name'] = $types[$item['currency_id']]['name'];
             $newPrice = ExOrder::getMaxOrderPrice($item['currency_id']);
@@ -31,6 +31,7 @@ class FinanceController extends ControllerBase{
             }
         }
         $this->view->setVar('items',$items);
+        $this->view->setVar('user',$user);
     }
     
     
