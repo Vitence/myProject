@@ -184,28 +184,28 @@ function changeKlineData(){
     var kType = $('.showChartName').attr('currency');
     switch(kType){
         case '1':
-            if(Number($('.inof li').eq(0).find('.number').val()) > twdhqInitData[twdhqInitData.length-1][3]){
-                twdhqInitData[twdhqInitData.length-1][3] = Number($('.inof li').eq(0).find('.number').val());
-                twdhqInitData[twdhqInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
-            }else if(Number($('.inof li').eq(0).find('.number').val()) < twdhqInitData[twdhqInitData.length-1][2]){
-                twdhqInitData[twdhqInitData.length-1][2] = Number($('.inof li').eq(0).find('.number').val());
-                twdhqInitData[twdhqInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
+            if(Number($('.info li').eq(0).find('.number').text()) > twdhqInitData[twdhqInitData.length-1][3]){
+                twdhqInitData[twdhqInitData.length-1][3] = Number($('.info li').eq(0).find('.number').text());
+                twdhqInitData[twdhqInitData.length-1][4] = Number($('.info li').eq(7).find('.number').text());
+            }else if(Number($('.info li').eq(0).find('.number').text()) < twdhqInitData[twdhqInitData.length-1][2]){
+                twdhqInitData[twdhqInitData.length-1][2] = Number($('.info li').eq(0).find('.number').text());
+                twdhqInitData[twdhqInitData.length-1][4] = Number($('.info li').eq(7).find('.number').text());
             }else{
-                twdhqInitData[twdhqInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
+                twdhqInitData[twdhqInitData.length-1][4] = Number($('.info li').eq(7).find('.number').text());
             }
             $.extend(true,twdhqTempleData,twdhqInitData);
             twdhqdata = splitData(twdhqTempleData);
             myChart.setOption(twdhqcharts);
         break;
         case '2':
-            if(Number($('.inof li').eq(0).find('.number').val()) > myjfInitData[myjfInitData.length-1][3]){
-                myjfInitData[myjfInitData.length-1][3] = Number($('.inof li').eq(0).find('.number').val());
-                myjfInitData[myjfInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
-            }else if(Number($('.inof li').eq(0).find('.number').val()) < myjfInitData[myjfInitData.length-1][2]){
-                myjfInitData[myjfInitData.length-1][2] = Number($('.inof li').eq(0).find('.number').val());
-                myjfInitData[myjfInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
+            if(Number($('.info li').eq(0).find('.number').text()) > myjfInitData[myjfInitData.length-1][3]){
+                myjfInitData[myjfInitData.length-1][3] = Number($('.info li').eq(0).find('.number').text());
+                myjfInitData[myjfInitData.length-1][4] = Number($('.info li').eq(7).find('.number').text());
+            }else if(Number($('.info li').eq(0).find('.number').text()) < myjfInitData[myjfInitData.length-1][2]){
+                myjfInitData[myjfInitData.length-1][2] = Number($('.info li').eq(0).find('.number').text());
+                myjfInitData[myjfInitData.length-1][4] = Number($('.info li').eq(7).find('.number').text());
             }else{
-                myjfInitData[myjfInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
+                myjfInitData[myjfInitData.length-1][4] = Number($('.info li').eq(7).find('.number').text());
             }
             $.extend(true,myjfTempleData,myjfInitData);
             myjfdata = splitData(myjfTempleData);
