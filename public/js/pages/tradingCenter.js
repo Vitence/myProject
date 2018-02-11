@@ -183,8 +183,10 @@ var myjfInitData = [['2018-01-31', 10, 9, 9, 10, 178000, 0, 0.11, -0.28, -0.34],
                           ['2018-02-10', 8.4, 9.24, 8.4, 9.24, 234000, 0, 0.11, -0.28, -0.34],
                           ['2018-02-11', 9.3, 10.23, 9.3, 10.23, 245000, 0, 0.11, -0.28, -0.34]
                           ];
-var [...twdhqTempleData] = twdhqInitData;
-var [...myjfTempleData] = myjfInitData;
+var twdhqTempleData = new Array();
+$.extend(true,twdhqTempleData,twdhqInitData);
+var myjfTempleData = new Array();
+$.extend(true,myjfTempleData,myjfInitData);
 var twdhqdata = splitData(twdhqTempleData);
 var myjfdata = splitData(myjfTempleData);
 

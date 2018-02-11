@@ -193,7 +193,7 @@ function changeKlineData(){
             }else{
                 twdhqInitData[twdhqInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
             }
-            [...twdhqTempleData] = twdhqInitData;
+            $.extend(true,twdhqTempleData,twdhqInitData);
             twdhqdata = splitData(twdhqTempleData);
             myChart.setOption(twdhqcharts);
         break;
@@ -207,7 +207,7 @@ function changeKlineData(){
             }else{
                 myjfInitData[myjfInitData.length-1][4] = Number($('.inof li').eq(7).find('.number').val());
             }
-            [...myjfTempleData] = myjfInitData;
+            $.extend(true,myjfTempleData,myjfInitData);
             myjfdata = splitData(myjfTempleData);
             myChart.setOption(myjfcharts);
         break;
