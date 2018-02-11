@@ -151,7 +151,7 @@ class TransactionController extends ControllerBase{
             $itemsBuy = ExGuadan::select($where,null,$order,4);
             
             $where['type'] = 2;
-            $order = 'price asc,create_at desc';
+            $order = 'price asc,create_at asc';
             $itemsSale = ExGuadan::select($where,null,$order,4);
             
             if($itemsBuy){

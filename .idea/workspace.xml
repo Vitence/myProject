@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47e6c7be-ae20-46e7-98a5-d68325d98077" name="默认的" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/TransactionController.php" afterPath="$PROJECT_DIR$/app/controllers/TransactionController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,17 +26,27 @@
       <file leaf-file-name="TransactionController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/TransactionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="167" column="53" lean-forward="false" selection-start-line="167" selection-start-column="53" selection-end-line="167" selection-end-column="53" />
+            <state relative-caret-position="362">
+              <caret line="153" column="45" lean-forward="false" selection-start-line="153" selection-start-column="45" selection-end-line="153" selection-end-column="45" />
               <folding>
                 <element signature="n#buyAction#0;n#TransactionController#0;n#!!top" expanded="false" />
-                <element signature="e#7981#8002#0#PHP" expanded="false" />
+                <element signature="e#7980#8001#0#PHP" expanded="false" />
                 <element signature="n#cancelOrderAction#0;n#TransactionController#0;n#!!top" expanded="false" />
-                <marker date="1518334523239" expanded="true" signature="7084:7664" ph="SELECT i.clo... " />
-                <marker date="1518334523239" expanded="true" signature="10598:10936" ph="SELECT IFNUL... " />
-                <marker date="1518334523239" expanded="true" signature="10598:10981" ph="SELECT IFNUL... " />
-                <marker date="1518334523239" expanded="true" signature="10598:11015" ph="SELECT IFNUL... " />
+                <marker date="1518335382251" expanded="true" signature="7083:7663" ph="SELECT i.clo... " />
+                <marker date="1518335382251" expanded="true" signature="10597:10935" ph="SELECT IFNUL... " />
+                <marker date="1518335382251" expanded="true" signature="10597:10980" ph="SELECT IFNUL... " />
+                <marker date="1518335382251" expanded="true" signature="10597:11014" ph="SELECT IFNUL... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderLogic.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/logics/OrderLogic.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="251" column="27" lean-forward="false" selection-start-line="251" selection-start-column="18" selection-end-line="251" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,11 +87,11 @@
       <list>
         <option value="$PROJECT_DIR$/app/views/transaction/index.html" />
         <option value="$PROJECT_DIR$/app/config/config.php" />
-        <option value="$PROJECT_DIR$/app/logics/OrderLogic.php" />
         <option value="$PROJECT_DIR$/app/models/ExUsers.php" />
         <option value="$PROJECT_DIR$/app/controllers/FinanceController.php" />
         <option value="$PROJECT_DIR$/app/views/finance/index.html" />
         <option value="$PROJECT_DIR$/public/js/pages/trading.js" />
+        <option value="$PROJECT_DIR$/app/logics/OrderLogic.php" />
         <option value="$PROJECT_DIR$/app/controllers/TransactionController.php" />
       </list>
     </option>
@@ -249,12 +258,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518316747407</updated>
-      <workItem from="1518316748687" duration="14072000" />
+      <workItem from="1518316748687" duration="14938000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14072000" />
+    <option name="totallyTimeSpent" value="14938000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -324,14 +333,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/logics/OrderLogic.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="114" column="20" lean-forward="true" selection-start-line="114" selection-start-column="20" selection-end-line="114" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/ExUsers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -364,14 +365,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/pages/trading.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -394,18 +387,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/logics/OrderLogic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="251" column="27" lean-forward="false" selection-start-line="251" selection-start-column="18" selection-end-line="251" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/TransactionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="167" column="53" lean-forward="false" selection-start-line="167" selection-start-column="53" selection-end-line="167" selection-end-column="53" />
+        <state relative-caret-position="362">
+          <caret line="153" column="45" lean-forward="false" selection-start-line="153" selection-start-column="45" selection-end-line="153" selection-end-column="45" />
           <folding>
             <element signature="n#buyAction#0;n#TransactionController#0;n#!!top" expanded="false" />
-            <element signature="e#7981#8002#0#PHP" expanded="false" />
+            <element signature="e#7980#8001#0#PHP" expanded="false" />
             <element signature="n#cancelOrderAction#0;n#TransactionController#0;n#!!top" expanded="false" />
-            <marker date="1518334523239" expanded="true" signature="7084:7664" ph="SELECT i.clo... " />
-            <marker date="1518334523239" expanded="true" signature="10598:10936" ph="SELECT IFNUL... " />
-            <marker date="1518334523239" expanded="true" signature="10598:10981" ph="SELECT IFNUL... " />
-            <marker date="1518334523239" expanded="true" signature="10598:11015" ph="SELECT IFNUL... " />
+            <marker date="1518335382251" expanded="true" signature="7083:7663" ph="SELECT i.clo... " />
+            <marker date="1518335382251" expanded="true" signature="10597:10935" ph="SELECT IFNUL... " />
+            <marker date="1518335382251" expanded="true" signature="10597:10980" ph="SELECT IFNUL... " />
+            <marker date="1518335382251" expanded="true" signature="10597:11014" ph="SELECT IFNUL... " />
           </folding>
         </state>
       </provider>
