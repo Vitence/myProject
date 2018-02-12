@@ -78,57 +78,25 @@
                 <td>24h成交额</td>
                 <td>总市值</td>
                 <td>24h涨跌</td>
-                <td>7D涨跌</td>
+<!--                <td>7D涨跌</td>-->
                 <td>操作</td>
             </tr>
-            <tr>
-                <td>CBF</td>
-                <td>0.2</td>
-                <td>0</td>
-                <td>0</td>
-                <td>160000000</td>
-                <td>0%</td>
-                <td>0%</td>
-                <td>
-                    <input type="button" value="去交易" onclick="location.href='tradingCenter.html'" >
-                </td>
-            </tr>
-            <tr>
-                <td>陶文兑换券</td>
-                <td>16.42</td>
-                <td>123</td>
-                <td>1435.25</td>
-                <td>32420000.00</td>
-                <td>+3.4%</td>
-                <td>+7.9%</td>
-                <td>
-                    <input type="button" value="去交易" onclick="location.href='tradingCenter.html'" >
-                </td>
-            </tr>
-            <tr>
-                <td>米亚积分</td>
-                <td>96.00</td>
-                <td>343</td>
-                <td>31562.92</td>
-                <td>96000000.00</td>
-                <td>+10%</td>
-                <td>+92%</td>
-                <td>
-                    <input type="button" value="去交易" onclick="location.href='tradingCenter.html'" >
-                </td>
-            </tr>
-            <tr>
-                <td>乾瑞通宝</td>
-                <td>42.00</td>
-                <td>0</td>
-                <td>0</td>
-                <td>63000000.00</td>
-                <td>0%</td>
-                <td>0%</td>
-                <td>
-                    <input type="button" value="去交易" onclick="location.href='tradingCenter.html'" >
-                </td>
-            </tr>
+            <?php if(!empty($types)): ?>
+                <?php foreach ($types as $type): ?>
+                    <tr>
+                        <td><?php echo $type['name']; ?></td>
+                        <td><?php echo $type['new_price']; ?></td>
+                        <td><?php echo $type['total_number']; ?></td>
+                        <td><?php echo $type['total_price']; ?></td>
+                        <td><?php echo $type['total_market']; ?></td>
+                        <td><?php echo ($type['rise'] > 0 ? '+' : ($type['rise'] < 0 ? '-' : '')) . $type['rise']; ?></td>
+<!--                        <td>0%</td>-->
+                        <td>
+                            <input type="button" value="去交易" onclick="location.href='/transaction'" >
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </table>
     </div>
 </div>

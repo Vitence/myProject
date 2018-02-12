@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47e6c7be-ae20-46e7-98a5-d68325d98077" name="默认的" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/pages/trading.js" afterPath="$PROJECT_DIR$/public/js/pages/trading.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/IndexController.php" afterPath="$PROJECT_DIR$/app/controllers/IndexController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/index/index.html" afterPath="$PROJECT_DIR$/app/views/index/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/pages/index.js" afterPath="$PROJECT_DIR$/public/js/pages/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +18,32 @@
       <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/IndexController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="414">
+              <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+              <folding>
+                <marker date="1518403160682" expanded="true" signature="708:723" ph="SELECT IFNUL... ex_order" />
+                <marker date="1518403160682" expanded="true" signature="708:1100" ph="SELECT IFNUL... " />
+                <marker date="1518403160682" expanded="true" signature="708:1139" ph="SELECT IFNUL... ex_order" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/index/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="25" column="17" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/transaction/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="30" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="9" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -26,8 +52,8 @@
       <file leaf-file-name="TransactionController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/TransactionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="318" column="44" lean-forward="true" selection-start-line="318" selection-start-column="44" selection-end-line="318" selection-end-column="44" />
+            <state relative-caret-position="36">
+              <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="17" />
               <folding>
                 <element signature="n#buyAction#0;n#TransactionController#0;n#!!top" expanded="false" />
                 <element signature="e#7980#8001#0#PHP" expanded="false" />
@@ -37,52 +63,6 @@
                 <marker date="1518338267377" expanded="true" signature="10598:10943" ph="SELECT IFNUL... " />
                 <marker date="1518338267377" expanded="true" signature="10598:10989" ph="SELECT IFNUL... " />
                 <marker date="1518338267377" expanded="true" signature="10598:11023" ph="SELECT IFNUL... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/transaction/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrderLogic.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/logics/OrderLogic.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="251" column="27" lean-forward="false" selection-start-line="251" selection-start-column="18" selection-end-line="251" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="trading.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/js/pages/trading.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="188" column="22" lean-forward="false" selection-start-line="188" selection-start-column="22" selection-end-line="188" selection-end-column="22" />
-              <folding>
-                <marker date="1518339224787" expanded="true" signature="6460:7105" ph="..." />
-                <marker date="1518339224787" expanded="true" signature="6928:7071" ph="..." />
-                <marker date="1518339224787" expanded="true" signature="7793:8013" ph="..." />
-                <marker date="1518339224787" expanded="true" signature="8745:8979" ph="..." />
-                <marker date="1518339224787" expanded="true" signature="9295:9527" ph="..." />
               </folding>
             </state>
           </provider>
@@ -104,6 +84,9 @@
         <option value="$PROJECT_DIR$/app/views/transaction/index.html" />
         <option value="$PROJECT_DIR$/app/controllers/TransactionController.php" />
         <option value="$PROJECT_DIR$/public/js/pages/trading.js" />
+        <option value="$PROJECT_DIR$/app/controllers/IndexController.php" />
+        <option value="$PROJECT_DIR$/public/js/pages/index.js" />
+        <option value="$PROJECT_DIR$/app/views/index/index.html" />
       </list>
     </option>
   </component>
@@ -196,6 +179,13 @@
               <item name="myProject" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="myProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProject" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="transaction" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -269,12 +259,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518316747407</updated>
-      <workItem from="1518316748687" duration="17857000" />
+      <workItem from="1518316748687" duration="20537000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17857000" />
+    <option name="totallyTimeSpent" value="20537000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -368,14 +358,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/logics/OrderLogic.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="372">
@@ -392,18 +374,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/transaction/index.html">
+    <entry file="file://$PROJECT_DIR$/public/js/pages/trading.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
-          <folding />
+        <state relative-caret-position="290">
+          <caret line="198" column="14" lean-forward="true" selection-start-line="198" selection-start-column="14" selection-end-line="198" selection-end-column="14" />
+          <folding>
+            <marker date="1518401528869" expanded="true" signature="8668:9313" ph="..." />
+            <marker date="1518401528869" expanded="true" signature="9136:9279" ph="..." />
+            <marker date="1518401528869" expanded="true" signature="10001:10221" ph="..." />
+            <marker date="1518401528869" expanded="true" signature="10953:11187" ph="..." />
+            <marker date="1518401528869" expanded="true" signature="11503:11735" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/TransactionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="318" column="44" lean-forward="true" selection-start-line="318" selection-start-column="44" selection-end-line="318" selection-end-column="44" />
+        <state relative-caret-position="36">
+          <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="17" />
           <folding>
             <element signature="n#buyAction#0;n#TransactionController#0;n#!!top" expanded="false" />
             <element signature="e#7980#8001#0#PHP" expanded="false" />
@@ -417,17 +405,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/pages/trading.js">
+    <entry file="file://$PROJECT_DIR$/public/js/pages/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="188" column="22" lean-forward="false" selection-start-line="188" selection-start-column="22" selection-end-line="188" selection-end-column="22" />
+        <state relative-caret-position="200">
+          <caret line="190" column="16" lean-forward="true" selection-start-line="190" selection-start-column="16" selection-end-line="190" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/transaction/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="30" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="9" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
           <folding>
-            <marker date="1518339224787" expanded="true" signature="6460:7105" ph="..." />
-            <marker date="1518339224787" expanded="true" signature="6928:7071" ph="..." />
-            <marker date="1518339224787" expanded="true" signature="7793:8013" ph="..." />
-            <marker date="1518339224787" expanded="true" signature="8745:8979" ph="..." />
-            <marker date="1518339224787" expanded="true" signature="9295:9527" ph="..." />
+            <marker date="1518403160682" expanded="true" signature="708:723" ph="SELECT IFNUL... ex_order" />
+            <marker date="1518403160682" expanded="true" signature="708:1100" ph="SELECT IFNUL... " />
+            <marker date="1518403160682" expanded="true" signature="708:1139" ph="SELECT IFNUL... ex_order" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/index/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="17" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>

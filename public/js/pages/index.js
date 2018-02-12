@@ -212,7 +212,7 @@ function index_changeCharts(charts_i,chartName){
     $('.navBlock td').removeClass('checked');
     $('.navBlock td').eq(charts_i).addClass('checked');
 
-    $('.chartInfo').hide();
-    $('.chartInfo').eq(charts_i).show();
+    // $('.chartInfo').hide();
+    // $('.chartInfo').eq(charts_i).show();
     myChart.setOption(chartName);
 }
