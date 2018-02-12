@@ -55,6 +55,9 @@ GROUP BY
             $value['total_number'] = $orders['total_number'];
             $value['total_price'] = $orders['total_price'];
             $value['new_price'] = isset($newPrice['price']) ? $newPrice['price'] : 0;
+            if($value['new_price'] <= 0){
+                $value['new_price'] = $item['init_price'];
+            }
             $value['name'] = $item['name'];
             //涨幅度
             $value['rise'] = sprintf("%.2f", $value['new_price'] <= 0 || $orders['open_price'] <=  0 ? 0 : ($value['new_price'] - $orders['open_price']) / $orders['open_price'] * 100);;
