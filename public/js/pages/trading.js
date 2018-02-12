@@ -226,7 +226,7 @@ function getGuadanData(){
         type:type
     },function(json){
         if(json.code=='0000'){
-            $(".guadan").nextAll().remove()
+            // $(".guadan").nextAll().remove()
             if(json.data.length > 0){
                 var items = json.data;
                 var html = '';
@@ -261,7 +261,7 @@ function getOrder(){
         type:type
     },function(json){
         if(json.code=='0000'){
-            $(".order").nextAll().remove()
+            // $(".order").nextAll().remove()
             if(json.data.length > 0){
                 var items = json.data;
                 var html = '';
@@ -291,7 +291,7 @@ function getAllGuadan(){
         type:type
     },function(json){
         if(json.code=='0000'){
-            $(".allguandan").nextAll().remove();
+            // $(".allguandan").nextAll().remove();
             var items;
             var html = '';
             if(json.data.sale.length > 0){
