@@ -21,7 +21,7 @@ $(function(){
         if(price == ""){
             price = 0;
         }
-        $("#buy li").eq(2).find('span').html('总计：'+ (numberEle.val() * price));
+        $("#buy li").eq(2).find('span').html('总计：'+ (isNaN(numberEle.val() * price) ? 0 : numberEle.val() * price));
     });
     priceEle.keyup(function(){
         if(parseFloat(priceEle.val()) <= 0){
@@ -31,7 +31,7 @@ $(function(){
         if(number == ""){
             number = 0;
         }
-        $("#buy li").eq(2).find('span').html('总计：'+ (number * priceEle.val()));
+        $("#buy li").eq(2).find('span').html('总计：'+ (isNaN(number * priceEle.val()) ? 0 : number * priceEle.val()));
     });
 
     var salenumberEle = $("#sale").find('input').eq(1);
@@ -44,7 +44,7 @@ $(function(){
         if(price == ""){
             price = 0;
         }
-        $("#sale li").eq(2).find('span').html('总计：'+ (salenumberEle.val() * price));
+        $("#sale li").eq(2).find('span').html('总计：'+ (isNaN(salenumberEle.val() * price) ? 0 : salenumberEle.val() * price));
     });
     salepriceEle.keyup(function(){
         if(parseFloat(salepriceEle.val()) <= 0){
@@ -54,7 +54,7 @@ $(function(){
         if(number == ""){
             number = 0;
         }
-        $("#sale li").eq(2).find('span').html('总计：'+ (number * salepriceEle.val()));
+        $("#sale li").eq(2).find('span').html('总计：'+ (isNaN(number * salepriceEle.val()) ? 0 : number * salepriceEle.val()));
     });
 
 
