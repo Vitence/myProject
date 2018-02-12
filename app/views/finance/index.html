@@ -20,7 +20,7 @@
                         <td>0.99</td>
                         <td><?php echo $user['balance'] ?></td>
                         <td><?php echo $user['trad_balance'] ?></td>
-                        <td><?php echo $user['balance'] ?></td>
+                        <td><?php echo $user['balance'] * 0.99 ?></td>
                         <td><input type="button" value="去交易" onclick="location.href='/transaction'"></td>
                     </tr>
                     <?php if(!empty($items)): ?>

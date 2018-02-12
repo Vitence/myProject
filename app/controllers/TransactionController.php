@@ -226,7 +226,7 @@ where i.currency_id = '.$type.';';
         $id = $this->request->getPost('id','int',0);
         $where['currency_id'] = $type;
         $where['id'] = $id;
-        $where['status'] = ['!=',2];
+        $where['status'] = 0;
         $item = ExGuadan::findRow($where);
         $userInfo = $this->userInfo;
         if(empty($userInfo)){
@@ -247,7 +247,7 @@ where i.currency_id = '.$type.';';
             $number = $item['surplus_number'];
             $price  = $item['price'];
             unset($where);
-            if($item['status'] == 1){
+            if($item['type'] == 1){
                 $where['id'] = $userInfo['id'];
                 $user = ExUsers::findRow($where);
                 $user = $user->toArray();
