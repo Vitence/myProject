@@ -5,7 +5,7 @@ $(function(){
     // 使用刚指定的配置项和数据显示图表。
     myChart.hideLoading()
     myChart.setOption(cbfcharts);
-    // setInterval(changeKlineData,2000);
+    setInterval(changeKlineData,2000);
     /**
      * 买入，卖出验证 总价计算
      * @type {RegExp}
@@ -193,6 +193,7 @@ function changeKlineData(){
             }else{
                 twdhqInitData[twdhqInitData.length-1][5] = Number($('.info li').eq(7).find('.number').text());
             }
+            twdhqInitData[twdhqInitData.length-1][2] = Number($('.info li').eq(0).find('.number').text());
             $.extend(true,twdhqTempleData,twdhqInitData);
             twdhqdata = splitData(twdhqTempleData);
             myChart.setOption(twdhqcharts);
@@ -207,6 +208,7 @@ function changeKlineData(){
             }else{
                 myjfInitData[myjfInitData.length-1][5] = Number($('.info li').eq(7).find('.number').text());
             }
+            myjfInitData[myjfInitData.length-1][2] = Number($('.info li').eq(0).find('.number').text());
             $.extend(true,myjfTempleData,myjfInitData);
             myjfdata = splitData(myjfTempleData);
             myChart.setOption(myjfcharts);
