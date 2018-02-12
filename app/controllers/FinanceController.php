@@ -30,6 +30,11 @@ class FinanceController extends ControllerBase{
                 $item['newPrice'] = 0;
             }
         }
+        foreach ($items as &$val){
+            if($val['newPrice'] <= 0){
+                $val['newPrice'] = $types[$val['currency_id']]['init_price'];
+            }
+        }
         $this->view->setVar('items',$items);
         $this->view->setVar('user',$user);
     }
