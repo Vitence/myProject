@@ -18,6 +18,7 @@ $("#reset").click(function(){
         $("input[name='tokenName']").val(json.data.tokenName);
         $("input[name='token']").val(json.data.token);
         if(json.code =='0000'){
+            window.location.href='/password/send?d='+json.data.d;
             successMsg('邮件发送成功，请从邮件点击链接修改密码');
         }else if(json.code =='1001'){
             userError(imgCodeEle,'图片验证码错误');return;
@@ -25,6 +26,27 @@ $("#reset").click(function(){
             userError(accountEle,'邮箱未注册');return;
         }else if(json.code == '1002'){
             userError(accountEle,'邮箱格式错误');return;
+        }else{
+            errMsg('邮件发送失败');
+        }
+    })
+});
+
+
+$(".resendMailLink").click(function(){
+    var tokenName = $("input[name='tokenName']").val();
+    var token = $("input[name='token']").val();
+    var data = $("input[name='data']").val();
+    $.post('/password/sendAgain',{
+        tokenName:tokenName,
+        token:token,
+        d:data
+    },function(json){
+        $("input[name='tokenName']").val(json.data.tokenName);
+        $("input[name='token']").val(json.data.token);
+        if(json.code =='0000'){
+            $("input[name='data']").val(json.data.d);
+            successMsg('邮件发送成功，请从邮件点击链接修改密码');
         }else{
             errMsg('邮件发送失败');
         }

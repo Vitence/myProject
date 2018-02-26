@@ -7,18 +7,20 @@
     <title><?php echo @$title ? $title : 'XinHuo' ?></title>
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="/css/lib/reset.css">
-    <link rel="stylesheet" type="text/css" href="/css/pages/tradingCenter.css">
+<!--    <link rel="stylesheet" type="text/css" href="/css/pages/tradingCenter.css">-->
     <script type="text/javascript" src="/js/lib/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/js/lib/echarts.min.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
 </head>
 <body>
+<?php $controller = \Phalcon\Di::getDefault()->getDispatcher()->getControllerName() ?>
 <!-- head -->
-<?php $this->partial("layout/header"); ?>
+<?php if(strtolower($controller) != 'password'): ?>
+    <?php $this->partial("layout/header"); ?>
+<?php endif; ?>
 <!-- content -->
 <?php echo $this->getContent(); ?>
 <!-- foot -->
-<?php $controller = \Phalcon\Di::getDefault()->getDispatcher()->getControllerName() ?>
 <?php if(strtolower($controller) != 'password'): ?>
     <?php $this->partial("layout/footer"); ?>
 <?php endif; ?>

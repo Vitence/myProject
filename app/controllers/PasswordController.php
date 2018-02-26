@@ -75,7 +75,7 @@ class PasswordController extends ControllerBase{
             $dataToken['token']      = $this->security->getToken();
             $data = json_decode(base64_decode($data),true);
             $where['email'] = $data['email'];
-            $data['passwrod']  = md5(md5($password));
+            $data['password']  = md5(md5($password));
 
             $save = ExUsers::updataData($where,$data);
 
@@ -106,6 +106,46 @@ class PasswordController extends ControllerBase{
      */
     public function successAction(){
     
+    }
+    
+    
+    public function sendAction(){
+    
+    }
+    
+    
+    /**
+     * 重新发送密码
+     */
+    public function sendagainAction(){
+        if($this->request->isPost()){
+            $token     = $this->request->getPost('token','string','');
+            $tokenName = $this->request->getPost('tokenName','string','');
+            $data      = $this->request->getPost('d','string','');
+    
+            if (!$this->security->checkToken($tokenName,$token)){
+                $this->jsonReturn('','1000','页面超时，请刷新页面重试');
+            }
+    
+            $dataToken['tokenName']  = $this->security->getTokenKey();
+            $dataToken['token']      = $this->security->getToken();
+            $data = json_decode(base64_decode($data),true);
+            $where['email'] = $data['email'];
+            
+            $sendData['email'] = $data['email'];
+            $sendData['expire']  = time() + (24 * 3600);
+            $sendData['type']  = EmailLogic::RESET_PASSWORD;
+            
+            $send = EmailLogic::sendMail($sendData,EmailLogic::RESET_PASSWORD);
+            
+            $dataToken['d'] = base64_encode(json_encode($sendData));
+            
+            if ($send){
+                $this->jsonReturn($dataToken);
+            } else{
+                $this->jsonReturn($dataToken,'100','邮件发送失败');
+            }
+        }
     }
     
 }
