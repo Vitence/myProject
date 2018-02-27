@@ -6,9 +6,11 @@ class EmailLogic{
     const SIGN = 'FLIDJ12ASLDJD2ASD01';
     public static function sendMail($data,$type = self::REGISTER){
         $mailServer = \Phalcon\Di::getDefault()->getShared('mailer');
-        $mailServer->Subject = '注册激活';
-    
-      
+        if($type == self::REGISTER){
+            $mailServer->Subject = '注册激活';
+        }else{
+            $mailServer->Subject = '找回密码';
+        }
         $content = self::getEmailContent($data,$type);
         $mailServer->Body = $content;
         $mailServer->CharSet='utf-8';
