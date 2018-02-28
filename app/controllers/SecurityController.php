@@ -69,7 +69,7 @@ class SecurityController extends ControllerBase{
                 $this->jsonReturn($dataToken,'1007','原始交易密码错误');
             }
     
-            $password  = $this->request->getPost('password','int','');
+            $password  = $this->request->getPost('password','string','');
             $save  = ExUsers::saveTradingPassword($userInfo['id'],$password);
     
             if ($save){
