@@ -1,11 +1,48 @@
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
+    // var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
 $(function(){
-    
+    require.config({
+        paths: {
+            "jquery": "../lib/jquery-3.2.1.min",
+            "jquery.mousewheel": "../lib/jquery.mousewheel",
+            "sockjs": "../lib/sockjs",
+            "stomp": "../lib/stomp",
+            "kline": "../lib/kline"
+        },
+        shim: {
+            "jquery.mousewheel": {
+                deps: ["jquery"]
+            },
+            "kline": {
+                deps: ["jquery.mousewheel", "sockjs", "stomp"]
+            }
+        }
+    });
+
+    require(['kline'], function () {
+        var kline = new Kline({
+            element: "#tradingCenterCharts",
+            width: 1200,
+            height: 650,
+            theme: 'light', // light/dark
+            language: 'zh-cn', // zh-cn/en-us/zh-tw
+            ranges: ["1w", "1d", "1h", "30m", "15m", "5m", "1m", "line"],
+            symbol: "CBF",
+            symbolName: "CBF/USD",
+            type: "poll", // poll/socket
+            url: "test.json",
+            limit: 1000,
+            intervalTime: 5000,
+            debug: true,
+            showTrade: false
+        });
+
+        kline.draw();
+    });
     // 使用刚指定的配置项和数据显示图表。
-    myChart.hideLoading()
-    myChart.setOption(cbfcharts);
-    setInterval(changeKlineData,2000);
+    // myChart.hideLoading()
+    // myChart.setOption(cbfcharts);
+    // setInterval(changeKlineData,2000);
     /**
      * 买入，卖出验证 总价计算
      * @type {RegExp}
