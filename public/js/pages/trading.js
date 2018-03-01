@@ -3,11 +3,11 @@
 $(function(){
     require.config({
         paths: {
-            "jquery": "../lib/jquery-3.2.1.min",
-            "jquery.mousewheel": "../lib/jquery.mousewheel",
-            "sockjs": "../lib/sockjs",
-            "stomp": "../lib/stomp",
-            "kline": "../kline"
+            "jquery": "../js/lib/jquery-3.2.1.min",
+            "jquery.mousewheel": "../js/lib/jquery.mousewheel",
+            "sockjs": "../js/lib/sockjs",
+            "stomp": "../js/lib/stomp",
+            "kline": "../js/kline"
         },
         shim: {
             "jquery.mousewheel": {
