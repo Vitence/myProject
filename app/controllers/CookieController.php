@@ -12,8 +12,14 @@ class CookieController extends ModelBase{
                 $user = ExUsers::itemById($user['id']);
                 if(!empty($user)){
                     setcookie('EXCHANGE',base64_encode(json_encode($user)),time()+60*60,'/','xinhuodata.com');
+                }else{
+                    setcookie('EXCHANGE','',time()-60*60,'/','xinhuodata.com');
                 }
+            }else{
+                setcookie('EXCHANGE','',time()-60*60,'/','xinhuodata.com');
             }
+        }else{
+            setcookie('EXCHANGE','',time()-60*60,'/','xinhuodata.com');
         }
     }
 }
