@@ -400,10 +400,10 @@ function changeCharts(chart_i,chartName){
     $('.showChartName').text($('.coinOptionBlock li').eq(chart_i).text());
     $('.showChartName').attr('currency',$('.coinOptionBlock li').eq(chart_i).data('id'));
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
+    // var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
     // 使用刚指定的配置项和数据显示图表。
-    myChart.hideLoading();
-    myChart.setOption(chartName);
+    // myChart.hideLoading();
+    // myChart.setOption(chartName);
     getKinfo();
     getGuadanData();
     getOrder();
