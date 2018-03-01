@@ -3,7 +3,7 @@
 $(function(){
     require.config({
         paths: {
-            "jquery": "../lib/jquery-3.2.1",
+            "jquery": "../lib/jquery-3.2.1.min",
             "jquery.mousewheel": "../lib/jquery.mousewheel",
             "sockjs": "../lib/sockjs",
             "stomp": "../lib/stomp",
