@@ -7,7 +7,7 @@ $(function(){
             "jquery.mousewheel": "../js/lib/jquery.mousewheel",
             "sockjs": "../js/lib/sockjs",
             "stomp": "../js/lib/stomp",
-            "kline": "../js/kline"
+            "kline": "../js/lib/kline"
         },
         shim: {
             "jquery.mousewheel": {
