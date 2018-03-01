@@ -30,7 +30,7 @@ $(function(){
             symbol: "BTC",
             symbolName: "BTC/USD",
             type: "poll", // poll/socket
-            url: "../test.json",
+            url: "../lib/test.json",
             limit: 1000,
             intervalTime: 5000,
             debug: true,
