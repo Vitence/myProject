@@ -10,7 +10,7 @@ class CookieController extends ModelBase{
             $user = json_decode(base64_decode($cookie),true);
             if(!empty($user)){
                 $user = ExUsers::itemById($user['id']);
-                if(empty($user)){
+                if(!empty($user)){
                     setcookie('EXCHANGE',base64_encode(json_encode($user)),time()+60*60,'/','xinhuodata.com');
                 }
             }
