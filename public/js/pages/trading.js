@@ -23,11 +23,11 @@ $(function(){
             height: 650,
             theme: 'dark', // light/dark
             language: 'zh-cn', // zh-cn/en-us/zh-tw
-            ranges: ["1w", "1d", "1h", "30m", "15m", "5m", "1m", "line"],
+            ranges: ["1d"],
             symbol: "CBF",
             symbolName: "CBF/USD",
             type: "poll", // poll/socket
-            url: "../js/lib/test.json",
+            url: "../js/lib/cbfData.json",
             limit: 1000,
             intervalTime: 5000,
             debug: true,
