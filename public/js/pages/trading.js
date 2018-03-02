@@ -1,3 +1,4 @@
+var kline;
 $(function(){
     require.config({
         paths: {
@@ -17,7 +18,7 @@ $(function(){
         }
     });
     require(['kline'], function () {
-        var kline = new Kline({
+        kline = new Kline({
             element: "#tradingCenterCharts",
             width: 1200,
             height: 650,
