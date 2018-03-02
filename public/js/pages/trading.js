@@ -354,27 +354,10 @@ getKinfo();
 function changeCharts(chart_i,chartName){
     $('.showChartName').text($('.coinOptionBlock li').eq(chart_i).text());
     $('.showChartName').attr('currency',$('.coinOptionBlock li').eq(chart_i).data('id'));
-    require.config({
-        paths: {
-            "jquery": "../js/lib/jquery-3.2.1.min",
-            "jquery.mousewheel": "../js/lib/jquery.mousewheel",
-            "sockjs": "../js/lib/sockjs",
-            "stomp": "../js/lib/stomp",
-            "kline": "../js/lib/kline"
-        },
-        shim: {
-            "jquery.mousewheel": {
-                deps: ["jquery"]
-            },
-            "kline": {
-                deps: ["jquery.mousewheel", "sockjs", "stomp"]
-            }
-        }
-    });
     switch(chartName){
         case 'cbfcharts':
         require(['kline'], function () {
-            var kline = new Kline({
+             kline = new Kline({
                 element: "#tradingCenterCharts",
                 width: 1200,
                 height: 650,
@@ -396,7 +379,7 @@ function changeCharts(chart_i,chartName){
         break;
         case 'twdhqcharts':
         require(['kline'], function () {
-            var kline = new Kline({
+             kline = new Kline({
                 element: "#tradingCenterCharts",
                 width: 1200,
                 height: 650,
@@ -418,7 +401,7 @@ function changeCharts(chart_i,chartName){
         break;
         case 'myjfcharts':
         require(['kline'], function () {
-            var kline = new Kline({
+             kline = new Kline({
                 element: "#tradingCenterCharts",
                 width: 1200,
                 height: 650,
@@ -440,7 +423,7 @@ function changeCharts(chart_i,chartName){
         break;
         case 'qrtbcharts':
         require(['kline'], function () {
-            var kline = new Kline({
+             kline = new Kline({
                 element: "#tradingCenterCharts",
                 width: 1200,
                 height: 650,
