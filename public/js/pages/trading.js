@@ -1,3 +1,5 @@
+    // 基于准备好的dom，初始化echarts实例
+    // var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
 $(function(){
     require.config({
         paths: {
@@ -16,6 +18,7 @@ $(function(){
             }
         }
     });
+
     require(['kline'], function () {
         var kline = new Kline({
             element: "#tradingCenterCharts",
@@ -24,8 +27,8 @@ $(function(){
             theme: 'dark', // light/dark
             language: 'zh-cn', // zh-cn/en-us/zh-tw
             ranges: ["1w", "1d", "1h", "30m", "15m", "5m", "1m", "line"],
-            symbol: "CBF",
-            symbolName: "CBF/USD",
+            symbol: "BTC",
+            symbolName: "BTC/USD",
             type: "poll", // poll/socket
             url: "../js/lib/test.json",
             limit: 1000,
@@ -36,6 +39,10 @@ $(function(){
 
         kline.draw();
     });
+    // 使用刚指定的配置项和数据显示图表。
+    // myChart.hideLoading()
+    // myChart.setOption(cbfcharts);
+    // setInterval(changeKlineData,2000);
     /**
      * 买入，卖出验证 总价计算
      * @type {RegExp}
@@ -209,6 +216,44 @@ $(function(){
     });
 });
 
+// k线变化
+function changeKlineData(){
+    var kType = $('.showChartName').attr('currency');
+    switch(kType){
+        case '1':
+            if(Number($('.info li').eq(0).find('.number').text()) > twdhqInitData[twdhqInitData.length-1][4]){
+                twdhqInitData[twdhqInitData.length-1][4] = Number($('.info li').eq(0).find('.number').text());
+                twdhqInitData[twdhqInitData.length-1][5] = Number($('.info li').eq(7).find('.number').text());
+            }else if(Number($('.info li').eq(0).find('.number').text()) < twdhqInitData[twdhqInitData.length-1][3]){
+                twdhqInitData[twdhqInitData.length-1][3] = Number($('.info li').eq(0).find('.number').text());
+                twdhqInitData[twdhqInitData.length-1][5] = Number($('.info li').eq(7).find('.number').text());
+            }else{
+                twdhqInitData[twdhqInitData.length-1][5] = Number($('.info li').eq(7).find('.number').text());
+            }
+            twdhqInitData[twdhqInitData.length-1][2] = Number($('.info li').eq(0).find('.number').text());
+            $.extend(true,twdhqTempleData,twdhqInitData);
+            twdhqdata = splitData(twdhqTempleData);
+            myChart.setOption(twdhqcharts);
+        break;
+        case '2':
+            if(Number($('.info li').eq(0).find('.number').text()) > myjfInitData[myjfInitData.length-1][4]){
+                myjfInitData[myjfInitData.length-1][4] = Number($('.info li').eq(0).find('.number').text());
+                myjfInitData[myjfInitData.length-1][5] = Number($('.info li').eq(7).find('.number').text());
+            }else if(Number($('.info li').eq(0).find('.number').text()) < myjfInitData[myjfInitData.length-1][3]){
+                myjfInitData[myjfInitData.length-1][4] = Number($('.info li').eq(0).find('.number').text());
+                myjfInitData[myjfInitData.length-1][5] = Number($('.info li').eq(7).find('.number').text());
+            }else{
+                myjfInitData[myjfInitData.length-1][5] = Number($('.info li').eq(7).find('.number').text());
+            }
+            myjfInitData[myjfInitData.length-1][2] = Number($('.info li').eq(0).find('.number').text());
+            $.extend(true,myjfTempleData,myjfInitData);
+            myjfdata = splitData(myjfTempleData);
+            myChart.setOption(myjfcharts);
+        break;
+        default:
+        break;
+    }
+}
 /**
  * 获取委托数据，切换币种和卖出或者卖出都需要重新执行
  */
@@ -354,98 +399,11 @@ getKinfo();
 function changeCharts(chart_i,chartName){
     $('.showChartName').text($('.coinOptionBlock li').eq(chart_i).text());
     $('.showChartName').attr('currency',$('.coinOptionBlock li').eq(chart_i).data('id'));
-    switch(chartName){
-        case 'cbfcharts':
-        require(['kline'], function () {
-            var kline = new Kline({
-                element: "#tradingCenterCharts",
-                width: 1200,
-                height: 650,
-                theme: 'dark', // light/dark
-                language: 'zh-cn', // zh-cn/en-us/zh-tw
-                ranges: ["1d"],
-                symbol: "CBF",
-                symbolName: "CBF/USD",
-                type: "poll", // poll/socket
-                url: "../js/lib/cbfData.json",
-                limit: 1000,
-                intervalTime: 5000,
-                debug: true,
-                showTrade: false
-            });
-
-            kline.draw();
-        });
-        break;
-        case 'twdhqcharts':
-        require(['kline'], function () {
-            var kline = new Kline({
-                element: "#tradingCenterCharts",
-                width: 1200,
-                height: 650,
-                theme: 'dark', // light/dark
-                language: 'zh-cn', // zh-cn/en-us/zh-tw
-                ranges: ["1w", "1d", "1h", "30m", "15m", "5m", "1m", "line"],
-                symbol: "TWDHQ",
-                symbolName: "TWDHQ/USD",
-                type: "poll", // poll/socket
-                url: "../js/lib/twdhqData.json",
-                limit: 1000,
-                intervalTime: 5000,
-                debug: true,
-                showTrade: false
-            });
-
-            kline.draw();
-        });
-        break;
-        case 'myjfcharts':
-        require(['kline'], function () {
-            var kline = new Kline({
-                element: "#tradingCenterCharts",
-                width: 1200,
-                height: 650,
-                theme: 'dark', // light/dark
-                language: 'zh-cn', // zh-cn/en-us/zh-tw
-                ranges: ["1w", "1d", "1h", "30m", "15m", "5m", "1m", "line"],
-                symbol: "MYJF",
-                symbolName: "MYJF/USD",
-                type: "poll", // poll/socket
-                url: "../js/lib/myjfData.json",
-                limit: 1000,
-                intervalTime: 5000,
-                debug: true,
-                showTrade: false
-            });
-
-            kline.draw();
-        });
-        break;
-        case 'qrtbcharts':
-        require(['kline'], function () {
-            var kline = new Kline({
-                element: "#tradingCenterCharts",
-                width: 1200,
-                height: 650,
-                theme: 'dark', // light/dark
-                language: 'zh-cn', // zh-cn/en-us/zh-tw
-                ranges: ["1d"],
-                symbol: "QRTB",
-                symbolName: "QRTB/USD",
-                type: "poll", // poll/socket
-                url: "../js/lib/qrtbData.json",
-                limit: 1000,
-                intervalTime: 5000,
-                debug: true,
-                showTrade: false
-            });
-
-            kline.draw();
-        });
-        break;
-        default:
-            console.log('Wrong Name');
-    }
+    // 基于准备好的dom，初始化echarts实例
+    // var myChart = echarts.init(document.getElementById('tradingCenterCharts'));
+    // 使用刚指定的配置项和数据显示图表。
+    // myChart.hideLoading();
+    // myChart.setOption(chartName);
     getKinfo();
     getGuadanData();
     getOrder();
