@@ -56,7 +56,7 @@ var twdhqcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:false
     },
     color:[
         '#00aaee'
