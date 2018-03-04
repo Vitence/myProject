@@ -57,8 +57,8 @@ var twdhqcharts = {
     yAxis: {
         position:'right',
         scale:true,
-        min:10,
-        splitNumber:10,
+        min:15,
+        splitNumber:7,
         minInterval:0.5
 
     },
