@@ -15,10 +15,10 @@
         <div class="navBlock">
             <table>
                 <tr>
-                    <td class="checked" onclick="index_changeCharts(1,twdhqcharts)">TWDHQ</td>
-                    <td onclick="index_changeCharts(0,cbfcharts)">CBF</td>
-                    <td onclick="index_changeCharts(2,myjfcharts)">MYJF</td>
-                    <td onclick="index_changeCharts(3,qrtbcharts)">QRTB</td>
+                    <td class="checked" onclick="index_changeCharts(0,twdhqcharts)">TWDHQ</td>
+                    <td onclick="index_changeCharts(1,myjfcharts)">MYJF</td>
+                    <td onclick="index_changeCharts(2,qrtbcharts)">QRTB</td>
+                    <td onclick="index_changeCharts(3,cbfcharts)">CBF</td>
                     <td onclick="index_changeCharts(4,jdtxcharts)">JDTX</td>
                     <td onclick="index_changeCharts(5,mztbcharts)">MZTB</td>
                     <td onclick="index_changeCharts(6,dyjfcharts)">DYJF</td>
@@ -32,16 +32,6 @@
                     <td onclick="index_changeCharts(14,jbtcharts)">JBT</td>
                 </tr>
             </table>
-        </div>
-        <div class="chartInfo" hidden="hidden">
-            <span class="title">今日最高：</span>
-            <span class="number">0.2</span>
-            <span class="title">今日最低：</span>
-            <span class="number">0.2</span>
-            <span class="title">涨跌幅：</span>
-            <span class="number">0%</span>
-            <span class="title">今日成交量：</span>
-            <span class="number">0</span>
         </div>
         <div class="chartInfo">
             <span class="title">今日最高：</span>
@@ -68,6 +58,16 @@
             <span class="number">42.00</span>
             <span class="title">今日最低：</span>
             <span class="number">42.00</span>
+            <span class="title">涨跌幅：</span>
+            <span class="number">0%</span>
+            <span class="title">今日成交量：</span>
+            <span class="number">0</span>
+        </div>
+        <div class="chartInfo" hidden="hidden">
+            <span class="title">今日最高：</span>
+            <span class="number">0.2</span>
+            <span class="title">今日最低：</span>
+            <span class="number">0.2</span>
             <span class="title">涨跌幅：</span>
             <span class="number">0%</span>
             <span class="title">今日成交量：</span>
@@ -228,6 +228,6 @@
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('indexEcharts'));
         // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(myjfcharts);
+        myChart.setOption(twdhqcharts);
     })
 </script>
