@@ -15,10 +15,21 @@
         <div class="navBlock">
             <table>
                 <tr>
-                    <td class="checked" onclick="index_changeCharts(0,cbfcharts)">CBF</td>
-                    <td onclick="index_changeCharts(1,twdhqcharts)">陶文兑换券</td>
-                    <td onclick="index_changeCharts(2,myjfcharts)">米亚积分</td>
-                    <td onclick="index_changeCharts(3,qrtbcharts)">乾瑞通宝</td>
+                    <td class="checked" onclick="index_changeCharts(1,twdhqcharts)">TWDHQ</td>
+                    <td onclick="index_changeCharts(0,cbfcharts)">CBF</td>
+                    <td onclick="index_changeCharts(2,myjfcharts)">MYJF</td>
+                    <td onclick="index_changeCharts(3,qrtbcharts)">QRTB</td>
+                    <td onclick="index_changeCharts(4,jdtxcharts)">JDTX</td>
+                    <td onclick="index_changeCharts(5,mztbcharts)">MZTB</td>
+                    <td onclick="index_changeCharts(6,dyjfcharts)">DYJF</td>
+                    <td onclick="index_changeCharts(7,xnzzcharts)">XNZZ</td>
+                    <td onclick="index_changeCharts(8,mdsqcharts)">MDSQ</td>
+                    <td onclick="index_changeCharts(9,tttbcharts)">TTTB</td>
+                    <td onclick="index_changeCharts(10,jtxjcharts)">JTXJ</td>
+                    <td onclick="index_changeCharts(11,scrscharts)">SCRS</td>
+                    <td onclick="index_changeCharts(12,ddmmcharts)">DDMM</td>
+                    <td onclick="index_changeCharts(13,xdkcharts)">XDK</td>
+                    <td onclick="index_changeCharts(14,jbtcharts)">JBT</td>
                 </tr>
             </table>
         </div>
@@ -106,6 +117,6 @@
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('indexEcharts'));
         // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(cbfcharts);
+        myChart.setOption(myjfcharts);
     })
 </script>
