@@ -24,7 +24,7 @@ $(function(){
             height: 650,
             theme: 'dark', // light/dark
             language: 'zh-cn', // zh-cn/en-us/zh-tw
-            ranges: ["1w", "1d", "1h", "30m", "15m", "5m", "1m", "line"],
+            ranges: ["1d"],
             symbol: "TWDHQ",
             symbolName: "TWDHQ/USD",
             type: "poll", // poll/socket
