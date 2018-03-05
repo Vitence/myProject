@@ -10,7 +10,8 @@ var cbfcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -112,7 +113,8 @@ var myjfcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -158,7 +160,8 @@ var qrtbcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -204,7 +207,8 @@ var jdtxcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -250,7 +254,8 @@ var mztbcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -296,7 +301,8 @@ var dyjfcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -342,7 +348,8 @@ var xnzzcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -388,7 +395,8 @@ var mdsqcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -434,7 +442,8 @@ var tttbcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -480,7 +489,8 @@ var jtxjcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -526,7 +536,8 @@ var scrscharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -572,7 +583,8 @@ var ddmmcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -618,7 +630,8 @@ var xdkcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
@@ -664,7 +677,8 @@ var jbtcharts = {
     },
     yAxis: {
         position:'right',
-        scale:true
+        scale:true,
+        min:null
     },
     color:[
         '#00aaee'
