@@ -32,7 +32,7 @@ $(function(){
             symbol: "TWDHQ",
             symbolName: "TWDHQ/USD",
             type: "poll", // poll/socket
-            url: "../js/lib/test.js?callback=getData",
+            url: "../js/lib/test.js",
             limit: 1000,
             intervalTime: 5000,
             debug: true,
