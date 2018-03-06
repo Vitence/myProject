@@ -1,8 +1,4 @@
 var kline;
-function getData(data){
-    console.log(data.data.lines);
-    return data;
-}
 $(function(){
     require.config({
         paths: {
@@ -32,7 +28,11 @@ $(function(){
             symbol: "TWDHQ",
             symbolName: "TWDHQ/USD",
             type: "poll", // poll/socket
+<<<<<<< HEAD
             url: "../js/lib/test.js?finishorder_num=10",
+=======
+            url: "../js/lib/twdhqData.json",
+>>>>>>> parent of 34b2945... hty tradingTest
             limit: 1000,
             intervalTime: 5000,
             debug: true,
