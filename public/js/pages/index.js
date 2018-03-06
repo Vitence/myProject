@@ -106,20 +106,37 @@ var twdhq_pre_data = [ 20.00,20.04,20.33,20.29,20.31,20.33,
                        20.76,20.77,20.79,20.80,20.80,20.84,
                        20.85,20.88,20.87,20.86,20.93,20.95,
                        21.05
-                       ]
+                       ];
+var startNum = twdhq_pre_data[0];
+var maxNum = startNum;
+var minNum = startNum;
 function reset_twdhqcharts_data(){
     var today_date = new Date();
     var now_hour = today_date.getHours();
     var now_minute = today_date.getMinutes();
-    var showNum = (now_hour<8)?(now_hour - 0)*6 + Math.floor(now_minute/10):0;
-    console.log(showNum);
-    var show_data = new Array();
-    for(var i = 0 ; i < showNum ; i++){
-        show_data[i] = twdhq_pre_data[i];
+    var showNum = (now_hour>8)?(now_hour - 0)*6 + Math.floor(now_minute/10):0;
+    switch(showNum){
+        case 0:
+            $('.chartInfo').eq(0).find('.number').html('0');
+            $('.chartInfo').eq(0).find('.number').eq(2).html('0%');
+            console.log('not trueTime');
+        break;
+        default:
+        var show_data = new Array();
+        for(var i = 0 ; i < showNum ; i++){
+            show_data[i] = twdhq_pre_data[i];
+            maxNum = (show_data[i]>maxNum)?show_data[i]:maxNum;
+            minNum = (show_data[i]<maxNum)?show_data[i]:minNum;
+        }
+        twdhqcharts.series[0].data = show_data;
+        var newPrice = Number($('.latest_price').eq(0).html());
+        $('.chartInfo').eq(0).find('.number').eq(0).html(maxNum);
+        $('.chartInfo').eq(0).find('.number').eq(1).html(minNum);
+        $('.chartInfo').eq(0).find('.number').eq(2).html(Math.floor((newPrice-startNum)*10000)/100);
+        console.log('tradingTime');
     }
-    twdhqcharts.series[0].data = show_data;
 }
-reset_twdhqcharts_data();
+var twdhq_interval = setInterval(reset_twdhqcharts_data,1000);
 var myjfcharts = {
     title: {
         show: false
