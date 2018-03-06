@@ -109,10 +109,14 @@ var twdhq_pre_data = [ 20.00,20.04,20.33,20.29,20.31,20.33,
                        ]
 function reset_twdhqcharts_data(){
     var today_date = new Date();
-    var now_hour = today_date.getHours()+1;
-    var now_minute = today_date.getMinutes()+1;
-    var showNum = (now_hour - 11)*6 + Math.floor(now_minute/10);
+    var now_hour = today_date.getHours();
+    var now_minute = today_date.getMinutes();
+    var showNum = (now_hour - 0)*6 + Math.floor(now_minute/10);
     console.log(showNum);
+    var show_data = new Array();
+    for(var i = 0 ; i < showNum ; i++){
+        show_data[i] = twdhq_pre_data[i];
+    }
 }
 reset_twdhqcharts_data();
 var myjfcharts = {
