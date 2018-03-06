@@ -117,6 +117,7 @@ function reset_twdhqcharts_data(){
     for(var i = 0 ; i < showNum ; i++){
         show_data[i] = twdhq_pre_data[i];
     }
+    twdhqcharts.series[0].data = show_data;
 }
 reset_twdhqcharts_data();
 var myjfcharts = {
