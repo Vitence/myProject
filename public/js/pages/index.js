@@ -111,7 +111,7 @@ function reset_twdhqcharts_data(){
     var today_date = new Date();
     var now_hour = today_date.getHours();
     var now_minute = today_date.getMinutes();
-    var showNum = (now_hour - 0)*6 + Math.floor(now_minute/10);
+    var showNum = (now_hour<8)?(now_hour - 0)*6 + Math.floor(now_minute/10):0;
     console.log(showNum);
     var show_data = new Array();
     for(var i = 0 ; i < showNum ; i++){
