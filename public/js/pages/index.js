@@ -752,10 +752,18 @@ var jbtcharts = {
 };
 function index_changeCharts(charts_i,chartName){
     var myChart = echarts.init(document.getElementById('indexEcharts'));
+    switch(chartName){
+        case 'twdhqcharts':
+            myChart.setOption(chartName); 
+            twdhq_interval =setInterval(reset_twdhqcharts_data,1000);
+        break;
+        default:
+            window.stopInterval(twdhq_interval);
+            myChart.setOption(chartName);
+    }
     $('.navBlock td').removeClass('checked');
     $('.navBlock td').eq(charts_i).addClass('checked');
-
     $('.chartInfo').hide();
     $('.chartInfo').eq(charts_i).show();
-    myChart.setOption(chartName);
+    
 }
