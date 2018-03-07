@@ -752,8 +752,8 @@ var jbtcharts = {
 };
 function index_changeCharts(charts_i,chartName){
     var myChart = echarts.init(document.getElementById('indexEcharts'));
-    switch(chartName){
-        case 'twdhqcharts':
+    switch(charts_i){
+        case 0:
             myChart.setOption(chartName); 
             twdhq_interval =setInterval(reset_twdhqcharts_data,1000);
         break;
