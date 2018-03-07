@@ -114,7 +114,7 @@ function reset_twdhqcharts_data(){
     var today_date = new Date();
     var now_hour = today_date.getHours();
     var now_minute = today_date.getMinutes();
-    var showNum = (now_hour>8)?(now_hour - 0)*6 + Math.floor(now_minute/10):0;
+    var showNum = (now_hour>8)?(now_hour - 8)*6 + Math.floor(now_minute/10):0;
     switch(showNum){
         case 0:
             $('.chartInfo').eq(0).find('.number').html('0');
@@ -133,6 +133,8 @@ function reset_twdhqcharts_data(){
         $('.chartInfo').eq(0).find('.number').eq(0).html(maxNum);
         $('.chartInfo').eq(0).find('.number').eq(1).html(minNum);
         $('.chartInfo').eq(0).find('.number').eq(2).html(Math.floor((newPrice-startNum)*10000)/100);
+        var myChart = echarts.init(document.getElementById('indexEcharts'));
+        myChart.setOption(twdhqcharts);
         console.log('tradingTime');
     }
 }
