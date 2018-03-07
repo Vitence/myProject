@@ -758,7 +758,7 @@ function index_changeCharts(charts_i,chartName){
             twdhq_interval =setInterval(reset_twdhqcharts_data,1000);
         break;
         default:
-            window.stopInterval(twdhq_interval);
+            window.clearInterval(twdhq_interval);
             myChart.setOption(chartName);
     }
     $('.navBlock td').removeClass('checked');
