@@ -155,7 +155,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                                 $numberEd = rand(10,1000);
                                 $guadanData['number'] = $numberEd;
                                 $guadanData['surplus_number'] = $numberEd;
-                                $guadanData['type'] = 1;
+                                $guadanData['type'] = 2;
                                 unset($obj);
                                 $obj = new ExGuadan();
                                 ExGuadan::addData($obj,$guadanData);
