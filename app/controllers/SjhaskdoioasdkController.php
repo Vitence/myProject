@@ -26,7 +26,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                 //每天五点结束
                 while(time() <= $endTime){
                     //执行间隔
-                    $sleep   = rand(5,10);
+                    $sleep   = rand(2,5);
                     //制定涨、跌概率
                     $updownNumberBai = rand(0,100);
         
