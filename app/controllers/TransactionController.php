@@ -385,19 +385,16 @@ GROUP BY
             $datas = [];
             foreach ($historys as $key => &$history){
                 $datas[$key][] = strtotime($history['date']);
-<<<<<<< HEAD
                 $datas[$key][] = isset($inits[$history['date']]) ? $inits[$history['date']]['open_price'] : '无开盘价';
                 $datas[$key][] = $history['max_price'];
                 $datas[$key][] = $history['min_price'];
                 $datas[$key][] = isset($inits[$history['date']]) ? $inits[$history['date']]['close_price'] : '无收盘价';
-                $datas[$key][] = $history['total_number'];
-=======
+                $datas[$key][] = $history['total_number'];]
                 $datas[$key][] = isset($inits[$history['date']]) ? (float)$inits[$history['date']]['open_price'] : '无开盘价';
                 $datas[$key][] = (float)$history['max_price'];
                 $datas[$key][] = (float)$history['min_price'];
                 $datas[$key][] = isset($inits[$history['date']]) ? (float)$inits[$history['date']]['close_price'] : '无收盘价';
-                $datas[$key][] = (float)$history['total_number'];
->>>>>>> parent of d6c4944... 脚本
+                $datas[$key][] = (float)$history['total_number'];]
             }
         }
     
@@ -448,7 +445,6 @@ GROUP BY
             $items['open_price'] = 0;
         }
         //最新价格
-<<<<<<< HEAD
         $items['new_price'] = isset($newPrice['price']) ? $newPrice['price'] : 0;
         $newData[] = strtotime(\Util\common::getDate());
         $newData[] = $items['open_price'];
@@ -458,7 +454,6 @@ GROUP BY
         $newData[] = $items['total_number'];
         $newData[] = strtotime(\Util\common::getDate());
         $newData[] = strtotime(\Util\common::getDate());
-=======
         $items['new_price'] = isset($newPrice['price']) ? (float)$newPrice['price'] : 0;
         $newData[] = strtotime(\Util\common::getDate());
         $newData[] = (float)$items['open_price'];
@@ -466,7 +461,6 @@ GROUP BY
         $newData[] = (float)$items['min'];
         $newData[] = (float)$items['new_price'];
         $newData[] = (float)$items['total_number'];
->>>>>>> parent of d6c4944... 脚本
         $datas[] = $newData;
         $data['lines'] = $datas;
         $this->jsonReturnTest($data);
