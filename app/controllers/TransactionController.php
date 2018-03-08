@@ -367,7 +367,7 @@ GROUP BY
     
     public function kAction(){
         //获取历史价格
-        $type = $this->request->getQuery('type','int',0);
+        $type = $this->request->getQuery('type','int',1);
         $where['currency_id'] = $type;
         $where['date'] = ['<',\Util\common::getDate()];
         $historys = ExKHistory::select($where);
