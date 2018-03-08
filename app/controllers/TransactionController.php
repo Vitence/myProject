@@ -447,8 +447,6 @@ GROUP BY
         $newData[] = (float)$items['min'];
         $newData[] = (float)$items['new_price'];
         $newData[] = (float)$items['total_number'];
-        $newData[] = strtotime(\Util\common::getDate());
-        $newData[] = strtotime(\Util\common::getDate());
         $datas[] = $newData;
         $data['lines'] = $datas;
         $this->jsonReturnTest($data);
