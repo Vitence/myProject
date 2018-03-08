@@ -125,7 +125,7 @@ function reset_twdhqcharts_data(){
         for(var i = 0 ; i < showNum ; i++){
             show_data[i] = twdhq_pre_data[i];
             maxNum = (show_data[i]>maxNum)?show_data[i]:maxNum;
-            minNum = (show_data[i]<maxNum)?show_data[i]:minNum;
+            minNum = (show_data[i]<minNum)?show_data[i]:minNum;
         }
         twdhqcharts.series[0].data = show_data;
         var newPrice = Number($('.latest_price').eq(0).html());
