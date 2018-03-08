@@ -20,10 +20,22 @@ class common{
     }
     
     /**
-     * 当前日期
+     * 当前日期时间
      * @return false|string
      */
     public static function getDataTime(){
         return date("Y-m-d H:i:s",time());
+    }
+    /**
+     * 当前日期
+     * @return false|string
+     */
+    public static function getDate(){
+        return date("Y-m-d",time());
+    }
+    
+    public static function randomFloat($min = 0, $max = 0.02){
+        $num = $min + mt_rand() / mt_getrandmax() * ($max - $min);
+        return sprintf("%.3f", $num);
     }
 }

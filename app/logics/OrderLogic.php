@@ -87,7 +87,7 @@ class OrderLogic{
                             $dataType['create_at'] = \Util\common::getDataTime();
                             $dataType['update_at'] = \Util\common::getDataTime();
                             $typeObj = new ExExchangeRecord();
-                            ExExchangeRecord::addData($typeObj,$data);
+                            ExExchangeRecord::addData($typeObj,$dataType);
                         }else{
                             $typeWhere['user_id'] = $userId;
                             $typeWhere['currency_id'] = $type;

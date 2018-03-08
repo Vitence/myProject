@@ -52,6 +52,10 @@ class TransactionController extends ControllerBase{
             if($user['balance'] < $number * $price){
                 $this->jsonReturn($dataToken,'1010','余额不足');
             }
+            
+            if($type == 1){
+                $this->jsonReturn($dataToken,'1050','暂时不对外开放');
+            }
             $save = OrderLogic::saveTransaction($number,$price,$type,1,$user['id']);
             $this->jsonReturn($dataToken);
         }
@@ -90,6 +94,9 @@ class TransactionController extends ControllerBase{
             $myType = ExExchangeRecord::itemsByUserIdAndType($user['id'],$type);
             if(empty($myType) || $myType['number'] < $number){
                 $this->jsonReturn($dataToken,'1010','数量不足');
+            }
+            if($type == 1){
+                $this->jsonReturn($dataToken,'1050','暂时不对外开放');
             }
             $save = OrderLogic::saveTransaction($number,$price,$type,2,$user['id']);
             $this->jsonReturn($dataToken);

@@ -33,20 +33,22 @@ class ControllerBase extends Controller {
      * 初始化用户信息
      */
     public function userInit(){
-        $cookie = $_COOKIE['EXCHANGE'];
-        $user = json_decode(base64_decode($cookie),true);
-        if(!empty($user)){
-            $user = ExUsers::itemById($user['id']);
-            if(empty($user)){
-                $this->session->remove('userInfo');
+        if(isset($_COOKIE['EXCHANGE'])){
+            $cookie = $_COOKIE['EXCHANGE'];
+            $user = json_decode(base64_decode($cookie),true);
+            if(!empty($user)){
+                $user = ExUsers::itemById($user['id']);
+                if(empty($user)){
+                    $this->session->remove('userInfo');
+                }else{
+                    $this->userInfo = $user;
+                    $this->session->set('userInfo',$user);
+                    $this->view->setVar('userInfo',$this->userInfo);
+                    $this->view->setVar('mycookie',$cookie);
+                }
             }else{
-                $this->userInfo = $user;
-                $this->session->set('userInfo',$user);
-                $this->view->setVar('userInfo',$this->userInfo);
-                $this->view->setVar('mycookie',$cookie);
+                $this->session->remove('userInfo');
             }
-        }else{
-            $this->session->remove('userInfo');
         }
     }
     

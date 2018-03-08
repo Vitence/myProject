@@ -144,6 +144,8 @@ $(function(){
                 userError(passwordElle,'交易密码错误')
             }else if(json.code=='1030'){
                 errMsg('开盘时间为早上8点到晚上7点')
+            } else if(json.code=='1050'){
+                errMsg('暂时不对外开放')
             }else{
                 errMsg('卖出失败，请重试')
             }
@@ -202,6 +204,8 @@ $(function(){
                 window.location.href='/user/login'
             }else if(json.code=='1011'){
                 userError(passwordElle,'交易密码错误')
+            }else if(json.code=='1050'){
+                errMsg('暂时不对外开放')
             }else if(json.code=='1030'){
                 errMsg('开盘时间为早上8点到晚上7点')
             }else{
