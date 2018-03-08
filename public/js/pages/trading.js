@@ -28,7 +28,7 @@ $(function(){
             symbol: "TWDHQ",
             symbolName: "TWDHQ/USD",
             type: "poll", // poll/socket
-            url: "/transaction/k?type=1",
+            url: "/transaction/k",
             limit: 1000,
             intervalTime: 5000,
             debug: true,
