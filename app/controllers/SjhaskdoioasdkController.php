@@ -30,8 +30,8 @@ class SjhaskdoioasdkController extends ControllerBase{
                     //制定涨、跌概率
                     $updownNumberBai = rand(0,100);
         
-                    //最新成交价
-                    $newPrice = ExOrder::getMaxOrderPrice($currencyId);
+                    //浸日最新成交价
+                    $newPrice = ExOrder::getTodayMaxOrderPrice($currencyId);
                     $newPriceNumber = 0;
                     if($newPrice){
                         $newPrice = $newPrice->toArray();
@@ -98,7 +98,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                         }else{ //admin2为卖单
                             //生成admin2的交易记录 卖出
                             $admin2Data = $orderData;
-                            $admin2Data['user_id']    = $admin1['id'];
+                            $admin2Data['user_id']    = $admin2['id'];
                             $admin2Data['type']       = 2;
                             $admin2Data['procedures'] = $admin2Data['total_price'] * 0.1;
                             $admin2Data['total_price'] = $admin2Data['total_price'] - $admin2Data['procedures'];
