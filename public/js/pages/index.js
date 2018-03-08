@@ -96,16 +96,16 @@ var twdhqcharts = {
         data: []
     }]
 };
-var twdhq_pre_data = [24,24.03,24.06,24.23,24.51,24.97,
-                        25.25,25.39,25.85,25.98,25.98,25.98,
-                        25.84,25.63,25.46,25.8,25.54,25.72,
-                        25.83,25.74,25.87,25.94,25.72,25.82,
-                        25.98,25.98,25.98,25.83,25.75,25.87,
-                        25.65,25.98,25.8,25.8,25.98,25.98,
-                        25.92,25.98,25.81,25.98,25.59,25.8,
-                        25.98,25.98,25.64,25.98,25.98,25.67,
-                        25.98,25.98,25.98,25.98,25.98,25.98,
-                        25.87];
+var twdhq_pre_data = [25.85,26.03,26.53,26.86,26.35,26.46,
+26.72,26.93,27.11,27.11,27.11,26.9,
+27.11,27.11,27.11,26.87,26.9,27.09,
+27.11,27.11,27.11,27.11,26.69,26.79,
+26.99,26.99,27.11,27.11,27.11,26.77,
+26.8,26.81,27.11,27.11,26.77,27.01,
+26.55,26.54,26.44,26.56,26.59,26.96,
+26.82,26.45,26.25,26.63,26.8,26.34,
+26.16,25.93,26.21,26.14,26.35,26.43,
+27.07];
 var startNum = twdhq_pre_data[0];
 var maxNum = startNum;
 var minNum = startNum;
@@ -131,7 +131,7 @@ function reset_twdhqcharts_data(){
         var newPrice = Number($('.latest_price').eq(0).html());
         $('.chartInfo').eq(0).find('.number').eq(0).html(maxNum);
         $('.chartInfo').eq(0).find('.number').eq(1).html(minNum);
-        $('.chartInfo').eq(0).find('.number').eq(2).html(Math.floor((newPrice-startNum)*10000)/100);
+        $('.chartInfo').eq(0).find('.number').eq(2).html(Math.floor((newPrice-startNum)/startNum*10000) / 100);
         var myChart = echarts.init(document.getElementById('indexEcharts'));
         myChart.setOption(twdhqcharts);
         console.log('tradingTime');
