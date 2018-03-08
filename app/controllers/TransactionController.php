@@ -385,11 +385,11 @@ GROUP BY
             $datas = [];
             foreach ($historys as $key => &$history){
                 $datas[$key][] = strtotime($history['date']);
-                $datas[$key][] = isset($inits[$history['date']]) ? $inits[$history['date']]['open_price'] : '无开盘价';
-                $datas[$key][] = $history['max_price'];
-                $datas[$key][] = $history['min_price'];
-                $datas[$key][] = isset($inits[$history['date']]) ? $inits[$history['date']]['close_price'] : '无收盘价';
-                $datas[$key][] = $history['total_number'];
+                $datas[$key][] = isset($inits[$history['date']]) ? (float)$inits[$history['date']]['open_price'] : '无开盘价';
+                $datas[$key][] = (float)$history['max_price'];
+                $datas[$key][] = (float)$history['min_price'];
+                $datas[$key][] = isset($inits[$history['date']]) ? (float)$inits[$history['date']]['close_price'] : '无收盘价';
+                $datas[$key][] = (float)$history['total_number'];
             }
         }
     
@@ -440,13 +440,13 @@ GROUP BY
             $items['open_price'] = 0;
         }
         //最新价格
-        $items['new_price'] = isset($newPrice['price']) ? $newPrice['price'] : 0;
+        $items['new_price'] = isset($newPrice['price']) ? (float)$newPrice['price'] : 0;
         $newData[] = strtotime(\Util\common::getDate());
-        $newData[] = $items['open_price'];
-        $newData[] = $items['max'];
-        $newData[] = $items['min'];
-        $newData[] = $items['new_price'];
-        $newData[] = $items['total_number'];
+        $newData[] = (float)$items['open_price'];
+        $newData[] = (float)$items['max'];
+        $newData[] = (float)$items['min'];
+        $newData[] = (float)$items['new_price'];
+        $newData[] = (float)$items['total_number'];
         $newData[] = strtotime(\Util\common::getDate());
         $newData[] = strtotime(\Util\common::getDate());
         $datas[] = $newData;
