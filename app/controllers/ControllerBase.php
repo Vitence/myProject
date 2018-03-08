@@ -70,7 +70,21 @@ class ControllerBase extends Controller {
         echo json_encode($this->response,JSON_UNESCAPED_UNICODE);
         exit;
     }
-    
+    /**
+     * 数据返回
+     * @param        $results
+     * @param string $errorCode
+     * @param string $errorMessage
+     */
+    protected function jsonReturnTest($results, $errorCode = '0000', $errorMessage = '成功') {
+        $this->response = array(
+            'data' => $results,
+            'success' => true,
+        );
+        header('Content-type:text/json;charset=utf-8');
+        echo json_encode($this->response,JSON_UNESCAPED_UNICODE);
+        exit;
+    }
     /**
      * 404页面（？）
      */

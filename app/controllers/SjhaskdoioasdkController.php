@@ -1,6 +1,7 @@
 <?php
 ignore_user_abort();//关闭浏览器仍然执行
 set_time_limit(0);//让程序一直执行下去
+use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 class SjhaskdoioasdkController extends ControllerBase{
     
     /**
@@ -368,6 +369,69 @@ class SjhaskdoioasdkController extends ControllerBase{
                 //减去admin1的余额
                 $this->reducePrice($admin1['id'],$admin1Data['total_price']);
             }
+        }
+    }
+    
+    public function khistoryAction(){
+        $currency = ExCurrency::find('id = 1');
+        $currency = $currency->toArray();
+        foreach ($currency as $item) {
+            //计算今天的最高价 最低价 开盘价 收盘价 和时间戳
+//            $where['currency_id'] = $item['id'];
+//            $dateTime   = \Util\common::getDate(); //当天日期
+//            $where['pay_at'] = ['between',[$dateTime." 00:00:01",$dateTime." 23:59:59"]];
+//            $order = 'price desc';
+//            $maxPrice = ExOrder::findRow($where,null,$order);
+//            $order = 'price asc';
+//            $minPrice = ExOrder::findRow($where,null,$order);
+//            $whereInit['currency_id'] = $item['id'];
+//            $whereInit['date'] = $dateTime;
+//            $init = ExInitialization::findRow($whereInit);
+            //最高价 最低价 总交易额 总数量
+            $date = date("Y-m-d",time());
+            $obj = new ExOrder();
+            $sql = 'SELECT
+	IFNULL(MAX(o.price),0) as max,
+	IFNULL(MIN(o.price),0) as min,
+	IFNULL(SUM(total_price),0) as total_price,
+	IFNULL(SUM(number),0) as total_number,
+	i.open_price
+FROM
+	ex_order AS o
+LEFT JOIN ex_initialization AS i ON o.currency_id = i.currency_id AND DATE_FORMAT(o.pay_at, "%Y-%m-%d") = i.date
+WHERE
+	DATE_FORMAT(o.pay_at, "%Y-%m-%d") = "'.$date.'"
+AND o.type = 1
+AND o.currency_id = '.$item['id'].'
+GROUP BY
+	o.currency_id;';
+            $items = new Resultset(
+                null,
+                $obj,
+                $obj->getReadConnection()->query($sql, null)
+            );
+            if(!empty($items)){
+                $items = $items->toArray();
+                $items = isset($items[0]) ? $items[0] : [];
+            }else{
+                $items = [];
+            }
+            if(empty($items)){
+                $items['max'] = 0;
+                $items['min'] = 0;
+                $items['total_number'] = 0;
+                $items['total_price'] = 0;
+                $items['open_price'] = 0;
+            }
+            $kdata['currency_id'] = $item['id'];
+            $kdata['max_price'] = $items['max'];
+            $kdata['min_price'] = $items['min'];
+            $kdata['date'] = $date;
+            $kdata['create_at'] = \Util\common::getDataTime();
+            $kdata['total_number'] = $items['total_number'];
+            unset($obj);
+            $obj = new ExKHistory();
+            ExKHistory::addData($obj,$kdata);
         }
     }
 }
