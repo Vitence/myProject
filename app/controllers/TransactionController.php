@@ -424,15 +424,16 @@ GROUP BY
          }else{
              $items = [];
          }
+         
          if(empty($items)){
-             $items['max'] = $initslast['open_price'];
-             $items['min'] = $initslast['open_price'];
+             $items['max'] = $initslast['date'] == date("Y-m-d",time()) ? $initslast['open_price'] : $initslast['close_price'] ;
+             $items['min'] = $initslast['date'] == date("Y-m-d",time()) ? $initslast['open_price'] : $initslast['close_price'] ;
              $items['total_number'] = 0;
              $items['total_price'] = 0;
-             $items['open_price'] = $initslast['open_price'];
+             $items['open_price'] = $initslast['date'] == date("Y-m-d",time()) ? $initslast['open_price'] : $initslast['close_price'] ;
          }
          //最新价格
-         $items['new_price'] = isset($newPrice['price']) ? (float)$newPrice['price'] : (float)$initslast['open_price'];
+         $items['new_price'] = isset($newPrice['price']) ? (float)$newPrice['price'] : ($initslast['date'] == date("Y-m-d",time()) ? $initslast['open_price'] : $initslast['close_price']);
          $newData[] = strtotime(\Util\common::getDate()) * 1000;
          $newData[] = (float)$items['open_price'];
          $newData[] = (float)$items['max'];
