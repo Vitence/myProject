@@ -370,7 +370,6 @@ GROUP BY
         $where['currency_id'] = $type;
         $where['date'] = ['<',\Util\common::getDate()];
         $historys = ExKHistory::select($where);
-        
         if($historys){
             $historys = $historys->toArray();
             $datas = [];
@@ -388,9 +387,10 @@ GROUP BY
          //最后一次的收盘价
         $initslast = ExInitialization::findRow(array('currency_id'=>$type),null,'date desc');
         $initslast = $initslast->toArray();
+    
         //如果最后一次的日期是今天的
         //当日的开盘价
-         $newPrice = ExOrder::getMaxOrderPrice($type);//最新价格
+         $newPrice = ExOrder::getTodayMaxOrderPrice($type);//最新价格
          if($newPrice){
              $newPrice = $newPrice->toArray();
          }else{
@@ -424,7 +424,6 @@ GROUP BY
          }else{
              $items = [];
          }
-         
          if(empty($items)){
              $items['max'] = $initslast['date'] == date("Y-m-d",time()) ? $initslast['open_price'] : $initslast['close_price'] ;
              $items['min'] = $initslast['date'] == date("Y-m-d",time()) ? $initslast['open_price'] : $initslast['close_price'] ;
@@ -433,8 +432,8 @@ GROUP BY
              $items['open_price'] = $initslast['date'] == date("Y-m-d",time()) ? $initslast['open_price'] : $initslast['close_price'] ;
          }
          //最新价格
-         $items['new_price'] = isset($newPrice['price']) ? (float)$newPrice['price'] : ($initslast['date'] == date("Y-m-d",time()) ? $initslast['open_price'] : $initslast['close_price']);
-         $newData[] = strtotime(\Util\common::getDate()) * 1000;
+        $items['new_price'] = isset($newPrice['price']) ? (float)$newPrice['price'] : ($initslast['date'] == date("Y-m-d",time()) ? $initslast['open_price'] : $initslast['close_price']);
+        $newData[] = strtotime(\Util\common::getDate()) * 1000;
          $newData[] = (float)$items['open_price'];
          $newData[] = (float)$items['max'];
          $newData[] = (float)$items['min'];

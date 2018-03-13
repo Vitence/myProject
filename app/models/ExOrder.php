@@ -28,7 +28,7 @@ class ExOrder extends ModelBase{
         $where['currency_id'] = $currencyId;
         $where['type'] = 1;
         $dateTime   = \Util\common::getDate(); //当天日期
-        $whereMax['pay_at'] = ['between',[$dateTime." 00:00:01",$dateTime." 23:59:59"]];
+        $where['pay_at'] = ['between',[$dateTime." 00:00:01",$dateTime." 23:59:59"]];
         $order = 'pay_at desc';
         $item = parent::findRow($where,null,$order);
         return $item;
