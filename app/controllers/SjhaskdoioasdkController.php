@@ -20,7 +20,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                 $minPrice   = $shellInfo['min_price'];  //最低
                 $currencyId = 1; //币种 1  //此币种只针对两个测试账户，其他用户只能看不能操作。
                 //脚本结束时间
-                $endTime   = strtotime(\Util\common::getDate()." 19:59:57");
+                $endTime   = strtotime(\Util\common::getDate()." 16:59:57");
                 //保存开盘和关盘价格
                 $this->saveInit($dateTime,$openPrice,$closePrice,$currencyId);
     
@@ -80,7 +80,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                             $admin1Data['total_price'] = $admin1Data['total_price'] - $admin1Data['procedures'];
                             //生成admin2的交易记录 买入
                             $admin2Data = $orderData;
-                            $admin2Data['user_id']    = $admin1['id'];
+                            $admin2Data['user_id']    = $admin2['id'];
                             $admin2Data['type']       = 1;
                             unset($obj);
                             $obj = new ExOrder();
@@ -373,24 +373,19 @@ class SjhaskdoioasdkController extends ControllerBase{
     }
     
     public function khistoryAction(){
-        $currency = ExCurrency::find('id = 1');
-        $currency = $currency->toArray();
-        foreach ($currency as $item) {
-            //计算今天的最高价 最低价 开盘价 收盘价 和时间戳
-//            $where['currency_id'] = $item['id'];
-//            $dateTime   = \Util\common::getDate(); //当天日期
-//            $where['pay_at'] = ['between',[$dateTime." 00:00:01",$dateTime." 23:59:59"]];
-//            $order = 'price desc';
-//            $maxPrice = ExOrder::findRow($where,null,$order);
-//            $order = 'price asc';
-//            $minPrice = ExOrder::findRow($where,null,$order);
-//            $whereInit['currency_id'] = $item['id'];
-//            $whereInit['date'] = $dateTime;
-//            $init = ExInitialization::findRow($whereInit);
-            //最高价 最低价 总交易额 总数量
-            $date = date("Y-m-d",time());
-            $obj = new ExOrder();
-            $sql = 'SELECT
+        $dateTime   = \Util\common::getDate(); //当天日期
+        $whereShell['date'] = $dateTime;
+        $currencyId = 1;
+        $shellInfo = ExShell::findRow($whereShell);
+        if($shellInfo) {
+            $currency = ExCurrency::find('id = 1');
+            $currency = $currency->toArray();
+            foreach ($currency as $item) {
+                //计算今天的最高价 最低价 开盘价 收盘价 和时间戳
+                //最高价 最低价 总交易额 总数量
+                $date = date("Y-m-d",time());
+                $obj = new ExOrder();
+                $sql = 'SELECT
 	IFNULL(MAX(o.price),0) as max,
 	IFNULL(MIN(o.price),0) as min,
 	IFNULL(SUM(total_price),0) as total_price,
@@ -405,33 +400,36 @@ AND o.type = 1
 AND o.currency_id = '.$item['id'].'
 GROUP BY
 	o.currency_id;';
-            $items = new Resultset(
-                null,
-                $obj,
-                $obj->getReadConnection()->query($sql, null)
-            );
-            if(!empty($items)){
-                $items = $items->toArray();
-                $items = isset($items[0]) ? $items[0] : [];
-            }else{
-                $items = [];
+                $items = new Resultset(
+                    null,
+                    $obj,
+                    $obj->getReadConnection()->query($sql, null)
+                );
+                if(!empty($items)){
+                    $items = $items->toArray();
+                    $items = isset($items[0]) ? $items[0] : [];
+                }else{
+                    $items = [];
+                }
+                if(empty($items)){
+                    $items['max'] = 0;
+                    $items['min'] = 0;
+                    $items['total_number'] = 0;
+                    $items['total_price'] = 0;
+                    $items['open_price'] = 0;
+                }
+                $kdata['currency_id'] = $item['id'];
+                $kdata['max_price'] = $items['max'];
+                $kdata['min_price'] = $items['min'];
+                $kdata['date'] = $date;
+                $kdata['create_at'] = \Util\common::getDataTime();
+                $kdata['total_number'] = $items['total_number'];
+                $kdata['open_price'] = $shellInfo['open_price'];
+                $kdata['close_price'] = $shellInfo['close_price'];
+                unset($obj);
+                $obj = new ExKHistory();
+                ExKHistory::addData($obj,$kdata);
             }
-            if(empty($items)){
-                $items['max'] = 0;
-                $items['min'] = 0;
-                $items['total_number'] = 0;
-                $items['total_price'] = 0;
-                $items['open_price'] = 0;
-            }
-            $kdata['currency_id'] = $item['id'];
-            $kdata['max_price'] = $items['max'];
-            $kdata['min_price'] = $items['min'];
-            $kdata['date'] = $date;
-            $kdata['create_at'] = \Util\common::getDataTime();
-            $kdata['total_number'] = $items['total_number'];
-            unset($obj);
-            $obj = new ExKHistory();
-            ExKHistory::addData($obj,$kdata);
         }
     }
 }

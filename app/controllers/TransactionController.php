@@ -373,80 +373,73 @@ GROUP BY
         
         if($historys){
             $historys = $historys->toArray();
-            $date = array_column($historys,'date');
-            $whereInit['date'] = ['IN',$date];
-            $inits = ExInitialization::select($where);
-            if($inits){
-                $inits = $inits->toArray();
-                $inits = array_column($inits,null,'date');
-            }
-            
             $datas = [];
             foreach ($historys as $key => &$history){
-                $datas[$key][] = strtotime($history['date']) * 1000;
-                $datas[$key][] = isset($inits[$history['date']]) ? (float)$inits[$history['date']]['open_price'] : '无开盘价';
-                $datas[$key][] = (float)$history['max_price'];
-                $datas[$key][] = (float)$history['min_price'];
-                $datas[$key][] = isset($inits[$history['date']]) ? (float)$inits[$history['date']]['close_price'] : '无收盘价';
-                $datas[$key][] = (float)$history['total_number'];
+                    $datas[$key][] = strtotime($history['date']) * 1000;
+                    $datas[$key][] = (float)$history['open_price'];
+                    $datas[$key][] = (float)$history['max_price'];
+                    $datas[$key][] = (float)$history['min_price'];
+                    $datas[$key][] = (float)$history['close_price'];
+                    $datas[$key][] = (float)$history['total_number'];
             }
         }
-    
-    
-//         unset($where);
-//         unset($whereInit);
-        
-//         $newPrice = ExOrder::getMaxOrderPrice($type);
-//         if($newPrice){
-//             $newPrice = $newPrice->toArray();
-//         }else{
-//             $newPrice = [];
-//         }
-//         //最高价 最低价 总交易额 总数量
-//         $date = date("Y-m-d",time());
-//         $obj = new ExOrder();
-//         $sql = 'SELECT
-//     IFNULL(MAX(o.price),0) as max,
-//     IFNULL(MIN(o.price),0) as min,
-//     IFNULL(SUM(total_price),0) as total_price,
-//     IFNULL(SUM(number),0) as total_number,
-//     i.open_price
-// FROM
-//     ex_order AS o
-// LEFT JOIN ex_initialization AS i ON o.currency_id = i.currency_id AND DATE_FORMAT(o.pay_at, "%Y-%m-%d") = i.date
-// WHERE
-//     DATE_FORMAT(o.pay_at, "%Y-%m-%d") = "'.$date.'"
-// AND o.type = 1
-// AND o.currency_id = '.$type.'
-// GROUP BY
-//     o.currency_id;';
-//         $items = new Resultset(
-//             null,
-//             $obj,
-//             $obj->getReadConnection()->query($sql, null)
-//         );
-//         if(!empty($items)){
-//             $items = $items->toArray();
-//             $items = isset($items[0]) ? $items[0] : [];
-//         }else{
-//             $items = [];
-//         }
-//         if(empty($items)){
-//             $items['max'] = 0;
-//             $items['min'] = 0;
-//             $items['total_number'] = 0;
-//             $items['total_price'] = 0;
-//             $items['open_price'] = 0;
-//         }
-//         //最新价格
-//         $items['new_price'] = isset($newPrice['price']) ? (float)$newPrice['price'] : 0;
-//         $newData[] = strtotime(\Util\common::getDate()) * 1000;
-//         $newData[] = (float)$items['open_price'];
-//         $newData[] = (float)$items['max'];
-//         $newData[] = (float)$items['min'];
-//         $newData[] = (float)$items['new_price'];
-//         $newData[] = (float)$items['total_number'];
-//         $datas[] = $newData;
+         unset($where);
+         unset($whereInit);
+         //最后一次的收盘价
+        $initslast = ExInitialization::findRow(array('currency_id'=>$type),null,'date desc');
+        $initslast = $initslast->toArray();
+        //如果最后一次的日期是今天的
+        //当日的开盘价
+         $newPrice = ExOrder::getMaxOrderPrice($type);//最新价格
+         if($newPrice){
+             $newPrice = $newPrice->toArray();
+         }else{
+             $newPrice = [];
+         }
+         //最高价 最低价 总交易额 总数量
+         $date = date("Y-m-d",time());
+         $obj = new ExOrder();
+         $sql = 'SELECT
+     IFNULL(MAX(o.price),0) as max,
+     IFNULL(MIN(o.price),0) as min,
+     IFNULL(SUM(number),0) as total_number,
+     i.open_price
+ FROM
+     ex_order AS o
+ LEFT JOIN ex_initialization AS i ON o.currency_id = i.currency_id AND DATE_FORMAT(o.pay_at, "%Y-%m-%d") = i.date
+ WHERE
+     DATE_FORMAT(o.pay_at, "%Y-%m-%d") = "'.$date.'"
+ AND o.type = 1
+ AND o.currency_id = '.$type.'
+ GROUP BY
+     o.currency_id;';
+         $items = new Resultset(
+             null,
+             $obj,
+             $obj->getReadConnection()->query($sql, null)
+         );
+         if(!empty($items)){
+             $items = $items->toArray();
+             $items = isset($items[0]) ? $items[0] : [];
+         }else{
+             $items = [];
+         }
+         if(empty($items)){
+             $items['max'] = $initslast['open_price'];
+             $items['min'] = $initslast['open_price'];
+             $items['total_number'] = 0;
+             $items['total_price'] = 0;
+             $items['open_price'] = $initslast['open_price'];
+         }
+         //最新价格
+         $items['new_price'] = isset($newPrice['price']) ? (float)$newPrice['price'] : $initslast['open_price'];
+         $newData[] = strtotime(\Util\common::getDate()) * 1000;
+         $newData[] = (float)$items['open_price'];
+         $newData[] = (float)$items['max'];
+         $newData[] = (float)$items['min'];
+         $newData[] = (float)$items['new_price'];
+         $newData[] = (float)$items['total_number'];
+         $datas[] = $newData;
         $data['lines'] = $datas;
         $this->jsonReturnTest($data);
     }
