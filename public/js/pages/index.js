@@ -93,60 +93,51 @@ var twdhqcharts = {
                 }
             }
         },
-        data: [25.85,26.03,26.53,26.86,26.35,26.46,
-26.72,26.93,27.11,27.11,27.11,26.9,
-27.11,27.11,27.11,26.87,26.9,27.09,
-27.11,27.11,27.11,27.11,26.69,26.79,
-26.99,26.99,27.11,27.11,27.11,26.77,
-26.8,26.81,27.11,27.11,26.77,27.01,
-26.55,26.54,26.44,26.56,26.59,26.96,
-26.82,26.45,26.25,26.63,26.8,26.34,
-26.16,25.93,26.21,26.14,26.35,26.43,
-27.07]
+        data: []
     }]
 };
-var twdhq_pre_data = [25.85,26.03,26.53,26.86,26.35,26.46,
-26.72,26.93,27.11,27.11,27.11,26.9,
-27.11,27.11,27.11,26.87,26.9,27.09,
-27.11,27.11,27.11,27.11,26.69,26.79,
-26.99,26.99,27.11,27.11,27.11,26.77,
-26.8,26.81,27.11,27.11,26.77,27.01,
-26.55,26.54,26.44,26.56,26.59,26.96,
-26.82,26.45,26.25,26.63,26.8,26.34,
-26.16,25.93,26.21,26.14,26.35,26.43,
-27.07];
+var twdhq_pre_data = [29.8,29.91,30.15,30.43,30.96,31.14,
+31.2,31.34,31.37,31.37,30.92,31.35,
+30.89,31.37,31.37,31.37,31.35,31.37,
+31.37,31,31.37,31.37,31.37,31.14,
+31.19,31.37,31.07,31.33,31.37,31.37,
+31.37,31.37,31.37,31.15,31.37,31.37,
+31.37,30.85,30.96,31.32,31.37,31.37,
+31.37,31.37,31.07,31.01,31.29,30.79,
+31.03,31.37,31.37,31.37,31.32,31.02,
+31.37];
 var startNum = twdhq_pre_data[0];
 var maxNum = startNum;
 var minNum = startNum;
-// function reset_twdhqcharts_data(){
-//     var today_date = new Date();
-//     var now_hour = today_date.getHours();
-//     var now_minute = today_date.getMinutes();
-//     var showNum = (now_hour>8)?(now_hour - 8)*6 + Math.floor(now_minute/10):0;
-//     switch(showNum){
-//         case 0:
-//             $('.chartInfo').eq(0).find('.number').html('0');
-//             $('.chartInfo').eq(0).find('.number').eq(2).html('0%');
-//             console.log('not trueTime');
-//         break;
-//         default:
-//         var show_data = new Array();
-//         for(var i = 0 ; i < showNum ; i++){
-//             show_data[i] = twdhq_pre_data[i];
-//             maxNum = (show_data[i]>maxNum)?show_data[i]:maxNum;
-//             minNum = (show_data[i]<minNum)?show_data[i]:minNum;
-//         }
-//         twdhqcharts.series[0].data = show_data;
-//         var newPrice = Number($('.latest_price').eq(0).html());
-//         $('.chartInfo').eq(0).find('.number').eq(0).html(maxNum);
-//         $('.chartInfo').eq(0).find('.number').eq(1).html(minNum);
-//         $('.chartInfo').eq(0).find('.number').eq(2).html(Math.floor((newPrice-startNum)/startNum*10000) / 100);
-//         var myChart = echarts.init(document.getElementById('indexEcharts'));
-//         myChart.setOption(twdhqcharts);
-//         console.log('tradingTime');
-//     }
-// }
-// var twdhq_interval = setInterval(reset_twdhqcharts_data,1000);
+function reset_twdhqcharts_data(){
+    var today_date = new Date();
+    var now_hour = today_date.getHours();
+    var now_minute = today_date.getMinutes();
+    var showNum = (now_hour>8)?(now_hour - 8)*6 + Math.floor(now_minute/10):0;
+    switch(showNum){
+        case 0:
+            $('.chartInfo').eq(0).find('.number').html('0');
+            $('.chartInfo').eq(0).find('.number').eq(2).html('0%');
+            console.log('not trueTime');
+        break;
+        default:
+        var show_data = new Array();
+        for(var i = 0 ; i < showNum ; i++){
+            show_data[i] = twdhq_pre_data[i];
+            maxNum = (show_data[i]>maxNum)?show_data[i]:maxNum;
+            minNum = (show_data[i]<minNum)?show_data[i]:minNum;
+        }
+        twdhqcharts.series[0].data = show_data;
+        var newPrice = Number($('.latest_price').eq(0).html());
+        $('.chartInfo').eq(0).find('.number').eq(0).html(maxNum);
+        $('.chartInfo').eq(0).find('.number').eq(1).html(minNum);
+        $('.chartInfo').eq(0).find('.number').eq(2).html(Math.floor((newPrice-startNum)/startNum*10000) / 100);
+        var myChart = echarts.init(document.getElementById('indexEcharts'));
+        myChart.setOption(twdhqcharts);
+        console.log('tradingTime');
+    }
+}
+var twdhq_interval = setInterval(reset_twdhqcharts_data,1000);
 var myjfcharts = {
     title: {
         show: false
