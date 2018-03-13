@@ -20,7 +20,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                 $minPrice   = $shellInfo['min_price'];  //最低
                 $currencyId = 1; //币种 1  //此币种只针对两个测试账户，其他用户只能看不能操作。
                 //脚本结束时间
-                $endTime   = strtotime(\Util\common::getDate()." 16:59:57");
+                $endTime   = strtotime(\Util\common::getDate()." 19:59:57");
                 //保存开盘和关盘价格
                 $this->saveInit($dateTime,$openPrice,$closePrice,$currencyId);
     
