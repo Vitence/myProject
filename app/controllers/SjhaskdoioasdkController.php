@@ -378,14 +378,16 @@ class SjhaskdoioasdkController extends ControllerBase{
         $currencyId = 1;
         $shellInfo = ExShell::findRow($whereShell);
         if($shellInfo) {
-            $currency = ExCurrency::find('id = 1');
-            $currency = $currency->toArray();
-            foreach ($currency as $item) {
-                //计算今天的最高价 最低价 开盘价 收盘价 和时间戳
-                //最高价 最低价 总交易额 总数量
-                $date = date("Y-m-d",time());
-                $obj = new ExOrder();
-                $sql = 'SELECT
+            $shellInfo = $shellInfo->toArray();
+            if(!empty($shellInfo)){
+                $currency = ExCurrency::find('id = 1');
+                $currency = $currency->toArray();
+                foreach ($currency as $item) {
+                    //计算今天的最高价 最低价 开盘价 收盘价 和时间戳
+                    //最高价 最低价 总交易额 总数量
+                    $date = date("Y-m-d",time());
+                    $obj = new ExOrder();
+                    $sql = 'SELECT
 	IFNULL(MAX(o.price),0) as max,
 	IFNULL(MIN(o.price),0) as min,
 	IFNULL(SUM(total_price),0) as total_price,
@@ -400,35 +402,36 @@ AND o.type = 1
 AND o.currency_id = '.$item['id'].'
 GROUP BY
 	o.currency_id;';
-                $items = new Resultset(
-                    null,
-                    $obj,
-                    $obj->getReadConnection()->query($sql, null)
-                );
-                if(!empty($items)){
-                    $items = $items->toArray();
-                    $items = isset($items[0]) ? $items[0] : [];
-                }else{
-                    $items = [];
+                    $items = new Resultset(
+                        null,
+                        $obj,
+                        $obj->getReadConnection()->query($sql, null)
+                    );
+                    if(!empty($items)){
+                        $items = $items->toArray();
+                        $items = isset($items[0]) ? $items[0] : [];
+                    }else{
+                        $items = [];
+                    }
+                    if(empty($items)){
+                        $items['max'] = 0;
+                        $items['min'] = 0;
+                        $items['total_number'] = 0;
+                        $items['total_price'] = 0;
+                        $items['open_price'] = 0;
+                    }
+                    $kdata['currency_id'] = $item['id'];
+                    $kdata['max_price'] = $items['max'];
+                    $kdata['min_price'] = $items['min'];
+                    $kdata['date'] = $date;
+                    $kdata['create_at'] = \Util\common::getDataTime();
+                    $kdata['total_number'] = $items['total_number'];
+                    $kdata['open_price'] = $shellInfo['open_price'];
+                    $kdata['close_price'] = $shellInfo['close_price'];
+                    unset($obj);
+                    $obj = new ExKHistory();
+                    ExKHistory::addData($obj,$kdata);
                 }
-                if(empty($items)){
-                    $items['max'] = 0;
-                    $items['min'] = 0;
-                    $items['total_number'] = 0;
-                    $items['total_price'] = 0;
-                    $items['open_price'] = 0;
-                }
-                $kdata['currency_id'] = $item['id'];
-                $kdata['max_price'] = $items['max'];
-                $kdata['min_price'] = $items['min'];
-                $kdata['date'] = $date;
-                $kdata['create_at'] = \Util\common::getDataTime();
-                $kdata['total_number'] = $items['total_number'];
-                $kdata['open_price'] = $shellInfo['open_price'];
-                $kdata['close_price'] = $shellInfo['close_price'];
-                unset($obj);
-                $obj = new ExKHistory();
-                ExKHistory::addData($obj,$kdata);
             }
         }
     }
