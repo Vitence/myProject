@@ -1,4 +1,4 @@
-var kline;
+var kline,requestTimer;
 $(function(){
     require.config({
         paths: {
@@ -89,7 +89,7 @@ $(function(){
         $("#sale li").eq(2).find('span').html('总计：'+ (isNaN(number * salepriceEle.val()) ? 0 : number * salepriceEle.val()));
     });
 
-
+    requestTimer = setInterval(infoGetFun,2000);
     /**
      * 卖出
      */
@@ -270,7 +270,7 @@ function getOrder(){
                 }
                 $(".order").nextAll().remove().end().after(html);
             }
-            setTimeout("getOrder()",2000)
+            // setTimeout("getOrder()",2000)
         }
     })
 }
@@ -300,7 +300,7 @@ function getAllGuadan(){
                     </tr>`;
                 }
             }
-            setTimeout(function(){
+            // setTimeout(function(){
                 if(json.data.buy.length > 0){
                     items = json.data.buy;
                     for (var i = 0; i< items.length; i++){
@@ -314,8 +314,8 @@ function getAllGuadan(){
                     }
                 }
                 $(".allguandan").nextAll().remove().end().after(html);
-                setTimeout("getAllGuadan()",2000)
-            },200);
+            //     setTimeout("getAllGuadan()",2000)
+            // },200);
         }
     })
 }
@@ -347,7 +347,7 @@ function getKinfo(){
             $(".info li").eq(5).find('p:first').html(parseInt(json.data.sale_first) <= 0 ? '--' : json.data.sale_first);
             $(".info li").eq(6).find('p:first').html(json.data.total_price);
             $(".info li").eq(7).find('p:first').html(json.data.total_number);
-            setTimeout("getKinfo()",2000)
+            // setTimeout("getKinfo()",2000)
         }
     })
 }
@@ -411,7 +411,11 @@ function changeCharts(chart_i,chartName){
     getOrder();
     getAllGuadan();
 }
-
+function infoGetFun(){
+    getKinfo();
+    getOrder();
+    getAllGuadan();
+}
 $(document).delegate('.chedan','click',function(){
     var id = $(this).data('id');
     var type = $(".showChartName").attr("currency");
