@@ -354,59 +354,58 @@ function getKinfo(){
 getKinfo();
 
 function changeCharts(chart_i,chartName){
-    $('.showChartName').text($('.coinOptionBlock li').eq(chart_i).text());
-    $('.showChartName').attr('currency',$('.coinOptionBlock li').eq(chart_i).data('id'));
-    kline.pause();
+    $('.showChartName').text($('.coinOptionBlock li').eq(chart_i-1).text());
+    $('.showChartName').attr('currency',$('.coinOptionBlock li').eq(chart_i-1).data('id'));
     switch(chartName){
         case 'TWDHQ':
-            kline.symbol="1";
+            kline.setSymbol("1");
         break;
         case 'MYJF':
-            kline.symbol="2";
+            kline.setSymbol("2");
         break;
         case 'QRTB':
-            kline.symbol="3";
+            kline.setSymbol("3");
         break;
         case 'JTB':
-            kline.symbol="4";
+            kline.setSymbol("4");
         break;
         case 'JDTX':
-            kline.symbol="5";
+            kline.setSymbol("5");
         break;
         case 'MZTB':
-            kline.symbol="6";
+            kline.setSymbol("6");
         break;
         case 'DYJE':
-            kline.symbol="7";
+            kline.setSymbol("7");
         break;
         case 'XNZZ':
-            kline.symbol="8";
+            kline.setSymbol("8");
         break;
         case 'MDSQ':
-            kline.symbol="9";
+            kline.setSymbol("9");
         break;
         case 'TTTB':
-            kline.symbol="10";
+            kline.setSymbol("10");
         break;
         case 'JTXJ':
-            kline.symbol="11";
+           kline.setSymbol("11");
         break;
         case 'SCRS':
-            kline.symbol="12";
+            kline.setSymbol("12");
         break;
         case 'DDMM':
-            kline.symbol="13";
+            kline.setSymbol("13");
         break;
         case 'XDK':
-            kline.symbol="14";
+            kline.setSymbol("14");
         break;
         case 'JBT':
-            kline.symbol="15";
+            kline.setSymbol("15");
         break;
         default:
             console.log('Wrong Name');
     }
-    kline.resend();
+    kline.draw();
     getKinfo();
     getGuadanData();
     getOrder();
