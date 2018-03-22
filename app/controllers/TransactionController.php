@@ -134,7 +134,7 @@ class TransactionController extends ControllerBase{
             $where['type'] = 1;
 //            $where['pay_at'] = ['BETWEEN',[date("Y-m-d",time()),date("Y-m-d",time()+24*3600)]];
             $order = 'pay_at desc';
-            $items = ExOrder::select($where,null,$order);
+            $items = ExOrder::select($where,null,$order,10);
             if($items){
                 $items = $items->toArray();
                 foreach ($items as &$item){
