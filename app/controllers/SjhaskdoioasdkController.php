@@ -435,4 +435,27 @@ GROUP BY
             }
         }
     }
+    
+    
+    
+    public function khistoryOtherAction(){
+        $dateTime   = \Util\common::getDate(); //当天日期
+        $whereShell['date'] = $dateTime;
+        $currencyId = [2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+        foreach ($currencyId as $id){
+            $initPrice = ExCurrency::findRow(array('id'=>$id));
+            $initPrice = $initPrice->toArray();
+            $kdata['currency_id'] = $initPrice['id'];
+            $kdata['max_price'] = $initPrice['init_price'];
+            $kdata['min_price'] = $initPrice['init_price'];
+            $kdata['date'] = \Util\common::getDate();
+            $kdata['create_at'] = \Util\common::getDataTime();
+            $kdata['total_number'] = 0;
+            $kdata['open_price'] = $initPrice['init_price'];
+            $kdata['close_price'] = $initPrice['init_price'];
+            unset($obj);
+            $obj = new ExKHistory();
+            ExKHistory::addData($obj,$kdata);
+        }
+    }
 }
