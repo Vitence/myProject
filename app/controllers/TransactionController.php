@@ -386,7 +386,15 @@ GROUP BY
          unset($whereInit);
          //最后一次的收盘价
         $initslast = ExInitialization::findRow(array('currency_id'=>$type),null,'date desc');
-        $initslast = $initslast->toArray();
+        if($initslast){
+            $initslast = $initslast->toArray();
+        }else{
+            $initPrice = ExCurrency::findRow(array('id'=>$type));
+            $initPrice = $initPrice->toArray();
+            $initslast['date'] = date("Y-m-d",time());
+            $initslast['open_price'] = $initPrice['init_price'];
+            $initslast['close_price'] =$initPrice['init_price'];
+        }
     
         //如果最后一次的日期是今天的
         //当日的开盘价
