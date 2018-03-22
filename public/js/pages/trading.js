@@ -25,7 +25,7 @@ $(function(){
             theme: 'dark', // light/dark
             language: 'zh-cn', // zh-cn/en-us/zh-tw
             ranges: ["1d"],
-            symbol: "TWDHQ",
+            symbol: "1",
             symbolName: "TWDHQ/USD",
             type: "poll", // poll/socket
             url: "/transaction/k",
@@ -356,110 +356,57 @@ getKinfo();
 function changeCharts(chart_i,chartName){
     $('.showChartName').text($('.coinOptionBlock li').eq(chart_i).text());
     $('.showChartName').attr('currency',$('.coinOptionBlock li').eq(chart_i).data('id'));
+    kline.pause();
     switch(chartName){
-        case 'cbfcharts':
-        // require(['kline'], function () {
-        //      kline = new Kline({
-        //         element: "#tradingCenterCharts",
-        //         width: 1200,
-        //         height: 650,
-        //         theme: 'dark', // light/dark
-        //         language: 'zh-cn', // zh-cn/en-us/zh-tw
-        //         ranges: ["1d"],
-        //         symbol: "CBF",
-        //         symbolName: "CBF/USD",
-        //         type: "poll", // poll/socket
-        //         url: "../js/lib/cbfData.json",
-        //         limit: 1000,
-        //         intervalTime: 5000,
-        //         debug: true,
-        //         showTrade: false
-        //     });
-            kline.ranges= ["1d"];
-            kline.symbol="CBF";
-            kline.symbolName="CBF/USD";
-            kline.url="../js/lib/cbfData.json";
-            kline.draw();
-        //});
+        case 'TWDHQ':
+            kline.symbol="1";
         break;
-        case 'twdhqcharts':
-        // require(['kline'], function () {
-        //      kline = new Kline({
-        //         element: "#tradingCenterCharts",
-        //         width: 1200,
-        //         height: 650,
-        //         theme: 'dark', // light/dark
-        //         language: 'zh-cn', // zh-cn/en-us/zh-tw
-        //         ranges: ["1w", "1d", "1h", "30m", "15m", "5m", "1m", "line"],
-        //         symbol: "TWDHQ",
-        //         symbolName: "TWDHQ/USD",
-        //         type: "poll", // poll/socket
-        //         url: "../js/lib/twdhqData.json",
-        //         limit: 1000,
-        //         intervalTime: 5000,
-        //         debug: true,
-        //         showTrade: false
-        //     });
-            kline.ranges= ["1w", "1d", "1h", "30m", "15m", "5m", "1m", "line"];
-            kline.symbol="TWDHQ";
-            kline.symbolName="TWDHQ/USD";
-            kline.url="../js/lib/twdhqData.json";
-            kline.draw();
-        // });
+        case 'MYJF':
+            kline.symbol="2";
         break;
-        case 'myjfcharts':
-        // require(['kline'], function () {
-        //      kline = new Kline({
-        //         element: "#tradingCenterCharts",
-        //         width: 1200,
-        //         height: 650,
-        //         theme: 'dark', // light/dark
-        //         language: 'zh-cn', // zh-cn/en-us/zh-tw
-        //         ranges: ["1w", "1d", "1h", "30m", "15m", "5m", "1m", "line"],
-        //         symbol: "MYJF",
-        //         symbolName: "MYJF/USD",
-        //         type: "poll", // poll/socket
-        //         url: "../js/lib/myjfData.json",
-        //         limit: 1000,
-        //         intervalTime: 5000,
-        //         debug: true,
-        //         showTrade: false
-        //     });
-            kline.ranges= ["1w", "1d", "1h", "30m", "15m", "5m", "1m", "line"];
-            kline.symbol="MYJF";
-            kline.symbolName="MYJF/USD";
-            kline.url="../js/lib/myjfData.json";
-            kline.draw();
-        // });
+        case 'QRTB':
+            kline.symbol="3";
         break;
-        case 'qrtbcharts':
-        // require(['kline'], function () {
-        //      kline = new Kline({
-        //         element: "#tradingCenterCharts",
-        //         width: 1200,
-        //         height: 650,
-        //         theme: 'dark', // light/dark
-        //         language: 'zh-cn', // zh-cn/en-us/zh-tw
-        //         ranges: ["1d"],
-        //         symbol: "QRTB",
-        //         symbolName: "QRTB/USD",
-        //         type: "poll", // poll/socket
-        //         url: "../js/lib/qrtbData.json",
-        //         limit: 1000,
-        //         intervalTime: 5000,
-        //         debug: true,
-        //         showTrade: false
-        //     });
-            kline.ranges= ["1d"];
-            kline.symbol="QRTB";
-            kline.symbolName="QRTB/USD";
-            kline.url="../js/lib/qrtbData.json";
-            kline.draw();
-        // });
+        case 'JTB':
+            kline.symbol="4";
+        break;
+        case 'JDTX':
+            kline.symbol="5";
+        break;
+        case 'MZTB':
+            kline.symbol="6";
+        break;
+        case 'DYJE':
+            kline.symbol="7";
+        break;
+        case 'XNZZ':
+            kline.symbol="8";
+        break;
+        case 'MDSQ':
+            kline.symbol="9";
+        break;
+        case 'TTTB':
+            kline.symbol="10";
+        break;
+        case 'JTXJ':
+            kline.symbol="11";
+        break;
+        case 'SCRS':
+            kline.symbol="12";
+        break;
+        case 'DDMM':
+            kline.symbol="13";
+        break;
+        case 'XDK':
+            kline.symbol="14";
+        break;
+        case 'JBT':
+            kline.symbol="15";
         break;
         default:
             console.log('Wrong Name');
     }
+    kline.resend();
     getKinfo();
     getGuadanData();
     getOrder();
