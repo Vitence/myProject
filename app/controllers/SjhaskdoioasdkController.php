@@ -22,8 +22,6 @@ class SjhaskdoioasdkController extends ControllerBase{
                 foreach ($shellInfo as $item){
                     $openPrice  = $item['open_price'];  //开价
                     $closePrice = $item['close_price'];  //关价
-                    $maxPrice   = $item['max_price'];  //最高
-                    $minPrice   = $item['min_price'];  //最低
                     $this->saveInit($dateTime,$openPrice,$closePrice,$item['currency_id']);
                 }
                 $shellInfo = array_column($shellInfo,null,'currency_id');
@@ -35,7 +33,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                         $maxPrice =  $item['max_price'];
                         $minPrice =  $item['min_price'];
                         //执行间隔
-                        $sleep   = rand(2,5);
+                        $sleep   = rand(10,12);
                         //制定涨、跌概率
                         $updownNumberBai = rand(0,100);
                         //浸日最新成交价
