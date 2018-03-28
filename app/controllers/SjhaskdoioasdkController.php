@@ -140,13 +140,14 @@ class SjhaskdoioasdkController extends ControllerBase{
                             $guadanData['currency_id'] = $currencyId;
                             $guadanData['create_at'] = \Util\common::getDataTime();
                             $guadanData['update_at'] = \Util\common::getDataTime();
-                            for ($i = 0; $i < 8 ; $i++){
-                                unset($obj);
-                                $obj = new ExCurrency();
-                                ExCurrency::addData($obj,[
-                                    'name'=>'哈哈哈',
-                                ]);
-                            }
+//                            for ($i = 0; $i < 8 ; $i++){
+//
+//                            }
+                            unset($obj);
+                            $obj = new ExCurrency();
+                            ExCurrency::addData($obj,[
+                                'name'=>'哈哈哈',
+                            ]);
                         }
                     }
                     sleep($sleep);
