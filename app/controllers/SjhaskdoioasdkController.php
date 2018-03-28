@@ -75,13 +75,13 @@ class SjhaskdoioasdkController extends ControllerBase{
                             $orderData['user_id']    = '';
                             $orderData['type']       = '';
                             $orderData['procedures'] = '';
-                            unset($obj);
-                            $obj = new ExCurrency();
-                            ExCurrency::addData($obj,[
-                                'name'=>'哈哈哈'
-                            ]);
                             //根据谁的数量多谁的为卖单
-//                            if($admin1Number['number'] >= $admin2Number['number']){ //admin1为卖单
+                            if($admin1Number['number'] >= $admin2Number['number']){ //admin1为卖单
+                                unset($obj);
+                                $obj = new ExCurrency();
+                                ExCurrency::addData($obj,[
+                                    'name'=>'1111111'
+                                ]);
 //                                //生成admin1的交易记录 卖出
 //                                $admin1Data = $orderData;
 //                                $admin1Data['user_id']    = $admin1['id'];
@@ -106,7 +106,12 @@ class SjhaskdoioasdkController extends ControllerBase{
 //                                $this->plusNumber($admin2['id'],$currencyId,$orderNumber);
 //                                //减去admin2的余额
 //                                $this->reducePrice($admin2['id'],$admin2Data['total_price']);
-//                            }else{ //admin2为卖单
+                            }else{ //admin2为卖单
+                                unset($obj);
+                                $obj = new ExCurrency();
+                                ExCurrency::addData($obj,[
+                                    'name'=>'2222222'
+                                ]);
 //                                //生成admin2的交易记录 卖出
 //                                $admin2Data = $orderData;
 //                                $admin2Data['user_id']    = $admin2['id'];
@@ -131,7 +136,7 @@ class SjhaskdoioasdkController extends ControllerBase{
 //                                $this->plusNumber($admin1['id'],$currencyId,$orderNumber);
 //                                //减去admin1的余额
 //                                $this->reducePrice($admin1['id'],$admin1Data['total_price']);
-//                            }
+                            }
                             //将两个账号的所有此币种的挂单记录全部撤单。
                             $whereGuadan['currency_id'] = $currencyId;
                             $whereGuadan['user_id'] = $admin1['id'];
