@@ -17,7 +17,7 @@ class SjhaskdoioasdkController extends ControllerBase{
             if($shellInfo){
                 $shellInfo = $shellInfo->toArray();
                 //脚本结束时间
-                $endTime   = strtotime(\Util\common::getDate()." 17:59:57");
+                $endTime   = strtotime(\Util\common::getDate()." 16:59:57");
                 //保存开盘和关盘价格
                 foreach ($shellInfo as $item){
                     $openPrice  = $item['open_price'];  //开价
