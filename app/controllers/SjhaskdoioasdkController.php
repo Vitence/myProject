@@ -27,13 +27,13 @@ class SjhaskdoioasdkController extends ControllerBase{
                 $shellInfo = array_column($shellInfo,null,'currency_id');
                 //每天五点结束
                 while(time() <= $endTime){
+                    //执行间隔
+                    $sleep   = rand(2,5);
                     foreach ($shellInfo as $item){
                         $currencyId = $item['currency_id'];
                         $openPrice = $item['open_price'];
                         $maxPrice =  $item['max_price'];
                         $minPrice =  $item['min_price'];
-                        //执行间隔
-                        $sleep   = rand(2,5);
                         //制定涨、跌概率
                         $updownNumberBai = rand(0,100);
                         //浸日最新成交价
@@ -168,9 +168,8 @@ class SjhaskdoioasdkController extends ControllerBase{
                                 }
                             }
                         }
-                        echo 1111;
-                        sleep($sleep);
                     }
+                    sleep($sleep);
                 }
             }
         }catch (\Exception $e){
