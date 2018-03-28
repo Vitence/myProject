@@ -74,57 +74,57 @@ class SjhaskdoioasdkController extends ControllerBase{
                             $orderData['type']       = '';
                             $orderData['procedures'] = '';
                             //根据谁的数量多谁的为卖单
-//                            if($admin1Number['number'] >= $admin2Number['number']){ //admin1为卖单
-//                                //生成admin1的交易记录 卖出
-//                                $admin1Data = $orderData;
-//                                $admin1Data['user_id']    = $admin1['id'];
-//                                $admin1Data['type']       = 2;
-//                                $admin1Data['procedures'] = $admin1Data['total_price'] * 0.1;
-//                                $admin1Data['total_price'] = $admin1Data['total_price'] - $admin1Data['procedures'];
-//                                //生成admin2的交易记录 买入
-//                                $admin2Data = $orderData;
-//                                $admin2Data['user_id']    = $admin2['id'];
-//                                $admin2Data['type']       = 1;
-//                                unset($obj);
-//                                $obj = new ExOrder();
-//                                ExOrder::addData($obj,$admin1Data);
-//                                unset($obj);
-//                                $obj = new ExOrder();
-//                                ExOrder::addData($obj,$admin2Data);
-//                                //减去admin1的数量
-//                                $this->reduceNumber($admin1['id'],$currencyId,$orderNumber);
-//                                //增加admin1的余额 （减手续费）
-//                                $this->plusPrice($admin1['id'],$orderNumber * $nowPrice);
-//                                //增加admin2的数量
-//                                $this->plusNumber($admin2['id'],$currencyId,$orderNumber);
-//                                //减去admin2的余额
-//                                $this->reducePrice($admin2['id'],$admin2Data['total_price']);
-//                            }else{ //admin2为卖单
-//                                //生成admin2的交易记录 卖出
-//                                $admin2Data = $orderData;
-//                                $admin2Data['user_id']    = $admin2['id'];
-//                                $admin2Data['type']       = 2;
-//                                $admin2Data['procedures'] = $admin2Data['total_price'] * 0.1;
-//                                $admin2Data['total_price'] = $admin2Data['total_price'] - $admin2Data['procedures'];
-//                                //生成admin1的交易记录 买入
-//                                $admin1Data = $orderData;
-//                                $admin1Data['user_id']    = $admin1['id'];
-//                                $admin1Data['type']       = 1;
-//                                unset($obj);
-//                                $obj = new ExOrder();
-//                                ExOrder::addData($obj,$admin1Data);
-//                                unset($obj);
-//                                $obj = new ExOrder();
-//                                ExOrder::addData($obj,$admin2Data);
-//                                //减去admin2的数量
-//                                $this->reduceNumber($admin2['id'],$currencyId,$orderNumber);
-//                                //增加admin2的余额 （减手续费）
-//                                $this->plusPrice($admin2['id'],$orderNumber * $nowPrice);
-//                                //增加admin1的数量
-//                                $this->plusNumber($admin1['id'],$currencyId,$orderNumber);
-//                                //减去admin1的余额
-//                                $this->reducePrice($admin1['id'],$admin1Data['total_price']);
-//                            }
+                            if($admin1Number['number'] >= $admin2Number['number']){ //admin1为卖单
+                                //生成admin1的交易记录 卖出
+                                $admin1Data = $orderData;
+                                $admin1Data['user_id']    = $admin1['id'];
+                                $admin1Data['type']       = 2;
+                                $admin1Data['procedures'] = $admin1Data['total_price'] * 0.1;
+                                $admin1Data['total_price'] = $admin1Data['total_price'] - $admin1Data['procedures'];
+                                //生成admin2的交易记录 买入
+                                $admin2Data = $orderData;
+                                $admin2Data['user_id']    = $admin2['id'];
+                                $admin2Data['type']       = 1;
+                                unset($obj);
+                                $obj = new ExOrder();
+                                ExOrder::addData($obj,$admin1Data);
+                                unset($obj);
+                                $obj = new ExOrder();
+                                ExOrder::addData($obj,$admin2Data);
+                                //减去admin1的数量
+                                $this->reduceNumber($admin1['id'],$currencyId,$orderNumber);
+                                //增加admin1的余额 （减手续费）
+                                $this->plusPrice($admin1['id'],$orderNumber * $nowPrice);
+                                //增加admin2的数量
+                                $this->plusNumber($admin2['id'],$currencyId,$orderNumber);
+                                //减去admin2的余额
+                                $this->reducePrice($admin2['id'],$admin2Data['total_price']);
+                            }else{ //admin2为卖单
+                                //生成admin2的交易记录 卖出
+                                $admin2Data = $orderData;
+                                $admin2Data['user_id']    = $admin2['id'];
+                                $admin2Data['type']       = 2;
+                                $admin2Data['procedures'] = $admin2Data['total_price'] * 0.1;
+                                $admin2Data['total_price'] = $admin2Data['total_price'] - $admin2Data['procedures'];
+                                //生成admin1的交易记录 买入
+                                $admin1Data = $orderData;
+                                $admin1Data['user_id']    = $admin1['id'];
+                                $admin1Data['type']       = 1;
+                                unset($obj);
+                                $obj = new ExOrder();
+                                ExOrder::addData($obj,$admin1Data);
+                                unset($obj);
+                                $obj = new ExOrder();
+                                ExOrder::addData($obj,$admin2Data);
+                                //减去admin2的数量
+                                $this->reduceNumber($admin2['id'],$currencyId,$orderNumber);
+                                //增加admin2的余额 （减手续费）
+                                $this->plusPrice($admin2['id'],$orderNumber * $nowPrice);
+                                //增加admin1的数量
+                                $this->plusNumber($admin1['id'],$currencyId,$orderNumber);
+                                //减去admin1的余额
+                                $this->reducePrice($admin1['id'],$admin1Data['total_price']);
+                            }
                             //将两个账号的所有此币种的挂单记录全部撤单。
                             $whereGuadan['currency_id'] = $currencyId;
                             $whereGuadan['user_id'] = $admin1['id'];
