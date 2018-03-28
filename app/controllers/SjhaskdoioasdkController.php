@@ -20,9 +20,10 @@ class SjhaskdoioasdkController extends ControllerBase{
                 $endTime   = strtotime(\Util\common::getDate()." 16:59:57");
                 //保存开盘和关盘价格
                 foreach ($shellInfo as $item){
-                    $openPrice  = $item['open_price'];  //开价
-                    $closePrice = $item['close_price'];  //关价
-                    $this->saveInit($dateTime,$openPrice,$closePrice,$item['currency_id']);
+                    echo $item['currency_id'].'||';
+//                    $openPrice  = $item['open_price'];  //开价
+//                    $closePrice = $item['close_price'];  //关价
+//                    $this->saveInit($dateTime,$openPrice,$closePrice,$item['currency_id']);
                 }
                 //每天五点结束
                 while(time() <= $endTime){
@@ -1122,7 +1123,7 @@ GROUP BY
     
     
     public function saveInit($dateTime,$openPrice,$closePrice,$currencyId){
-        $whereInit = ['date'=>$dateTime];
+        $whereInit = ['date'=>$dateTime,'currency_id'=>$currencyId];
         $init = ExInitialization::findRow($whereInit);
         if($init){
             $init = $init->toArray();
