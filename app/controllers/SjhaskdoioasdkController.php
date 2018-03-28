@@ -55,7 +55,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                         }else{  //跌
                             $nowPrice = (($prevPrice - $updownNumber) >= $minPrice) ? ($prevPrice - $updownNumber) : $minPrice;
                         }
-    
+                        echo $nowPrice.'|||||||||';
                         if($nowPrice > 0){
                             $orderNumber = rand(10,5000);
                             $admin1  = ExUsers::itemById(9); //账号1
