@@ -33,7 +33,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                         $maxPrice =  $item['max_price'];
                         $minPrice =  $item['min_price'];
                         //执行间隔
-                        $sleep   = rand(10,12);
+                        $sleep   = rand(2,5);
                         //制定涨、跌概率
                         $updownNumberBai = rand(0,100);
                         //浸日最新成交价
@@ -168,6 +168,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                                 }
                             }
                         }
+                        echo 1111;
                         sleep($sleep);
                     }
                 }
