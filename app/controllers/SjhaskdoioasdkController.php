@@ -55,7 +55,6 @@ class SjhaskdoioasdkController extends ControllerBase{
                         }else{  //跌
                             $nowPrice = (($prevPrice - $updownNumber) >= $minPrice) ? ($prevPrice - $updownNumber) : $minPrice;
                         }
-                        echo $nowPrice.'|||||||||';
                         if($nowPrice > 0){
                             $orderNumber = rand(10,5000);
                             $admin1  = ExUsers::itemById(9); //账号1
@@ -290,7 +289,7 @@ class SjhaskdoioasdkController extends ControllerBase{
         }
     }
     public function check4Action(){
-        sleep(5);
+        sleep(8);
         //检查当日价格是否有最高价和最低价出现，如果没有，则将最接近最高价的数据记录改成最高价格，最接近最低价的数据记录改成最低价，并生成一条17:00的收盘成交价数据，价格为收盘价，数量按照上面的规则即可
         $dateTime   = \Util\common::getDate(); //当天日期
         $whereShell['date'] = $dateTime;
@@ -396,7 +395,7 @@ class SjhaskdoioasdkController extends ControllerBase{
         }
     }
     public function check6Action(){
-        sleep(5);
+        sleep(10);
         //检查当日价格是否有最高价和最低价出现，如果没有，则将最接近最高价的数据记录改成最高价格，最接近最低价的数据记录改成最低价，并生成一条17:00的收盘成交价数据，价格为收盘价，数量按照上面的规则即可
         $dateTime   = \Util\common::getDate(); //当天日期
         $whereShell['date'] = $dateTime;
@@ -502,7 +501,7 @@ class SjhaskdoioasdkController extends ControllerBase{
         }
     }
     public function check7Action(){
-        sleep(5);
+        sleep(12);
         //检查当日价格是否有最高价和最低价出现，如果没有，则将最接近最高价的数据记录改成最高价格，最接近最低价的数据记录改成最低价，并生成一条17:00的收盘成交价数据，价格为收盘价，数量按照上面的规则即可
         $dateTime   = \Util\common::getDate(); //当天日期
         $whereShell['date'] = $dateTime;
@@ -608,7 +607,7 @@ class SjhaskdoioasdkController extends ControllerBase{
         }
     }
     public function check9Action(){
-        sleep(5);
+        sleep(14);
         //检查当日价格是否有最高价和最低价出现，如果没有，则将最接近最高价的数据记录改成最高价格，最接近最低价的数据记录改成最低价，并生成一条17:00的收盘成交价数据，价格为收盘价，数量按照上面的规则即可
         $dateTime   = \Util\common::getDate(); //当天日期
         $whereShell['date'] = $dateTime;
@@ -1082,6 +1081,7 @@ GROUP BY
     public function plusNumber($userId,$currencyId,$number){
         $myType = ExExchangeRecord::itemsByUserIdAndType($userId,$currencyId);
         if(empty($myType)){
+            unset($typeObj);
             $dataType['user_id'] = $userId;
             $dataType['currency_id'] = $currencyId;
             $dataType['number'] = $number;
@@ -1132,6 +1132,7 @@ GROUP BY
                 $dateInit['currency_id'] = $currencyId;
                 ExInitialization::updataData($whereInit,$dateInit);
             }else{
+                unset($obj);
                 $obj = new ExInitialization();
                 $dateInit['date'] = $dateTime;
                 $dateInit['open_price']  = $openPrice;
@@ -1140,6 +1141,7 @@ GROUP BY
                 ExInitialization::addData($obj,$dateInit);
             }
         }else{
+            unset($obj);
             $obj = new ExInitialization();
             $dateInit['date'] = $dateTime;
             $dateInit['open_price']  = $openPrice;
