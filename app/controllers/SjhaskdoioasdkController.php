@@ -24,7 +24,6 @@ class SjhaskdoioasdkController extends ControllerBase{
                     $closePrice = $item['close_price'];  //关价
                     $this->saveInit($dateTime,$openPrice,$closePrice,$item['currency_id']);
                 }
-                $shellInfo = array_column($shellInfo,null,'currency_id');
                 //每天五点结束
                 while(time() <= $endTime){
                     //执行间隔
