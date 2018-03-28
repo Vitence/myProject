@@ -169,6 +169,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                             }
                         }
                     }
+                    echo 2222;
                     sleep($sleep);
                 }
             }
