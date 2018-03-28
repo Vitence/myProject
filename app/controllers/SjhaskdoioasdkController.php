@@ -27,7 +27,7 @@ class SjhaskdoioasdkController extends ControllerBase{
                 //每天五点结束
                 while(time() <= $endTime){
                     //执行间隔
-                    $sleep   = rand(2,5);
+                    $sleep   = rand(20,30);
                     foreach ($shellInfo as $item){
                         $currencyId = $item['currency_id'];
                         $openPrice = $item['open_price'];
