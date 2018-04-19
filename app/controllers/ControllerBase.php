@@ -95,7 +95,7 @@ class ControllerBase extends Controller {
     public function saveSession($user){
         unset($user['password']);
         unset($user['trading_password']);
-        setcookie('EXCHANGE',base64_encode(json_encode($user)),time()+60*60,'/','xinhuodata.com');
+        setcookie('EXCHANGE',base64_encode(json_encode($user)),time()+60*60,'/','hkpetroagent.com');
         $this->session->set('userInfo',$user);
     }
     
